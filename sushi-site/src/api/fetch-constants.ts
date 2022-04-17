@@ -1,0 +1,1 @@
+export const FETCH_BASE = "https://jsonplaceholder.typicode.com/";

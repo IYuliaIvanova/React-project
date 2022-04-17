@@ -2,12 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { themes } from './constants/constants';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`;
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  <ThemeProvider theme={themes}>
+    <GlobalStyle />
     <App />
-  </React.StrictMode>
+  </ThemeProvider>
 );

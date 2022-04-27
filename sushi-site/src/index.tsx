@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { themes } from './constants/themes';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -19,6 +20,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <ThemeProvider theme={themes}>
     <GlobalStyle />
-    <App />
+      <BrowserRouter>
+            <App />
+      </BrowserRouter>
   </ThemeProvider>
 );

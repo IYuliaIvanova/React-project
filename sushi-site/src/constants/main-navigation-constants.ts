@@ -1,9 +1,9 @@
-interface MainNavigationData {
+interface IMainNavigationData {
     path: string;
     name: string;
 }
 
-export const mainNavigationData: MainNavigationData[] = [
+export const MAIN_NAVIGATION: IMainNavigationData[] = [
     {path: "pizza", name: "Пицца"},
     {path: "sets", name: "Сеты"},
     {path: "wok", name: "WOK"},

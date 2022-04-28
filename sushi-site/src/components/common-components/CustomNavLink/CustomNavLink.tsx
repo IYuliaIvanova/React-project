@@ -4,6 +4,7 @@ import { NavLink, Link } from "react-router-dom";
 
 interface ICustomNavLink {
     display?: string;
+    width?: string;
     justifyContent?: string;
     flexDirection?: string;
     flexWrap?: string;
@@ -15,6 +16,7 @@ interface ICustomNavLink {
 export const CustomNavLink = styled(NavLink)<ICustomNavLink>`
   text-decoration: none;
   display: ${p => p.display || "block"};
+  width: ${p => p.width}px;
   justify-content: ${p => p.justifyContent || "center"};
   flex-direction: ${p => p.flexDirection || 'row'};
   flex-wrap: ${p => p.flexWrap};

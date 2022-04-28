@@ -5,11 +5,12 @@ import {CustomLink} from "./components/common-components/CustomLink/CustomLink";
 import {HeaderContainer} from "./containers/HeaderContainer/HeaderContainer";
 import {MainNavigation} from "./containers/MainNavigation/MainNavigation";
 import {Layout} from "./containers/Layout/Layout";
+import { MainPage } from './pages/main-page/MainPage';
 
 function App() {
   return (
     <Routes>
-        <Route element={<Layout/>}>
+        <Route element={<MainPage/>}>
             <Route path='/' />
         </Route>
 

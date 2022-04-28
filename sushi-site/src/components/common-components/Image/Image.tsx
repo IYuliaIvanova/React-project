@@ -1,15 +1,15 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-interface IIconProps {
+interface IImageProps {
     width?: string;
     maxWidth?: string;
     height?: string;
     maxHeight?: string;
-    margin?: string
+    margin?: string;
 }
 
-export const Icon = styled.svg<IIconProps>`
+export const Image = styled.img<IImageProps>`
     width: ${p => p.width}px;
     max-width: ${p => p.maxWidth}px;
     height: ${p => p.height}px;

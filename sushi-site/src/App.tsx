@@ -13,9 +13,6 @@ function App() {
         <Route element={<MainPage/>}>
             <Route path='/' />
         </Route>
-
-        {/*<Button>Хочу!</Button>*/}
-        {/*<CustomLink>sdfsdf</CustomLink>*/}
     </Routes>
   );
 }

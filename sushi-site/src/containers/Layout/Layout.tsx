@@ -6,7 +6,6 @@ import { FooterContainer } from "../FooterContainer/FooterContainer";
 import { RightSidebar } from "../RightSidebar/RightSidebar";
 
 export const Layout = () => {
-
     return (
         <FlexBox alignItems="start">
             <MainNavigation></MainNavigation>

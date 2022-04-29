@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 interface IBoxProps {
-    width?: string;
+    width?: string | number;
     maxWidth?: string;
     height?: string;
     maxHeight?: string;
@@ -31,7 +31,7 @@ export const Box = styled.div<IBoxProps>`
   bottom: ${p => p.bottom}px;
   left: ${p => p.left}px;
   right: ${p => p.right}px;
-  width: ${p => p.width}px;
+  width: ${p => typeof p.width === "number" ? p.width+"%" : p.width+"px"};
   max-width: ${p => p.maxWidth}px;
   height: ${p => p.height}px;
   max-height: ${p => p.maxHeight}px;

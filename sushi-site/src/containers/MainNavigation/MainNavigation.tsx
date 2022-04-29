@@ -11,7 +11,6 @@ import { COLOR } from "../../constants/color-constants";
 import { MAIN_NAVIGATION } from "../../constants/main-navigation-constants";
 
 export const MainNavigation = () => {
-
     return(
         <Box padding="26px 40px 0 100px" width="320" textAlign="center">
             <CustomNavLink display="inline-block" width="137" margin="0 0 30px" to={'/'}>
@@ -19,9 +18,9 @@ export const MainNavigation = () => {
             </CustomNavLink>
             <Nav display="inline-block" width="180" padding="31px 0 0 20px" borderTop={`.5px solid ${COLOR.silverGray}`}>
                 <Ul>
-                    {MAIN_NAVIGATION.map(({ path, name} )=>{
+                    {MAIN_NAVIGATION.map(({ path, name, id} )=>{
                         return(
-                            <Li margin="0 0 30px 0" key={path + name}>
+                            <Li id={id} margin="0 0 30px 0" key={id}>
                                 <CustomNavLink justifyContent="start" display="flex" to={'/'}>
                                     <Image margin="0 20px 0 0" src={require(`../../assets/img/${path}.svg`)}></Image>
                                     <Paragraph hover>{name}</Paragraph>

@@ -22,7 +22,7 @@ export const Paragraph = styled.p<IParagraphProps>`
   color: ${p => p.color || COLOR.smokyBlack};
   background-color: ${p => p.bgColor};
   margin: ${p => p.margin};
-  padding: ${p => p.padding}
+  padding: ${p => p.padding};
   
   ${p => p.hover && css`
     cursor: pointer;

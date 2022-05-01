@@ -9,7 +9,7 @@ export const Layout = () => {
     return (
         <FlexBox alignItems="start">
             <MainNavigation></MainNavigation>
-            <FlexBox flexDirection="column" alignItems="">
+            <FlexBox width="1170" flexDirection="column" alignItems="">
                 <HeaderContainer></HeaderContainer>
                 <FooterContainer></FooterContainer>
             </FlexBox>

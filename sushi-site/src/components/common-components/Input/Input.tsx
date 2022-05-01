@@ -9,6 +9,10 @@ interface IInputProp {
     position?: string;
     opacity?: string;
     checked?: boolean;
+    margin?: string;
+    border?: string;
+    outline?: string;
+    bgColor?: string;
 }
 
 export const Input = styled.input<IInputProp>`
@@ -18,6 +22,10 @@ export const Input = styled.input<IInputProp>`
     max-height: ${p => p.maxHeight}px;
     position: ${p => p.position};
     opacity: ${p => p.opacity};
+    margin: ${p => p.margin};
+    border: ${p => p.border};
+    outline: ${p => p.outline};
+    background-color: ${p => p.bgColor};
 
     ${p => p.checked && css`
     `}

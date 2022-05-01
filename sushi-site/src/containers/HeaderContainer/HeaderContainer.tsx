@@ -5,13 +5,13 @@ import { CustomLink } from "../../components/common-components/CustomLink/Custom
 import { COLOR } from "../../constants/color-constants"
 import { Box } from "../../components/common-components/Box/Box";
 import { Image } from "../../components/common-components/Image/Image";
-import {CustomNavLink} from "../../components/common-components/CustomNavLink/CustomNavLink";
-import {HeaderBox} from "../../components/common-components/HeaderBox/HeaderBox";
+import { CustomNavLink } from "../../components/common-components/CustomNavLink/CustomNavLink";
+import { HeaderBox } from "../../components/common-components/HeaderBox/HeaderBox";
 
 export const HeaderContainer = () =>{
     return(
-        <HeaderBox borderBottom={`1px solid ${COLOR.silverGray}`} padding="0 40px 0 42px" max-width="1170" width={100} justifyContent="space-between" bgColor={COLOR.gray95}>
-            <FlexBox>
+        <HeaderBox borderBottom={`1px solid ${COLOR.silverGray}`} padding="0 40px 0 42px" width={100} justifyContent="space-between" bgColor={COLOR.gray95}>
+            <FlexBox >
                 <FlexBox padding="6px 15px 8px 0" borderRight={`1px solid ${COLOR.silverGray}`} flexDirection="column">
                     <Paragraph>Наш телефон</Paragraph>
                     <CustomLink lineHeight="18" fontWeight="500" color={COLOR.pastelOrange} href="tel:+996 705 188 955">+996 705 188 955</CustomLink>

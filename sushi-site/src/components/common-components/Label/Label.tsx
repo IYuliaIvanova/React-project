@@ -9,6 +9,7 @@ interface ILabelProp {
     position?: string;
     opacity?: string;
     txtDecoration?: string;
+    margin?: string;
 }
 
 export const Label = styled.label<ILabelProp>`
@@ -19,5 +20,6 @@ export const Label = styled.label<ILabelProp>`
     position: ${p => p.position};
     opacity: ${p => p.opacity};
     text-decoration: ${p => p.txtDecoration};
+    margin: ${p => p.margin};
     cursor: pointer;
 `

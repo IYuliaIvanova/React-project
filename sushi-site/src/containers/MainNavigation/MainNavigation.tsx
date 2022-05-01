@@ -12,13 +12,13 @@ import { MAIN_NAVIGATION } from "../../constants/main-navigation-constants";
 
 export const MainNavigation = () => {
     return(
-        <Box padding="26px 40px 0 100px" width="320" textAlign="center">
-            <CustomNavLink display="inline-block" width="137" margin="0 0 30px" to={'/'}>
+        <Box padding="26px 40px 0 100px" maxWidth="320" textAlign="center">
+            <CustomNavLink display="inline-block" maxWidth="137" margin="0 0 30px" to={'/'}>
                 <Image src={require("../../assets/img/DeskTopLogo.svg").default}></Image>
             </CustomNavLink>
             <Nav display="inline-block" width="180" padding="31px 0 0 20px" borderTop={`.5px solid ${COLOR.silverGray}`}>
                 <Ul>
-                    {MAIN_NAVIGATION.map(({ path, name, id} )=>{
+                    {MAIN_NAVIGATION.map(({ path, name, id } )=>{
                         return(
                             <Li id={id} margin="0 0 30px 0" key={id}>
                                 <CustomNavLink justifyContent="start" display="flex" to={'/'}>

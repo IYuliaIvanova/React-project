@@ -5,10 +5,12 @@ interface IFooterBox {
     width?: string | number;
     maxWidth?: string;
     backColor?: string;
+    padding?: string;
 }
 
 export const FooterBox = styled.footer<IFooterBox>`
   width: ${p => typeof p.width === "number" ? p.width+"%" : p.width+"px"};
   max-width: ${p => p.maxWidth}px;
   background-color: ${p => p.backColor};
+  padding: ${p => p.padding};
 `

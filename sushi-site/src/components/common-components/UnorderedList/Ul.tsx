@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-export const Ul = styled.ul`
+export const UnorderedList = styled.ul`
   list-style-type: none;
 `

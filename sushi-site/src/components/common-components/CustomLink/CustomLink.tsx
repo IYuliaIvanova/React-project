@@ -43,6 +43,5 @@ export const CustomLink = styled.a<ICustomLink>`
     &:hover {
       opacity: 1
     }
-
   `}
 `

@@ -7,7 +7,7 @@ interface IButtonProps {
     width?: string
     height?: string
     bgColor?: string
-    FS?: string
+    fontSize?: string
 }
 
 export const Button = styled.button<IButtonProps>`
@@ -17,7 +17,7 @@ export const Button = styled.button<IButtonProps>`
   color: ${themes.colors.gray95};
   border: none;
   border-radius: 5%;
-  font-size: ${p => p.FS || "24px"};
+  font-size: ${p => p.fontSize || "24px"};
   line-height: 30px;
   font-weight: 500;
   cursor: pointer;

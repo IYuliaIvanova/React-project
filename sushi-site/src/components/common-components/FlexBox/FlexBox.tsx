@@ -27,6 +27,7 @@ interface IFlexBoxProps {
   left?: string;
   right?: string;
   overflow?: string;
+  rowGap?: string;
 }
 
  export const FlexBox = styled.div<IFlexBoxProps>`
@@ -38,7 +39,7 @@ interface IFlexBoxProps {
     display: flex;
     align-items: ${p => p.alignItems || 'center'};
     align-self: ${p => p.alignSelf || 'center'};
-   justify-content: ${p => p.justifyContent || 'center'};
+    justify-content: ${p => p.justifyContent || 'center'};
     flex-direction: ${p => p.flexDirection || 'row'};
     flex-wrap: ${p => p.flexWrap};
     column-gap: ${p => p.columnGap}px;
@@ -49,12 +50,17 @@ interface IFlexBoxProps {
     border-bottom: ${p => p.borderBottom};
     border-left: ${p => p.borderLeft};
     border-right: ${p => p.borderRight};
-    position: ${p => p.position};
-    top: ${p => p.top}px;
-    bottom: ${p => p.bottom}px;
-    left: ${p => p.left}px;
-    right: ${p => p.right}px;
+
+    position: ${(p) => (p.position !== 'relative' ? `
+      ${p.position};
+      top: ${p.top}px;
+      bottom: ${p.bottom}px;
+      left: ${p.left}px;
+      right: ${p.right}px;` : 'relative')
+    };
+
     overflow: ${p => p.overflow};
     transition: all 0.5s linear;
     background-color: ${p => p.backColor};
+    row-gap: ${p => p.rowGap}px;
  `

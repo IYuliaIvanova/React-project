@@ -34,14 +34,14 @@ export const CustomLink = styled.a<ICustomLink>`
   margin: ${p => p.margin};
   
   &:hover {
-    color: ${themes.colors.pastelOrange}
+    color: ${themes.colors.pastelOrange};
   }
 
   ${prop => prop.social && css`
     opacity: 0.4;
 
     &:hover {
-      opacity: 1
+      opacity: 1;
     }
   `}
 `

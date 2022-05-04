@@ -2,9 +2,9 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 interface IImageProps {
-    width?: string;
+    width?: string | number;
     maxWidth?: string;
-    height?: string;
+    height?: string | number;
     maxHeight?: string;
     margin?: string;
     cursor?: string;
@@ -16,16 +16,19 @@ interface IImageProps {
 }
 
 export const Image = styled.img<IImageProps>`
-    width: ${p => p.width}px;
+    width: ${p => typeof p.width === "number" ? p.width+"%" : p.width+"px"};
     max-width: ${p => p.maxWidth}px;
-    height: ${p => p.height}px;
+    height: ${p => typeof p.height === "number" ? p.height+"%" : p.height+"px"};
     max-height: ${p => p.maxHeight}px;
     margin: ${p => p.margin};
-    position: ${p => p.position};
-    top: ${p => p.top}px;
-    bottom: ${p => p.bottom}px;
-    left: ${p => p.left}px;
-    right: ${p => p.right}px;
+    
+    position: ${(p) => (p.position !== 'relative' ? `
+      ${p.position};
+      top: ${p.top}px;
+      bottom: ${p.bottom}px;
+      left: ${p.left}px;
+      right: ${p.right}px;` : 'relative')
+    };
     
     ${p => p.cursor && css`
       cursor: pointer;

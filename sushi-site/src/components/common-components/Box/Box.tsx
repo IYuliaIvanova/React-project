@@ -22,6 +22,7 @@ interface IBoxProps {
     overflow?: string;
     opacity?: string;
     borderRadius?: string;
+    background?: string;
 }
 
 export const Box = styled.div<IBoxProps>`
@@ -46,4 +47,5 @@ export const Box = styled.div<IBoxProps>`
   overflow: ${p => p.overflow};
   opacity: ${p => p.opacity};
   border-radius: ${p => p.borderRadius}px;
+  background: ${p => p.background};
 `

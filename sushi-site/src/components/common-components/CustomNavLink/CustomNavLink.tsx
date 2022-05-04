@@ -14,6 +14,11 @@ interface ICustomNavLink {
     alignItems?: string;
     columnGap?: string;
     margin?: string;
+    position?: string;
+    top?: string;
+    bottom?: string;
+    left?: string;
+    right?: string;
 }
 
 export const CustomNavLink = styled(NavLink)<ICustomNavLink>`
@@ -29,4 +34,12 @@ export const CustomNavLink = styled(NavLink)<ICustomNavLink>`
   align-items: ${p => p.alignItems || 'center'};
   column-gap: ${p => p.columnGap}px;
   margin: ${p => p.margin};
+
+  position: ${(p) => (p.position !== 'relative' ? `
+  ${p.position};
+  top: ${p.top}px;
+  bottom: ${p.bottom}px;
+  left: ${p.left}px;
+  right: ${p.right}px;` : 'relative')
+};
 `

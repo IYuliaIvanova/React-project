@@ -6,4 +6,5 @@ export const COLOR: Record<string, string> = {
     pastelOrange: '#FF9846',
     pinkishOrange: '#F46D40',
     white: '#FFFFFF',
+    linerGrayGradient: 'linear-gradient(180deg, rgba(242, 242, 242, 0) 0%, #F2F2F2 100%)',
 };

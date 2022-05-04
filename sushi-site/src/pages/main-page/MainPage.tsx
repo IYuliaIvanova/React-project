@@ -7,9 +7,14 @@ import { NEW_SUSHI_SETS } from "../../constants/new-sushi-sets";
 import { POPULAR_SUSHI_SETS } from "../../constants/popular-sushi-sets";
 import { ProductCard } from "../../containers/ProductCard/ProductCard";
 import { NOVELTIES, POPULAR } from "../../constants/data-type-constants";
+import { HiddenText } from "../../containers/HiddenText/HiddenText";
+import { Categories } from "../../containers/Сategories/Catigories";
+import { useMediaQuery } from "../../api/hooks/useMediaQuery";
+import { themes } from "../../constants/themes";
 
 export const MainPage = () => {
-    const [typeOfData, setTypeOfData] = useState(NEW_SUSHI_SETS)
+    const [typeOfData, setTypeOfData] = useState(NEW_SUSHI_SETS);
+    const isMobile = useMediaQuery(themes.media.phone);
 
     const changeTypeOfData = (e: React.MouseEvent<HTMLParagraphElement>) => {
         const { target } = e
@@ -28,10 +33,11 @@ export const MainPage = () => {
         <FlexBox
             justifyContent="flex-start"
             flexDirection="column"
-            padding="30px 110px 60px 110px"
+            padding={isMobile ? "20px 15px" : "30px 110px 60px 110px"}
             backColor={COLOR.gray95}
             width={100}
         >
+            <Categories/>
             <FlexBox margin="0 0 30px 17px" alignSelf="flex-start">
                 <Paragraph
                     fontSize="24"
@@ -72,6 +78,7 @@ export const MainPage = () => {
                     }
                 })}
             </Carousel>
+            <HiddenText/>
         </FlexBox>
     )
 }

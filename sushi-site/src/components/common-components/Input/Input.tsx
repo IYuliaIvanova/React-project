@@ -8,11 +8,11 @@ interface IInputProp {
     maxHeight?: string;
     position?: string;
     opacity?: string;
-    checked?: boolean;
     margin?: string;
     border?: string;
     outline?: string;
     bgColor?: string;
+    hiddenTxt?: boolean;
 }
 
 export const Input = styled.input<IInputProp>`
@@ -27,7 +27,18 @@ export const Input = styled.input<IInputProp>`
     outline: ${p => p.outline};
     background-color: ${p => p.bgColor};
 
-    ${p => p.checked && css`
+    ${p => p.hiddenTxt && css`
+        &:checked ~ .limiter {
+            max-height: none;
+        }
+        
+        &:checked ~ .limiter .bottom {
+            opacity: 0;
+        }
+
+        &:checked ~ .read-more-Btn:before {
+            transform: rotate(-130deg);
+        }
     `}
 `
 

@@ -6,7 +6,7 @@ import { COLOR } from "../../constants/color-constants"
 import { Box } from "../../components/common-components/Box/Box";
 import { Image } from "../../components/common-components/Image/Image";
 import { Navigation } from "../../components/common-components/Navigation/Navigation";
-import { UnorderedList } from "../../components/common-components/UnorderedList/Ul";
+import { UnorderedList } from "../../components/common-components/UnorderedList/UnorderedList";
 import { ListItem } from "../../components/common-components/ListItem/ListItem";
 import { CustomNavLink } from "../../components/common-components/CustomNavLink/CustomNavLink";
 import { FOOTER_NAVIGATION } from "../../constants/footer-navigation-constants";
@@ -15,19 +15,20 @@ import { FooterBox } from "../../components/common-components/FooterBox/FooterBo
 import { Input } from "../../components/common-components/Input/Input";
 import { Label } from "../../components/common-components/Label/Label";
 import { INSTAGRAM, WHATSAPP, TELEGRAM } from "../../constants/social-constants";
+import { FOOTER_PHONE_MASK } from "../../constants/phone-constants";
 
 export const FooterContainer = () =>{
     const [phone, setPhone] = useState('');
 
     const handleInputPhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const numb = e.target.value.replaceAll(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,2})(\d{0,2})/);
-        if(numb != null){
+        if (numb) {
             e.target.value = `+(${numb[1]}) ${numb[2]}-${numb[3]}-${numb[4]}`;
         }
         setPhone(e.target.value);
     } 
 
-    return(
+    return (
         <FooterBox backColor={COLOR.gray95} width={100} padding="0 16px">
             <FlexBox
                 margin="0 auto"
@@ -63,7 +64,7 @@ export const FooterContainer = () =>{
                                bgColor={COLOR.gray95}
                                color={COLOR.silverGray}
                                border="none" outline="none"
-                               placeholder='+996 (__) ___ __ __'
+                               placeholder={FOOTER_PHONE_MASK}
                         />
                         <Paragraph margin="0 0 10px 0" color={COLOR.silverGray}>Выберите удобный мессенджер для общения</Paragraph>
                         <FlexBox columnGap="30">
@@ -107,6 +108,7 @@ export const FooterContainer = () =>{
                     alignItems="start"
                     justifyContent="start"
                     padding="10px 5px 5px 41px"
+                    alignSelf="start"
                 >
                     <CustomLink
                         margin="0 0 5px 0"

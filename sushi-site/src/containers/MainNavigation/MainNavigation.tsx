@@ -4,7 +4,7 @@ import { Box } from "../../components/common-components/Box/Box";
 import { Image } from "../../components/common-components/Image/Image";
 import { CustomNavLink } from "../../components/common-components/CustomNavLink/CustomNavLink";
 import { Navigation } from "../../components/common-components/Navigation/Navigation";
-import { UnorderedList } from "../../components/common-components/UnorderedList/Ul";
+import { UnorderedList } from "../../components/common-components/UnorderedList/UnorderedList";
 import { ListItem } from "../../components/common-components/ListItem/ListItem";
 import { COLOR } from "../../constants/color-constants";
 import { MAIN_NAVIGATION } from "../../constants/main-navigation-constants";

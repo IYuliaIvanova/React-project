@@ -11,6 +11,8 @@ import { HiddenText } from "../../containers/HiddenText/HiddenText";
 import { Categories } from "../../containers/Сategories/Catigories";
 import { useMediaQuery } from "../../api/hooks/useMediaQuery";
 import { themes } from "../../constants/themes";
+import { MainSlider } from "../../containers/MainSlider/MainSlider";
+import {Image} from "../../components/common-components/Image/Image";
 
 export const MainPage = () => {
     const [typeOfData, setTypeOfData] = useState(NEW_SUSHI_SETS);
@@ -37,6 +39,7 @@ export const MainPage = () => {
             backColor={COLOR.gray95}
             width={100}
         >
+            <MainSlider windowWidth="950" amountOfCards={2} amountOfCardsOnWindow={1}/>
             <Categories/>
             <FlexBox margin="0 0 30px 17px" alignSelf="flex-start">
                 <Paragraph

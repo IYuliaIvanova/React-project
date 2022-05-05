@@ -18,7 +18,7 @@ export const CategoriesItem = ({ id, img, p }: ICategoriesItemProp) => {
     return (
         <CustomNavLink 
             position="relative"     
-            maxWidth={isMobile ? "330" :"450"} 
+            maxWidth={isMobile ? "330" :"470"}
             maxHeight={isMobile ? "157" : "200"} 
             to={'/'}
         >

@@ -20,11 +20,11 @@ export const Categories = () => {
         >
             {isMobile ? CATEGORIES_DATA_MOBILE.map(({ id, img, p }) => {
                 return (
-                        <CategoriesItem id={id} img={img} p={p} />
+                        <CategoriesItem key={id} id={id} img={img} p={p} />
                 )
             }) : CATEGORIES_DATA_DESKTOP.map(({ id, img, p }) => {
                 return (
-                        <CategoriesItem id={id} img={img} p={p} />
+                        <CategoriesItem key={id} id={id} img={img} p={p} />
                 )
             })}
         </FlexBox>

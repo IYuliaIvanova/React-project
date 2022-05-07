@@ -11,29 +11,32 @@ import { Span } from "../../components/common-components/Span/Span";
 interface IProductCard {
     margin?: string;
     src?: string;
+    h3: string;
+    p: string;
+    height: string;
 }
 
-export const ProductCard = ({ margin, src }: IProductCard) => {
+export const ProductCard = ({ margin, src, h3, p, height }: IProductCard) => {
     return (
         <Box
             margin={margin}
             padding="0 18px"
             width={100}
         >
-            <Image margin="0 0 30px" src={require(`../../assets/img/sushiSetsImg/${src}.png`)}></Image>
+            <Image  margin="0 0 30px" src={require(`../../assets/img/sushiSetsImg/${src}.png`)}></Image>
             <ThirdLevelHeading
                 margin="0 0 30px"
                 fontSize="24"
                 lineHeight="30"
             >
-                Саламон сет
+                {h3}
             </ThirdLevelHeading>
             <Paragraph
                 fontWeight="400"
                 color={COLOR.silverGray}
                 margin="0 0 20px"
             >
-                1050 грамм, 30 кусочков
+                {p}
             </Paragraph>
             <FlexBox
                 padding="11px 0 10px 0"

@@ -1,9 +1,8 @@
 import React, { useState } from "react"
 import { Box } from "../../components/common-components/Box/Box"
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
-import { Image } from "../../components/common-components/Image/Image";
-import {Button} from "../../components/common-components/Button/Button";
-import {COLOR} from "../../constants/color-constants";
+import { Button } from "../../components/common-components/Button/Button";
+import { COLOR } from "../../constants/color-constants";
 import { IMainSliderConstantsProps } from "../../constants/main-slider-constants";
 
 interface ICarouselProps {
@@ -17,9 +16,7 @@ export const MainSlider = ({ windowWidth, amountOfCards, children }: ICarouselPr
 
 
     const handleDotClick = (slidIndex: number) => {
-        setOffsetMainSlider(() => {
-            return -slidIndex * +windowWidth
-        })
+        setOffsetMainSlider(-slidIndex * +windowWidth)
     }
 
     return (
@@ -38,7 +35,7 @@ export const MainSlider = ({ windowWidth, amountOfCards, children }: ICarouselPr
                     </FlexBox>
                 </Box>
             </FlexBox>
-                <Box margin="o auto">
+                <Box>
                     {amountOfCards.map((item, index) => {
                         return (
                             <Button onClick={() => handleDotClick(index)}

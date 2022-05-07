@@ -2,7 +2,7 @@ import React from "react";
 import styled, {css} from "styled-components";
 import {COLOR} from "../../../constants/color-constants";
 
-interface IThirdLevelHeading {
+interface IThirdLevelHeadingProps {
     padding?: string;
     fontWeight?: string;
     fontSize?: string;
@@ -13,7 +13,7 @@ interface IThirdLevelHeading {
     bgColor?: string;
 }
 
-export const ThirdLevelHeading = styled.h3<IThirdLevelHeading>`
+export const ThirdLevelHeading = styled.h3<IThirdLevelHeadingProps>`
   font-style: ${p => p.fontStyle || "normal"};
   font-weight: ${p => p.fontWeight || "500"};
   font-size: ${p => p.fontSize || "18"}px;

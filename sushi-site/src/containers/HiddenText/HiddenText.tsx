@@ -27,7 +27,8 @@ export const HiddenText = () => {
                     opacity="0" 
                     position="absolute"
                     id="readMoreChecker"
-                ></Input>
+                >
+                </Input>
                 <Box 
                     className="limiter"     
                     maxHeight="228"     

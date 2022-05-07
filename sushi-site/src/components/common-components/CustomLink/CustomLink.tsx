@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { COLOR } from "../../../constants/color-constants"
 import { themes } from "../../../constants/themes";
 
-interface ICustomLink {
+interface ICustomLinkProps {
     width?: string;
     maxWidth?: string;
     height?: string;
@@ -18,7 +18,7 @@ interface ICustomLink {
     txtDecoration?: string
 }
 
-export const CustomLink = styled.a<ICustomLink>`
+export const CustomLink = styled.a<ICustomLinkProps>`
   width: ${p => p.width}px;
   max-width: ${p => p.maxWidth}px;
   height: ${p => p.height}px;

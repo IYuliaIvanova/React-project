@@ -14,6 +14,7 @@ export const MainNavigation = () => {
         <Box
             padding="26px 40px 0 100px"
             maxWidth="320"
+            width={100}
             textAlign="center"
         >
             <CustomNavLink
@@ -35,7 +36,7 @@ export const MainNavigation = () => {
                         return (
                             <ListItem id={id} margin="0 0 30px 0" key={id}>
                                 <CustomNavLink justifyContent="start" display="flex" to={'/'}>
-                                    <Image margin="0 20px 0 0" src={require(`../../assets/icons/${path}.svg`)}></Image>
+                                    <Image margin="0 20px 0 0" src={require(`../../assets/img/mainNavigationIcons/${path}.svg`)}></Image>
                                     <Paragraph hover>{name}</Paragraph>
                                 </CustomNavLink>
                             </ListItem>

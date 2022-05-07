@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-interface IInputProp {
+interface IInputProps {
     width?: string;
     maxWidth?: string;
     height?: string;
@@ -15,7 +15,7 @@ interface IInputProp {
     hiddenTxt?: boolean;
 }
 
-export const Input = styled.input<IInputProp>`
+export const Input = styled.input<IInputProps>`
     width: ${p => p.width}px;
     max-width: ${p => p.maxWidth}px;
     height: ${p => p.height}px;

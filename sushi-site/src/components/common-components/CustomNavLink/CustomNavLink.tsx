@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { NavLink, Link } from "react-router-dom";
 
-interface ICustomNavLink {
+interface ICustomNavLinkProps {
     display?: string;
     width?: string;
     maxWidth?: string;
@@ -21,7 +21,7 @@ interface ICustomNavLink {
     right?: string;
 }
 
-export const CustomNavLink = styled(NavLink)<ICustomNavLink>`
+export const CustomNavLink = styled(NavLink)<ICustomNavLinkProps>`
   text-decoration: none;
   display: ${p => p.display || "block"};
   width: ${p => p.width}px;

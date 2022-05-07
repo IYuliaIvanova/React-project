@@ -22,7 +22,7 @@ export const CategoriesItem = ({ id, img, p }: ICategoriesItemProp) => {
             maxHeight={isMobile ? "157" : "200"} 
             to={'/'}
         >
-            <Image width={100} height={100} src={require(`../../assets/img/${img}.png`)}></Image>
+            <Image width={100} height={100} src={require(`../../assets/img/categoriesImg/${img}.png`)}></Image>
             <Paragraph 
                 position="absolute" 
                 bottom="10" 

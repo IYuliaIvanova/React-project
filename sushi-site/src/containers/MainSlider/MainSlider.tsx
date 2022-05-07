@@ -4,52 +4,55 @@ import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Image } from "../../components/common-components/Image/Image";
 import {Button} from "../../components/common-components/Button/Button";
 import {COLOR} from "../../constants/color-constants";
+import { IMainSliderConstantsProps } from "../../constants/main-slider-constants";
 
-interface ICarousel {
+interface ICarouselProps {
     windowWidth: string;
-    amountOfCards: number;
-    amountOfCardsOnWindow: number;
+    amountOfCards: IMainSliderConstantsProps[];
+    children: React.ReactNode
 }
 
-export const MainSlider = ({ amountOfCardsOnWindow, windowWidth, amountOfCards }: ICarousel) => {
+export const MainSlider = ({ windowWidth, amountOfCards, children }: ICarouselProps) => {
     const [offset, setOffsetMainSlider] = useState(0)
 
-    const handleDotClick = (x: number) => {
-        setOffsetMainSlider((currentOffset) => {
-            const newOffset = -x * +windowWidth
-            console.log(windowWidth)
-            // const minOffset = (-Number(windowWidth) * (Math.ceil(amountOfCards / amountOfCardsOnWindow) - 1))
-            console.log(newOffset)
-            return newOffset
+
+    const handleDotClick = (slidIndex: number) => {
+        setOffsetMainSlider(() => {
+            return -slidIndex * +windowWidth
         })
     }
 
     return (
-        <>
-        <FlexBox position="relative" width={100}>
-            <Box
-                overflow="hidden"
-                width={windowWidth}
-            >
-                <FlexBox
-                    width={100}
-                    style={{transform: `translateX(${offset}px)`}}
-                    justifyContent="flex-start"
+        <FlexBox margin="0 0 30px 0" flexDirection="column" alignItems="center">
+            <FlexBox margin="0 0 11px 0" width={100} >
+                <Box
+                    overflow="hidden"
+                    width={windowWidth}
                 >
-                    <Image src={require(`../../assets/img/MainSliderImg/first.png`)}></Image>
-                    <Image src={require(`../../assets/img/MainSliderImg/first.png`)}></Image>
-                    <Image src={require(`../../assets/img/MainSliderImg/first.png`)}></Image>
-                </FlexBox>
-            </Box>
+                    <FlexBox
+                        width={100}
+                        style={{transform: `translateX(${offset}px)`}}
+                        justifyContent="flex-start"
+                    >
+                        {children}
+                    </FlexBox>
+                </Box>
+            </FlexBox>
+                <Box margin="o auto">
+                    {amountOfCards.map((item, index) => {
+                        return (
+                            <Button onClick={() => handleDotClick(index)}
+                                    width="10"
+                                    height="10"
+                                    bgColor={COLOR.silverGray}
+                                    borderRadius={50}
+                                    margin="0 10px 0 0"
+                            >
+                            </Button>
+                        )
+                    })}
+                </Box>
         </FlexBox>
-            <div>
-                {[1, 2, 3].map((item, index) => {
-                    return (
-                        <Button onClick={() => handleDotClick(index)} width="10" height="10" bgColor={COLOR.silverGray} borderRadius={50} margin="0 10px 0 0"></Button>
-                    )
-                })}
-            </div>
-        </>
     )
 }
 

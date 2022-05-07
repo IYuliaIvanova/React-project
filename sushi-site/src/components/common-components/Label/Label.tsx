@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { themes } from "../../../constants/themes";
 
-interface ILabelProp {
+interface ILabelProps {
     width?: string;
     maxWidth?: string;
     height?: string;
@@ -19,7 +19,7 @@ interface ILabelProp {
     hiddenTxt?: boolean;
 }
 
-export const Label = styled.label<ILabelProp>`
+export const Label = styled.label<ILabelProps>`
     width: ${p => p.width}px;
     max-width: ${p => p.maxWidth}px;
     height: ${p => p.height}px;

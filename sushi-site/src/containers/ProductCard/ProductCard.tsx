@@ -20,7 +20,7 @@ export const ProductCard = ({ margin, src }: IProductCard) => {
             padding="0 18px"
             width={100}
         >
-            <Image margin="0 0 30px" src={require(`../../assets/img/${src}.png`)}></Image>
+            <Image margin="0 0 30px" src={require(`../../assets/img/sushiSetsImg/${src}.png`)}></Image>
             <ThirdLevelHeading
                 margin="0 0 30px"
                 fontSize="24"

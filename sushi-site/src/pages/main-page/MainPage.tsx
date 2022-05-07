@@ -13,6 +13,7 @@ import { useMediaQuery } from "../../api/hooks/useMediaQuery";
 import { themes } from "../../constants/themes";
 import { MainSlider } from "../../containers/MainSlider/MainSlider";
 import {Image} from "../../components/common-components/Image/Image";
+import { mainSliderConstants } from "../../constants/main-slider-constants"
 
 export const MainPage = () => {
     const [typeOfData, setTypeOfData] = useState(NEW_SUSHI_SETS);
@@ -39,7 +40,13 @@ export const MainPage = () => {
             backColor={COLOR.gray95}
             width={100}
         >
-            <MainSlider windowWidth="950" amountOfCards={2} amountOfCardsOnWindow={1}/>
+            <MainSlider windowWidth="950" amountOfCards={mainSliderConstants} >
+                {mainSliderConstants.map(({id, path}) => {
+                    return (
+                        <Image src={require(`../../assets/img/mainSliderImg/${path}.png`)}></Image>
+                    )
+                })}
+            </MainSlider>
             <Categories/>
             <FlexBox margin="0 0 30px 17px" alignSelf="flex-start">
                 <Paragraph
@@ -65,7 +72,7 @@ export const MainPage = () => {
                 amountOfCardsOnWindow={3}
                 amountOfCards={typeOfData.length}
             >
-                {typeOfData.map(({ id, img, h3, p }, index, arr) => {
+                {typeOfData.map(({ id, img, h3, p }, index) => {
                     if ((index+1) % 3 === 0) {
                         return (
                             <ProductCard key={id} src={img}></ProductCard>

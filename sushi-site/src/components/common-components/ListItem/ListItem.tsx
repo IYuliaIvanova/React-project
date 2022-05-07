@@ -1,10 +1,10 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-interface IListItem {
+interface IListItemProps {
     margin?: string;
 }
 
-export const ListItem = styled.li<IListItem>`
+export const ListItem = styled.li<IListItemProps>`
   margin: ${p => p.margin};
 `

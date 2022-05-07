@@ -75,15 +75,35 @@ export const MainPage = () => {
                 {typeOfData.map(({ id, img, h3, p }, index) => {
                     if ((index+1) % 3 === 0) {
                         return (
-                            <ProductCard height="253" h3={h3} p={p} key={id} src={img}></ProductCard>
+                            <ProductCard
+                                height="253"
+                                h3={h3}
+                                p={p}
+                                key={id}
+                                src={img}
+                            ></ProductCard>
                         )
                     } else if (index === 0) {
                         return (
-                            <ProductCard height="253" h3={h3} p={p} key={id} src={img} margin="0 41px 0 0"></ProductCard>
+                            <ProductCard
+                                height="253"
+                                h3={h3}
+                                p={p}
+                                key={id}
+                                src={img}
+                                margin="0 41px 0 0"
+                            ></ProductCard>
                         )
                     } else {
                         return (
-                            <ProductCard height="253" h3={h3} p={p} key={id} src={img} margin="0 41px 0 0"></ProductCard>
+                            <ProductCard
+                                height="253"
+                                h3={h3}
+                                p={p}
+                                key={id}
+                                src={img}
+                                margin="0 41px 0 0"
+                            ></ProductCard>
                         )
                     }
                 })}

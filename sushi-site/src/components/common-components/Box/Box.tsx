@@ -6,6 +6,7 @@ interface IBoxProps {
     maxWidth?: string;
     height?: string;
     maxHeight?: string;
+    minHeight?: string;
     backColor?: string;
     textAlign?: string;
     margin?: string;
@@ -36,6 +37,7 @@ export const Box = styled.div<IBoxProps>`
   max-width: ${p => p.maxWidth}px;
   height: ${p => p.height}px;
   max-height: ${p => p.maxHeight}px;
+  min-height: ${p => p.minHeight}px;
   background-color: ${p => p.backColor};
   text-align: ${p => p.textAlign};
   margin: ${p => p.margin};

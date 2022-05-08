@@ -10,6 +10,8 @@ interface IButtonProps {
     bgColor?: string;
     borderRadius?: number;
     fontSize?: string;
+    lineHeight?: string;
+
 }
 
 export const Button = styled.button<IButtonProps>`
@@ -21,7 +23,7 @@ export const Button = styled.button<IButtonProps>`
   border: none;
   border-radius: ${p => p.borderRadius || 5}%;
   font-size: ${p => p.fontSize || "24"}px;
-  line-height: 30px;
+  line-height: ${p => p.lineHeight || "30"}px;
   font-weight: 500;
   cursor: pointer;
 `

@@ -5,7 +5,7 @@ import { Span } from "..//../components/common-components/Span/Span";
 import { Button } from "../../components/common-components/Button/Button";
 import { UnorderedList } from "../../components/common-components/UnorderedList/UnorderedList";
 import { ListItem } from "..//../components/common-components/ListItem/ListItem";
-import { CommentCard } from "../../components/CommentCard/CommentCard"
+import { Paragraph } from "..//../components/common-components/Paragraph/Paragraph";
 import { COLOR } from "../../constants/color-constants";
 
 const comments = new Array(5).fill({
@@ -13,42 +13,52 @@ const comments = new Array(5).fill({
   text: "Привет",
 });
 
-export const ReviewPage = () =>{
-  
+interface ICommentCardProps {
+  name: string;
+  text: string;
+};
+
+export const ReviewsPage: React.FC<ICommentCardProps> = ({name, text}) =>{
   return(
-    <>
-      <Box max-width="1169 px" width={100} padding="0px 16px" background-color={COLOR.silverGray}>
-        <FlexBox 
-        justify-content="space-between" 
-        max-width="1110px" 
-        background-color={COLOR.silverGray}
+    <Box
+      maxWidth="1169"
+      width={100}
+      minHeight="945"
+      padding="50px 30px"
+      background={COLOR.silverGray}
+    >
+      <FlexBox
+        justifyContent="space-between" 
+        maxWidth="1110px"
+        width={100}
+        bgColor={COLOR.silverGray}
+      >
+        <Span fontSize="24" lineHeight="30px">
+          Отзывы
+        </Span>
+        <Button
+          width="180"
+          height="36"
+          fontSize="18px" 
+          lineHeight="22px"
+          color={COLOR.white}
+          bgColor={COLOR.smokyBlack}
         >
-          <Span font-size="24px" line-height="30px">
-            Отзывы
-          </Span>
-            <Button
-            width="180px" 
-            height="36px" 
-            background-color={COLOR.smokyBlack} 
-            font-size="18px" 
-            line-height="22px" 
-            font-weight="400"
-            >
-              + Добавить отзыв
-            </Button>
-        </FlexBox>
-        <UnorderedList max-width="1110px" background-color={COLOR.white}>
-          {comments.map((comment) => (
-            <ListItem margin="0 0 20px 0">
-              <CommentCard 
-                name={comment.name}
-                key={comment.id}
-                text={comment.text}
-                />
-            </ListItem>
+          + Добавить отзыв
+        </Button>
+      </FlexBox>
+      <UnorderedList>
+        {comments.map((comment) => (
+          <ListItem margin="0 0 20px 0" key={comment.id}>
+            <Span margin="0 0 20px 0" fontSize="24" lineHeight="30">
+              {name}
+            </Span>
+            <Paragraph fontWeight="400">
+              {text}
+            </Paragraph>
+          </ListItem>
           ))}
         </UnorderedList>
-      </Box>
-    </>
+    </Box>
   );
 };

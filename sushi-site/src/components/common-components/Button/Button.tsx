@@ -14,13 +14,13 @@ interface IButtonProps {
 
 export const Button = styled.button<IButtonProps>`
   width: ${p => p.width || "143"}px;
-  height: ${p => p.height || "40px"}px;
+  height: ${p => p.height || "40"}px;
   margin: ${p => p.margin};
   background-color: ${p => p.bgColor || themes.colors.pinkishOrange};
   color: ${themes.colors.gray95};
   border: none;
   border-radius: ${p => p.borderRadius || 5}%;
-  font-size: ${p => p.fontSize || "24px"};
+  font-size: ${p => p.fontSize || "24"}px;
   line-height: 30px;
   font-weight: 500;
   cursor: pointer;

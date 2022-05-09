@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 interface IHeaderBoxProps {
     width?: string | number;
@@ -17,7 +17,7 @@ interface IHeaderBoxProps {
 }
 
 export const HeaderBox = styled.header<IHeaderBoxProps>`
-    width: ${p => typeof p.width === "number" ? p.width+"%" : p.width+"px"};
+    width: ${p => typeof p.width === "number" ? `${p.width}%` : `${p.width}px`};
     max-width: ${p => p.maxWidth}px;
     height: ${p => p.height}px;
     max-height: ${p => p.maxHeight}px;

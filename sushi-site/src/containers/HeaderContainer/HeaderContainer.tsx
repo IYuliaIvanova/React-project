@@ -7,9 +7,10 @@ import { Box } from "../../components/common-components/Box/Box";
 import { Image } from "../../components/common-components/Image/Image";
 import { CustomNavLink } from "../../components/common-components/CustomNavLink/CustomNavLink";
 import { HeaderBox } from "../../components/common-components/HeaderBox/HeaderBox";
+import { ONE_PHONE, TWO_PHONE } from "../../constants/href-constants";
 
 export const HeaderContainer = () =>{
-    return(
+    return (
         <HeaderBox
             borderBottom={`1px solid ${COLOR.silverGray}`}
             padding="0 40px 0 42px" width={100}
@@ -23,18 +24,18 @@ export const HeaderContainer = () =>{
                         lineHeight="18"
                         fontWeight="500"
                         color={COLOR.pastelOrange}
-                        href="tel:+996 705 188 955"
+                        href={`tel:${ONE_PHONE}`}
                     >
-                        +996 705 188 955
+                        {ONE_PHONE}
                     </CustomLink>
                     <CustomLink
                         lineHeight="18"
                         fontWeight="500"
                         color={COLOR.pastelOrange}
                         margin="0 0 5px 0"
-                        href="tel:+996 555 188 955"
+                        href={`tel:${TWO_PHONE}`}
                     >
-                        +996 555 188 955
+                        {TWO_PHONE}
                     </CustomLink>
                     <Paragraph lineHeight="17" fontSize="14" color={COLOR.silverGray}>
                         <Image
@@ -42,8 +43,7 @@ export const HeaderContainer = () =>{
                             width="15"
                             height="15"
                             margin="0 5px 0 0"
-                        >
-                        </Image>
+                        />
                         работаем с 10:00 до 00:00
                     </Paragraph>
                 </FlexBox>
@@ -80,7 +80,7 @@ export const HeaderContainer = () =>{
                             Доставка и оплата
                         </Paragraph>
                     </CustomNavLink>
-                    <Image src={require("../../api/img/search.svg").default}></Image>
+                    <Image src={require("../../api/img/search.svg").default}/>
                 </FlexBox>
             </FlexBox>
         </HeaderBox>

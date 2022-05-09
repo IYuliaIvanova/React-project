@@ -15,7 +15,7 @@ export const Carousel = ({ children, amountOfCardsOnWindow, windowWidth, amountO
 
     const handleLeftArrowClick = () => {
         setOffset((currentOffset) => {
-            const newOffset = currentOffset + +windowWidth
+            const newOffset = currentOffset + Number(windowWidth)
             return Math.min(newOffset, 0)
         })
     }
@@ -37,18 +37,18 @@ export const Carousel = ({ children, amountOfCardsOnWindow, windowWidth, amountO
                 src={require("../../assets/icons/sliderArrowLeft.svg").default}
             >
             </Image>
-                <Box
-                    overflow="hidden"
-                    width={windowWidth}
+            <Box
+                overflow="hidden"
+                width={windowWidth}
+            >
+                <FlexBox
+                    width={100}
+                    style={{transform: `translateX(${offset}px)`}}
+                    justifyContent="flex-start"
                 >
-                    <FlexBox
-                        width={100}
-                        style={{transform: `translateX(${offset}px)`}}
-                        justifyContent="flex-start"
-                    >
-                        {children}
-                    </FlexBox>
-                </Box>
+                    {children}
+                </FlexBox>
+            </Box>
             <Image
                 onClick={handleRightArrowClick}
                 cursor="pointer"

@@ -16,6 +16,3 @@ export const MAIN_NAVIGATION: IMainNavigationData[] = [
     { id: "f1f24652", path: "drinks", name: "Напитки" },
     { id: "f5830821", path: "sales", name: "Акции" },
 ]
-
-// const id = `f${(~~(Math.random()*1e8)).toString(16)}`
-// console.log(id) использовать для генератора ид

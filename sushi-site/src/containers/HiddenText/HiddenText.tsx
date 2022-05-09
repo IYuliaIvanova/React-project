@@ -8,8 +8,7 @@ import { UnorderedList } from "../../components/common-components/UnorderedList/
 import { COLOR } from "../../constants/color-constants";
 
 export const HiddenText = () => {
-    
-    return(
+    return (
         <Box backColor={COLOR.gray95} width={100} padding="60px 16px">
             <Box margin="0 auto" maxWidth="950">
                 <Paragraph 
@@ -37,7 +36,7 @@ export const HiddenText = () => {
                     margin="0 0 42px 0"
                 >
                     <Paragraph margin="0 0 10px 0" color={COLOR.silverGray}>Ресторан “Суши и Лапша” предлагаем своим клиентам самые вкусные суши с доставкой на дом, приготовленные по классическим и адаптированным к европейской аудитории рецептам, а также собственным наработкам наших поваров. Мы ценим время наших клиентов, поэтому вы можете заказать суши в Харькове с доставкой на дом или в офис.</Paragraph>
-                    <UnorderedList  color={COLOR.silverGray}>В нашем меню более 20 видов суши:
+                    <UnorderedList color={COLOR.silverGray}>В нашем меню более 20 видов суши:
                         <ListItem color={COLOR.silverGray}>Классические с сырым лососем, тунцом, окунем.</ListItem>
                         <ListItem color={COLOR.silverGray}>Экзотические с тигровой креветкой, морским гребешком.</ListItem>
                         <ListItem color={COLOR.silverGray}>Пикантные с копченым лососем, угрем.</ListItem>
@@ -56,7 +55,17 @@ export const HiddenText = () => {
                         opacity="1"
                     ></Box>
                 </Box>
-                <Label hiddenTxt htmlFor="readMoreChecker" className="read-more-Btn" fontSize="24" color={COLOR.pinkishOrange}>Подробнее</Label>
+                <Box textAlign="center">
+                    <Label 
+                        hiddenTxt 
+                        htmlFor="readMoreChecker" 
+                        className="read-more-Btn" 
+                        fontSize="24" 
+                        color={COLOR.pinkishOrange}
+                    >
+                        Подробнее
+                    </Label>
+                </Box>
             </Box>
         </Box>
     )

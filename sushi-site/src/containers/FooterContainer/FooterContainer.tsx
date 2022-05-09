@@ -15,15 +15,17 @@ import { FooterBox } from "../../components/common-components/FooterBox/FooterBo
 import { Input } from "../../components/common-components/Input/Input";
 import { Label } from "../../components/common-components/Label/Label";
 import { INSTAGRAM, WHATSAPP, TELEGRAM } from "../../constants/social-constants";
-import { FOOTER_PHONE_MASK } from "../../constants/phone-constants";
+import { FOOTER_PHONE_MASK } from "../../constants/masks-constants";
+import { ONE_PHONE, TWO_PHONE } from "../../constants/href-constants";
 
 export const FooterContainer = () =>{
     const [phone, setPhone] = useState('');
 
     const handleInputPhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const numb = e.target.value.replaceAll(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,2})(\d{0,2})/);
-        if (numb) {
-            e.target.value = `+(${numb[1]}) ${numb[2]}-${numb[3]}-${numb[4]}`;
+        const result = e.target.value.replaceAll(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,2})(\d{0,2})/);
+        if (result) {
+            const [ numbOne, numbTwo, numbThree, numbFour, numbFive ] = result
+            e.target.value = `+(${numbTwo}) ${numbThree}-${numbFour}-${numbFive}`;
         }
         setPhone(e.target.value);
     } 
@@ -41,11 +43,11 @@ export const FooterContainer = () =>{
                 <Box borderRight={`.5px solid ${COLOR.silverGray}`} padding="10px 133px 84px 0">
                     <Navigation display="inline-block">
                         <UnorderedList>
-                            {FOOTER_NAVIGATION.map(({ path, name, id}) => {
+                            {FOOTER_NAVIGATION.map(({ path, children, id}) => {
                                 return (
                                     <ListItem id={id} margin="0 0 20px 0" key={id}>
                                         <CustomNavLink  to={'/'}>
-                                            <Paragraph hover>{name}</Paragraph>
+                                            <Paragraph hover>{children}</Paragraph>
                                         </CustomNavLink>
                                     </ListItem>
                                 )
@@ -56,15 +58,16 @@ export const FooterContainer = () =>{
                 <Box borderRight={`.5px solid ${COLOR.silverGray}`} padding="10px 77px 73px 40px">
                     <FlexBox flexDirection="column" maxWidth="233" alignItems="start">
                         <Label margin="0 0 10px 0" htmlFor="phone">Введите номер</Label>
-                        <Input value={phone}
-                               onChange={handleInputPhoneChange}
-                               type="tel"
-                               id="phone"
-                               margin="0 0 20px 0"
-                               bgColor={COLOR.gray95}
-                               color={COLOR.silverGray}
-                               border="none" outline="none"
-                               placeholder={FOOTER_PHONE_MASK}
+                        <Input 
+                            value={phone}
+                            onChange={handleInputPhoneChange}
+                            type="tel"
+                            id="phone"
+                            margin="0 0 20px 0"
+                            bgColor={COLOR.gray95}
+                            color={COLOR.silverGray}
+                            border="none" outline="none"
+                            placeholder={FOOTER_PHONE_MASK}
                         />
                         <Paragraph margin="0 0 10px 0" color={COLOR.silverGray}>Выберите удобный мессенджер для общения</Paragraph>
                         <FlexBox columnGap="30">
@@ -115,7 +118,7 @@ export const FooterContainer = () =>{
                         lineHeight="18"
                         fontWeight="400"
                         color={COLOR.silverGray}
-                        href="tel:+996 705 188 955"
+                        href={`tel:${ONE_PHONE}`}
                     >
                         Тел:
                         <Span
@@ -124,7 +127,7 @@ export const FooterContainer = () =>{
                             fontWeight="400"
                             color={COLOR.silverGray}
                         >
-                            +996 705 188 955
+                            {ONE_PHONE}
                         </Span> 
                     </CustomLink>
                     <CustomLink
@@ -132,7 +135,7 @@ export const FooterContainer = () =>{
                         lineHeight="18"
                         fontWeight="400"
                         color={COLOR.silverGray}
-                        href="tel:+996 555 188 955"
+                        href={`tel:${TWO_PHONE}`}
                     >
                         Тел:
                         <Span
@@ -142,7 +145,7 @@ export const FooterContainer = () =>{
                             fontWeight="400"
                             color={COLOR.silverGray}
                         >
-                            +996 555 188 955
+                            {TWO_PHONE}
                         </Span>
                     </CustomLink>
                     <CustomLink
@@ -151,7 +154,8 @@ export const FooterContainer = () =>{
                         color={COLOR.silverGray}
                         margin="0 0 5px 0"
                         href=""
-                    >Адрес:Бакаева 126
+                    >
+                        Адрес:Бакаева 126
                     </CustomLink>
                 </FlexBox>
             </FlexBox>

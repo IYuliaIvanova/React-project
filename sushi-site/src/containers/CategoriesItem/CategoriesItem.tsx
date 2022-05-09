@@ -1,5 +1,5 @@
 import React from "react";
-import { useMediaQuery } from "../../api/hooks/useMediaQuery";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { CustomNavLink } from "../../components/common-components/CustomNavLink/CustomNavLink";
 import { Image } from "../../components/common-components/Image/Image";
 import { Paragraph } from "../../components/common-components/Paragraph/Paragraph";
@@ -9,10 +9,10 @@ import { themes } from "../../constants/themes";
 interface ICategoriesItemProp {
     id: string;
     img: string;
-    p: string
+    children: React.ReactNode;
 }
 
-export const CategoriesItem = ({ id, img, p }: ICategoriesItemProp) => {
+export const CategoriesItem = ({ id, img, children }: ICategoriesItemProp) => {
     const isMobile = useMediaQuery(themes.media.phone);
     
     return (
@@ -30,7 +30,9 @@ export const CategoriesItem = ({ id, img, p }: ICategoriesItemProp) => {
                 fontSize="24"
                 lineHeight="30"
                 color={COLOR.white}
-            >{p}</Paragraph>
+            >
+                {children}
+            </Paragraph>
         </CustomNavLink>
     )
 }

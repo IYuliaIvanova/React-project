@@ -16,7 +16,7 @@ export const MainSlider = ({ windowWidth, amountOfCards, children }: ICarouselPr
 
 
     const handleDotClick = (slidIndex: number) => {
-        setOffsetMainSlider(-slidIndex * +windowWidth)
+        setOffsetMainSlider(-slidIndex * Number(windowWidth))
     }
 
     return (

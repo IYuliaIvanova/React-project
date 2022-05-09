@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import { themes } from "../../../constants/themes";
+import styled from "styled-components";
 
 interface INavigationProps {
   display?: string;
@@ -13,7 +12,7 @@ interface INavigationProps {
 
 export const Navigation = styled.nav<INavigationProps>`
   display: ${p => p.display};
-  width: ${p => typeof p.width === "number" ? p.width+"%" : p.width+"px"};
+  width: ${p => typeof p.width === "number" ? `${p.width}%` : `${p.width}px`};
   padding: ${p => p.padding};
   border-top: ${p => p.borderTop};
   border-left: ${p => p.borderLeft};

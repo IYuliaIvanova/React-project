@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import { themes } from "../../../constants/themes";
+import styled from "styled-components";
 
 interface IListItemProps {
   margin?: string;
@@ -11,5 +10,5 @@ interface IListItemProps {
 export const ListItem = styled.li<IListItemProps>`
   margin: ${p => p.margin};
   padding: ${p => p.padding || "0"}px;
-  background-color: ${p => p.bgColor || themes.colors.white};
+  background-color: ${p => p.bgColor};
 `

@@ -36,7 +36,7 @@ export const MainNavigation = () => {
                         return (
                             <ListItem id={id} margin="0 0 30px 0" key={id}>
                                 <CustomNavLink justifyContent="start" display="flex" to={'/'}>
-                                    <Image margin="0 20px 0 0" src={require(`../../assets/img/mainNavigationIcons/${path}.svg`)}></Image>
+                                    <Image margin="0 20px 0 0" src={require(`../../assets/img/mainNavigationIcons/${path}.svg`)}/>
                                     <Paragraph hover>{name}</Paragraph>
                                 </CustomNavLink>
                             </ListItem>

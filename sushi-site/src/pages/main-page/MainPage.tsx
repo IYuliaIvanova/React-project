@@ -6,13 +6,13 @@ import { Carousel } from "../../containers/Carousel/Carousel";
 import { NEW_SUSHI_SETS } from "../../constants/new-sushi-sets";
 import { POPULAR_SUSHI_SETS } from "../../constants/popular-sushi-sets";
 import { ProductCard } from "../../containers/ProductCard/ProductCard";
-import { NOVELTIES, POPULAR } from "../../constants/data-type-constants";
+import { NOVELTIES, POPULAR } from "../../constants/tabs-constants";
 import { HiddenText } from "../../containers/HiddenText/HiddenText";
 import { Categories } from "../../containers/Сategories/Catigories";
-import { useMediaQuery } from "../../api/hooks/useMediaQuery";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { themes } from "../../constants/themes";
 import { MainSlider } from "../../containers/MainSlider/MainSlider";
-import {Image} from "../../components/common-components/Image/Image";
+import { Image } from "../../components/common-components/Image/Image";
 import { mainSliderConstants } from "../../constants/main-slider-constants"
 
 export const MainPage = () => {
@@ -32,7 +32,7 @@ export const MainPage = () => {
         }
     }
 
-    return(
+    return (
         <FlexBox
             justifyContent="flex-start"
             flexDirection="column"
@@ -40,8 +40,8 @@ export const MainPage = () => {
             backColor={COLOR.gray95}
             width={100}
         >
-            <MainSlider windowWidth="950" amountOfCards={mainSliderConstants} >
-                {mainSliderConstants.map(({id, path}) => {
+            <MainSlider windowWidth="950" amountOfCards={mainSliderConstants}>
+                {mainSliderConstants.map(({ id, path }) => {
                     return (
                         <Image src={require(`../../assets/img/mainSliderImg/${path}.png`)}></Image>
                     )
@@ -81,7 +81,7 @@ export const MainPage = () => {
                                 p={p}
                                 key={id}
                                 src={img}
-                            ></ProductCard>
+                            />
                         )
                     } else if (index === 0) {
                         return (
@@ -92,7 +92,7 @@ export const MainPage = () => {
                                 key={id}
                                 src={img}
                                 margin="0 41px 0 0"
-                            ></ProductCard>
+                            />
                         )
                     } else {
                         return (
@@ -103,7 +103,7 @@ export const MainPage = () => {
                                 key={id}
                                 src={img}
                                 margin="0 41px 0 0"
-                            ></ProductCard>
+                            />
                         )
                     }
                 })}

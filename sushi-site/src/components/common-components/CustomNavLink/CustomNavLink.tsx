@@ -1,6 +1,6 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import { NavLink, Link } from "react-router-dom";
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 interface ICustomNavLinkProps {
     display?: string;
@@ -35,11 +35,10 @@ export const CustomNavLink = styled(NavLink)<ICustomNavLinkProps>`
   column-gap: ${p => p.columnGap}px;
   margin: ${p => p.margin};
 
-  position: ${(p) => (p.position !== 'relative' ? `
-  ${p.position};
-  top: ${p.top}px;
-  bottom: ${p.bottom}px;
-  left: ${p.left}px;
-  right: ${p.right}px;` : 'relative')
-};
+  position: ${(p) => ((p.position !== 'relative') && (p.position !== 'static') ? `${p.position};
+    top: ${p.top}px;
+    bottom: ${p.bottom}px;
+    left: ${p.left}px;
+    right: ${p.right}px;` : 'relative'
+  )};
 `

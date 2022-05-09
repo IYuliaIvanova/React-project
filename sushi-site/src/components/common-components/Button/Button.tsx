@@ -1,6 +1,5 @@
 import React from "react"
-import styled, { css } from "styled-components";
-import { COLOR } from "../../../constants/color-constants"
+import styled from "styled-components";
 import { themes } from "../../../constants/themes";
 
 interface IButtonProps {
@@ -11,7 +10,6 @@ interface IButtonProps {
     borderRadius?: number;
     fontSize?: string;
     lineHeight?: string;
-
 }
 
 export const Button = styled.button<IButtonProps>`

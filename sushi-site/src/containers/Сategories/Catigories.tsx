@@ -1,5 +1,5 @@
 import React from "react";
-import { useMediaQuery } from "../../api/hooks/useMediaQuery";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { CATEGORIES_DATA_DESKTOP, CATEGORIES_DATA_MOBILE } from "../../constants/categories-constants";
 import { themes } from "../../constants/themes";
@@ -20,11 +20,11 @@ export const Categories = () => {
         >
             {isMobile ? CATEGORIES_DATA_MOBILE.map(({ id, img, p }) => {
                 return (
-                        <CategoriesItem key={id} id={id} img={img} p={p} />
+                        <CategoriesItem key={id} id={id} img={img} children={p}/>
                 )
             }) : CATEGORIES_DATA_DESKTOP.map(({ id, img, p }) => {
                 return (
-                        <CategoriesItem key={id} id={id} img={img} p={p} />
+                        <CategoriesItem key={id} id={id} img={img} children={p}/>
                 )
             })}
         </FlexBox>

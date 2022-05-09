@@ -18,8 +18,8 @@ interface ICommentCardProps {
   text: string;
 };
 
-export const ReviewsPage: React.FC<ICommentCardProps> = ({name, text}) =>{
-  return(
+export const ReviewsPage: React.FC<ICommentCardProps> = ({ name, text }) =>{
+  return (
     <Box
       maxWidth="1169"
       width={100}
@@ -57,8 +57,8 @@ export const ReviewsPage: React.FC<ICommentCardProps> = ({name, text}) =>{
               {text}
             </Paragraph>
           </ListItem>
-          ))}
-        </UnorderedList>
+        ))}
+      </UnorderedList>
     </Box>
   );
 };

@@ -37,11 +37,10 @@ export const Paragraph = styled.p<IParagraphProps>`
     }
   `}
 
-  position: ${(p) => (p.position !== 'relative' ? `
-    ${p.position};
+  position: ${(p) => ((p.position !== 'relative') && (p.position !== 'static') ? `${p.position};
     top: ${p.top}px;
     bottom: ${p.bottom}px;
     left: ${p.left}px;
-    right: ${p.right}px;` : 'relative')
-  };
+    right: ${p.right}px;` : 'relative'
+  )};
 `

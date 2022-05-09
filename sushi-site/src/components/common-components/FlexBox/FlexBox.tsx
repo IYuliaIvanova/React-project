@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 interface IFlexBoxProps {
   width?: string | number;
@@ -31,7 +31,7 @@ interface IFlexBoxProps {
 }
 
  export const FlexBox = styled.div<IFlexBoxProps>`
-    width: ${p => typeof p.width === "number" ? p.width+"%" : p.width+"px"};
+    width: ${p => typeof p.width === "number" ? `${p.width}%` : `${p.width}px`};
     max-width: ${p => p.maxWidth}px;
     min-width: ${p => p.minWidth}px;
     height: ${p => p.height}px;
@@ -51,13 +51,12 @@ interface IFlexBoxProps {
     border-left: ${p => p.borderLeft};
     border-right: ${p => p.borderRight};
 
-    position: ${(p) => (p.position !== 'relative' ? `
-      ${p.position};
+    position: ${(p) => ((p.position !== 'relative') && (p.position !== 'static') ? `${p.position};
       top: ${p.top}px;
       bottom: ${p.bottom}px;
       left: ${p.left}px;
-      right: ${p.right}px;` : 'relative')
-    };
+      right: ${p.right}px;` : 'relative'
+    )};
 
     overflow: ${p => p.overflow};
     transition: all 0.5s linear;

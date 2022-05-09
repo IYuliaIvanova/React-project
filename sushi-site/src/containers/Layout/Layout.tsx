@@ -5,7 +5,7 @@ import { MainNavigation } from "../MainNavigation/MainNavigation";
 import { FooterContainer } from "../FooterContainer/FooterContainer";
 import { RightSidebar } from "../RightSidebar/RightSidebar";
 import { Outlet } from "react-router-dom";
-import { useMediaQuery } from "../../api/hooks/useMediaQuery";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { themes } from "../../constants/themes";
 
 export const Layout = () => {

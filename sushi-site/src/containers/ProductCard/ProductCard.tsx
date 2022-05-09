@@ -16,7 +16,7 @@ interface IProductCard {
     height: string;
 }
 
-export const ProductCard = ({ margin, src, h3, p, height }: IProductCard) => {
+export const ProductCard = ({ margin, src, h3: title, p: text, height }: IProductCard) => {
     return (
         <Box
             margin={margin}
@@ -29,14 +29,14 @@ export const ProductCard = ({ margin, src, h3, p, height }: IProductCard) => {
                 fontSize="24"
                 lineHeight="30"
             >
-                {h3}
+                {title}
             </ThirdLevelHeading>
             <Paragraph
                 fontWeight="400"
                 color={COLOR.silverGray}
                 margin="0 0 20px"
             >
-                {p}
+                {text}
             </Paragraph>
             <FlexBox
                 padding="11px 0 10px 0"

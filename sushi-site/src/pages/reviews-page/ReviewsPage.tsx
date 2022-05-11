@@ -1,6 +1,7 @@
 import React from "react";
 import { Box } from "..//../components/common-components/Box/Box";
 import { FlexBox } from "..//../components/common-components/FlexBox/FlexBox";
+import { ThirdLevelHeading } from "..//reviews-page/ReviewsPage"; 
 import { Span } from "..//../components/common-components/Span/Span";
 import { Button } from "../../components/common-components/Button/Button";
 import { UnorderedList } from "../../components/common-components/UnorderedList/UnorderedList";
@@ -33,9 +34,9 @@ export const ReviewsPage: React.FC<ICommentCardProps> = ({ name, text }) =>{
         width={100}
         bgColor={COLOR.silverGray}
       >
-        <Span fontSize="24" lineHeight="30px">
+        <ThirdLevelHeading fontSize="24" lineHeight="30px">
           Отзывы
-        </Span>
+        </ThirdLevelHeading>
         <Button
           width="180"
           height="36"

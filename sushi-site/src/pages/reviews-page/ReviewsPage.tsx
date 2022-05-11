@@ -20,7 +20,7 @@ interface ICommentCardProps {
   text: string;
 };
 
-export const ReviewsPage: React.FC<ICommentCardProps> = () => {
+export const ReviewsPage: React.FC = () => {
   return (
     <Box
       maxWidth="1169"
@@ -55,7 +55,7 @@ export const ReviewsPage: React.FC<ICommentCardProps> = () => {
             <Span margin="0 0 20px 0" fontSize="24" lineHeight="30">
               {name} // переменная name придет из https://jsonplaceholder.typicode.com/comments
             </Span>
-            <Paragraph fontWeight="400">  style
+            <Paragraph fontWeight="400">
               {text} // вместо переменной text будем использовать переменную body из из https://jsonplaceholder.typicode.com/comments
             </Paragraph>
           </ListItem>

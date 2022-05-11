@@ -62,7 +62,7 @@ export const HeaderContainer = () =>{
             </FlexBox>
             <FlexBox justifyContent="space-between">
                 <FlexBox columnGap="10">
-                    <CustomNavLink to={"/"}>
+                    <CustomNavLink to={"/reviews"}>
                         <Paragraph
                             margin="0 10px 0 0"
                             hover

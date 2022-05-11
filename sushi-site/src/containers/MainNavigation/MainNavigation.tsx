@@ -21,7 +21,7 @@ export const MainNavigation = () => {
                 display="inline-block"
                 maxWidth="137"
                 margin="0 0 30px"
-                to={'/'}
+                to={'/main'}
             >
                 <Image src={require("../../assets/icons/DeskTopLogo.svg").default}></Image>
             </CustomNavLink>

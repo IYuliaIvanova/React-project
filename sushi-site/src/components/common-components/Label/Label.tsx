@@ -37,6 +37,7 @@ export const Label = styled.label<ILabelProps>`
 
     ${p => p.hiddenTxt && css`
         position: relative;
+        align-self: center;
 
         &::before {
             content: "";

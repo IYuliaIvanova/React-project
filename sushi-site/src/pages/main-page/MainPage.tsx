@@ -8,7 +8,7 @@ import { POPULAR_SUSHI_SETS } from "../../constants/popular-sushi-sets";
 import { ProductCard } from "../../containers/ProductCard/ProductCard";
 import { NOVELTIES, POPULAR } from "../../constants/tabs-constants";
 import { HiddenText } from "../../containers/HiddenText/HiddenText";
-import { Categories } from "../../containers/Сategories/Catigories";
+import { Categories } from "../../containers/Categories/Categories";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { themes } from "../../constants/themes";
 import { MainSlider } from "../../containers/MainSlider/MainSlider";
@@ -37,7 +37,7 @@ export const MainPage = () => {
             justifyContent="flex-start"
             flexDirection="column"
             padding={isMobile ? "20px 15px" : "30px 110px 60px 110px"}
-            backColor={COLOR.gray95}
+            bgColor={COLOR.gray95}
             width={100}
         >
             <MainSlider windowWidth="950" amountOfCards={mainSliderConstants}>

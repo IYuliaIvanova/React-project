@@ -19,6 +19,7 @@ interface IParagraphProps {
 }
 
 export const Paragraph = styled.p<IParagraphProps>`
+  display: inline-block;
   font-style: ${p => p.fontStyle || "normal"};
   font-weight: ${p => p.fontWeight || "500"};
   font-size: ${p => p.fontSize || "18"}px;

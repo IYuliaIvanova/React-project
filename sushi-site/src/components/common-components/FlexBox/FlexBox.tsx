@@ -12,7 +12,6 @@ interface IFlexBoxProps {
   justifyContent?: string;
   flexDirection?: string;
   flexWrap?: string;
-  backColor?: string;
   margin?: string;
   padding?: string;
   columnGap?: string;
@@ -34,7 +33,7 @@ interface IFlexBoxProps {
     width: ${p => typeof p.width === "number" ? `${p.width}%` : `${p.width}px`};
     max-width: ${p => p.maxWidth}px;
     min-width: ${p => p.minWidth}px;
-    height: ${p => p.height}px;
+    height: ${p => p.height};
     max-height: ${p => p.maxHeight}px;
     display: flex;
     align-items: ${p => p.alignItems || 'center'};
@@ -60,6 +59,5 @@ interface IFlexBoxProps {
 
     overflow: ${p => p.overflow};
     transition: all 0.5s linear;
-    background-color: ${p => p.backColor};
     row-gap: ${p => p.rowGap}px;
  `

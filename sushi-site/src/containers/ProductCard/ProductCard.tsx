@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "../../components/common-components/Box/Box";
 import { Image } from "../../components/common-components/Image/Image";
-import { ThirdLevelHeading } from "../../components/common-components/TirdLevelHeading/ThirdLevelHeading";
+import { ThirdLevelHeading } from "../../components/common-components/ThirdLevelHeading/ThirdLevelHeading";
 import { Paragraph } from "../../components/common-components/Paragraph/Paragraph";
 import { COLOR } from "../../constants/color-constants"
 import {FlexBox} from "../../components/common-components/FlexBox/FlexBox";

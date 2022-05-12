@@ -46,7 +46,7 @@ export const FooterContainer = () =>{
                             {FOOTER_NAVIGATION.map(({ path, children, id}) => {
                                 return (
                                     <ListItem id={id} margin="0 0 20px 0" key={id}>
-                                        <CustomNavLink  to={'/'}>
+                                        <CustomNavLink  to={`/${path}`}>
                                             <Paragraph hover>{children}</Paragraph>
                                         </CustomNavLink>
                                     </ListItem>
@@ -66,7 +66,6 @@ export const FooterContainer = () =>{
                             margin="0 0 20px 0"
                             bgColor={COLOR.gray95}
                             color={COLOR.silverGray}
-                            border="none" outline="none"
                             placeholder={FOOTER_PHONE_MASK}
                         />
                         <Paragraph margin="0 0 10px 0" color={COLOR.silverGray}>Выберите удобный мессенджер для общения</Paragraph>

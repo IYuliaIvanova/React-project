@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "..//../components/common-components/Box/Box";
 import { FlexBox } from "..//../components/common-components/FlexBox/FlexBox";
-import { ThirdLevelHeading } from "..//../components/common-components/TirdLevelHeading/ThirdLevelHeading"; 
+import { ThirdLevelHeading } from "../../components/common-components/ThirdLevelHeading/ThirdLevelHeading"; 
 import { Span } from "..//../components/common-components/Span/Span";
 import { Button } from "../../components/common-components/Button/Button";
 import { UnorderedList } from "../../components/common-components/UnorderedList/UnorderedList";
@@ -50,7 +50,7 @@ export const ReviewsPage: React.FC = () => {
         </Button>
       </FlexBox>
       <UnorderedList>
-        {comments.map((comment) => (
+        {/* {comments.map((comment) => (
           <ListItem margin="0 0 20px 0" key={comment.id}> // поле id мы вытащим из объекта, обратившись к массиву в https://jsonplaceholder.typicode.com/comments
             <Span margin="0 0 20px 0" fontSize="24" lineHeight="30">
               {name} // переменная name придет из https://jsonplaceholder.typicode.com/comments
@@ -59,7 +59,7 @@ export const ReviewsPage: React.FC = () => {
               {text} // вместо переменной text будем использовать переменную body из из https://jsonplaceholder.typicode.com/comments
             </Paragraph>
           </ListItem>
-        ))}
+        ))} */}
       </UnorderedList>
     </Box>
   );

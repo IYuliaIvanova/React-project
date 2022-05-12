@@ -45,6 +45,7 @@ export const Carousel = ({ children, amountOfCardsOnWindow, windowWidth, amountO
                     width={100}
                     style={{transform: `translateX(${offset}px)`}}
                     justifyContent="flex-start"
+                    alignItems="normal"
                 >
                     {children}
                 </FlexBox>

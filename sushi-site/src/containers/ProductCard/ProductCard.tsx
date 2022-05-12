@@ -4,30 +4,37 @@ import { Image } from "../../components/common-components/Image/Image";
 import { ThirdLevelHeading } from "../../components/common-components/ThirdLevelHeading/ThirdLevelHeading";
 import { Paragraph } from "../../components/common-components/Paragraph/Paragraph";
 import { COLOR } from "../../constants/color-constants"
-import {FlexBox} from "../../components/common-components/FlexBox/FlexBox";
+import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Button } from "../../components/common-components/Button/Button";
 import { Span } from "../../components/common-components/Span/Span";
 
 interface IProductCard {
     margin?: string;
     src?: string;
-    h3: string;
-    p: string;
-    height: string;
+    title: string;
+    height?: string;
+    pieces: string;
+    price: string;
+    weight: string;
 }
 
-export const ProductCard = ({ margin, src, h3: title, p: text, height }: IProductCard) => {
+export const ProductCard = ({ margin, src, title, pieces, price, weight , height }: IProductCard) => {
     return (
         <Box
+            maxWidth="289"
             margin={margin}
             padding="0 18px"
             width={100}
+            backColor={COLOR.white}
         >
-            <Image  margin="0 0 30px" src={require(`../../assets/img/sushiSetsImg/${src}.png`)}></Image>
+            <Box>
+            <Image height="210" margin="0 0 30px" src={require(`../../assets/img/sushiSetsImg/${src}.png`)}></Image>
+            </Box>
             <ThirdLevelHeading
-                margin="0 0 30px"
+                margin="0 0 16.6px"
                 fontSize="24"
                 lineHeight="30"
+                height="60"
             >
                 {title}
             </ThirdLevelHeading>
@@ -36,7 +43,7 @@ export const ProductCard = ({ margin, src, h3: title, p: text, height }: IProduc
                 color={COLOR.silverGray}
                 margin="0 0 20px"
             >
-                {text}
+                {`${weight} ${pieces}`}
             </Paragraph>
             <FlexBox
                 padding="11px 0 10px 0"
@@ -49,7 +56,7 @@ export const ProductCard = ({ margin, src, h3: title, p: text, height }: IProduc
                     lineHeight="30"
                     fontWeight="700"
                 >
-                    1500 COM
+                    {price}
                 </Span>
                 <Button>Хочу!</Button>
             </FlexBox>

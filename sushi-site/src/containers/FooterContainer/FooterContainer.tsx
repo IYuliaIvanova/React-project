@@ -121,7 +121,8 @@ export const FooterContainer = () =>{
                     >
                         Тел:
                         <Span
-                            link txtDecoration="underline"
+                            link
+                            txtDecoration="underline"
                             lineHeight="18"
                             fontWeight="400"
                             color={COLOR.silverGray}

@@ -27,6 +27,8 @@ interface IFlexBoxProps {
   right?: string;
   overflow?: string;
   rowGap?: string;
+  borderRadius?: string;
+  boxShadow?: string;
 }
 
  export const FlexBox = styled.div<IFlexBoxProps>`
@@ -49,6 +51,8 @@ interface IFlexBoxProps {
     border-bottom: ${p => p.borderBottom};
     border-left: ${p => p.borderLeft};
     border-right: ${p => p.borderRight};
+    border-radius: ${p => p.borderRadius};
+    box-shadow: ${p => p.boxShadow};
 
     position: ${(p) => ((p.position !== 'relative') && (p.position !== 'static') ? `${p.position};
       top: ${p.top}px;

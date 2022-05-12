@@ -72,13 +72,15 @@ export const MainPage = () => {
                 amountOfCardsOnWindow={3}
                 amountOfCards={typeOfData.length}
             >
-                {typeOfData.map(({ id, img, h3, p }, index) => {
+                {typeOfData.map(({ id, img, title, pieces, price, weight }, index) => {
                     if ((index+1) % 3 === 0) {
                         return (
                             <ProductCard
                                 height="253"
-                                h3={h3}
-                                p={p}
+                                title={title}
+                                pieces={pieces}
+                                price={price}
+                                weight={weight}
                                 key={id}
                                 src={img}
                             />
@@ -87,8 +89,10 @@ export const MainPage = () => {
                         return (
                             <ProductCard
                                 height="253"
-                                h3={h3}
-                                p={p}
+                                title={title}
+                                pieces={pieces}
+                                price={price}
+                                weight={weight}
                                 key={id}
                                 src={img}
                                 margin="0 41px 0 0"
@@ -98,8 +102,10 @@ export const MainPage = () => {
                         return (
                             <ProductCard
                                 height="253"
-                                h3={h3}
-                                p={p}
+                                title={title}
+                                pieces={pieces}
+                                price={price}
+                                weight={weight}
                                 key={id}
                                 src={img}
                                 margin="0 41px 0 0"

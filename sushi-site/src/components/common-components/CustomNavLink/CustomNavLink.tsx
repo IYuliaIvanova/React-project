@@ -35,7 +35,7 @@ export const CustomNavLink = styled(NavLink)<ICustomNavLinkProps>`
   column-gap: ${p => p.columnGap}px;
   margin: ${p => p.margin};
 
-  position: ${(p) => ((p.position !== 'relative') && (p.position !== 'static') ? `${p.position};
+  position: ${(p) => ((p.position !== 'relative' || 'static') ? `${p.position};
     top: ${p.top}px;
     bottom: ${p.bottom}px;
     left: ${p.left}px;

@@ -6,7 +6,7 @@ import { COLOR } from "../../constants/color-constants";
 export const RightSidebar = () => {
     return (
         <Box textAlign="center" maxWidth="420" padding="55px 100px 5px 40px">
-            <Box borderRadius="5" maxWidth="290" backColor={COLOR.gray95}>
+            <Box borderRadius="5px" maxWidth="290" backColor={COLOR.gray95}>
                 <Box padding="12px 13px 0 12px" margin="0 0 26px 0">
                     <Paragraph
                         fontSize="24"

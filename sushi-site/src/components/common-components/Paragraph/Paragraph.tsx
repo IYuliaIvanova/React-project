@@ -16,6 +16,8 @@ interface IParagraphProps {
     bottom?: string;
     left?: string;
     right?: string;
+    cursor?: string;
+    $activeColor?: string;
 }
 
 export const Paragraph = styled.p<IParagraphProps>`
@@ -27,6 +29,7 @@ export const Paragraph = styled.p<IParagraphProps>`
   background-color: ${p => p.bgColor};
   margin: ${p => p.margin};
   padding: ${p => p.padding};
+  cursor: ${p => p.cursor};
   
   ${p => p.hover && css`
     cursor: pointer;
@@ -44,3 +47,5 @@ export const Paragraph = styled.p<IParagraphProps>`
     right: ${p.right}px;` : 'relative'
   )};
 `
+
+// color: ${p => p.$activeColor ? p.$activeColor : p.theme.colors.smokyBlack || p.color}; знаю что нельзя оставлять но нужнооо)))

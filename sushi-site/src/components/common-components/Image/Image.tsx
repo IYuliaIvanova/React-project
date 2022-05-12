@@ -18,18 +18,16 @@ interface IImageProps {
 export const Image = styled.img<IImageProps>`
     width: ${p => typeof p.width === "number" ? `${p.width}%` : `${p.width}px`};
     max-width: ${p => p.maxWidth}px;
-    height: ${p => typeof p.height === "number" ? `${p.width}%` : `${p.width}px`};
+    height: ${p => typeof p.height === "number" ? `${p.height}%` : `${p.height}px`};
     max-height: ${p => p.maxHeight}px;
     margin: ${p => p.margin};
+    cursor: ${p => p.cursor};
     
-    position: ${(p) => ((p.position !== 'relative') && (p.position !== 'static') ? `${p.position};
+    position: ${p => ((p.position !== 'relative') && (p.position !== 'static') ? `${p.position};
       top: ${p.top}px;
       bottom: ${p.bottom}px;
       left: ${p.left}px;
       right: ${p.right}px;` : 'relative'
     )};
     
-    ${p => p.cursor && css`
-      cursor: pointer;
-    `}
 `

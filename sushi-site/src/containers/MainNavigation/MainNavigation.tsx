@@ -21,7 +21,7 @@ export const MainNavigation = () => {
                 display="inline-block"
                 maxWidth="137"
                 margin="0 0 30px"
-                to={'/'}
+                to={'/MainPage'}
             >
                 <Image src={require("../../assets/icons/DeskTopLogo.svg").default}></Image>
             </CustomNavLink>
@@ -32,10 +32,10 @@ export const MainNavigation = () => {
                 borderTop={`.5px solid ${COLOR.silverGray}`}
             >
                 <UnorderedList>
-                    {MAIN_NAVIGATION.map(({ path, name, id }) => {
+                    {MAIN_NAVIGATION.map(({ path, name, id, navigateTo }) => {
                         return (
                             <ListItem id={id} margin="0 0 30px 0" key={id}>
-                                <CustomNavLink justifyContent="start" display="flex" to={'/'}>
+                                <CustomNavLink justifyContent="start" display="flex" to={`/${navigateTo}`}>
                                     <Image margin="0 20px 0 0" src={require(`../../assets/img/mainNavigationIcons/${path}.svg`)}/>
                                     <Paragraph hover>{name}</Paragraph>
                                 </CustomNavLink>

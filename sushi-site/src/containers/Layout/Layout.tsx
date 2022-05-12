@@ -14,7 +14,7 @@ export const Layout = () => {
     return (
         <FlexBox alignItems="start">
             <MainNavigation/>
-            <FlexBox width={isMobile ? "365" : "1170"} flexDirection="column" alignItems="">
+            <FlexBox alignSelf="auto" width={isMobile ? "365" : "1170"} flexDirection="column">
                 <HeaderContainer/>
                 <Outlet/>
                 <FooterContainer/>

@@ -22,8 +22,11 @@ interface IBoxProps {
     right?: string;
     overflow?: string;
     opacity?: string;
+    boxShadow?: string;
     borderRadius?: string;
     background?: string;
+    cursor?: string;
+    backgroundImage?: string;
 }
 
 export const Box = styled.div<IBoxProps>`
@@ -39,6 +42,7 @@ export const Box = styled.div<IBoxProps>`
   max-height: ${p => p.maxHeight}px;
   min-height: ${p => p.minHeight}px;
   background-color: ${p => p.backColor};
+  background-image: url(${props => props.backgroundImage});
   text-align: ${p => p.textAlign};
   margin: ${p => p.margin};
   padding: ${p => p.padding};
@@ -48,6 +52,15 @@ export const Box = styled.div<IBoxProps>`
   border-right: ${p => p.borderRight};
   overflow: ${p => p.overflow};
   opacity: ${p => p.opacity};
-  border-radius: ${p => p.borderRadius}px;
+  box-shadow: ${p => p.boxShadow};
+  border-radius: ${p => p.borderRadius};
   background: ${p => p.background};
+  cursor: ${p => p.cursor};
+
+  position: ${(p) => ((p.position !== 'relative' || 'static') ? `${p.position};
+    top: ${p.top}px;
+    bottom: ${p.bottom}px;
+    left: ${p.left}px;
+    right: ${p.right}px;` : 'relative'
+  )};
 `

@@ -11,6 +11,7 @@ interface IThirdLevelHeadingProps {
     color?: string;
     margin?: string;
     bgColor?: string;
+    height?: string;
 }
 
 export const ThirdLevelHeading = styled.h3<IThirdLevelHeadingProps>`
@@ -22,4 +23,5 @@ export const ThirdLevelHeading = styled.h3<IThirdLevelHeadingProps>`
   background-color: ${p => p.bgColor};
   margin: ${p => p.margin};
   padding: ${p => p.padding};
+  height: ${p => p.height}px;
 `

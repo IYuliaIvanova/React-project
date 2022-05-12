@@ -36,7 +36,7 @@ export const Input = styled.input<IInputProps>`
             opacity: 0;
         }
 
-        &:checked ~ .read-more-Btn:before {
+        &:checked ~ .read-more-btn:before {
             transform: rotate(-130deg);
         }
     `}

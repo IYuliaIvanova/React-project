@@ -10,7 +10,7 @@ function App() {
     <Routes>
         <Route element={<Layout/>}>
             <Route path='/' element={<Navigate replace to="/MainPage" />} />
-            <Route path='/MainPage/*' element={<ProductDescription/>}/>
+            <Route path='/MainPage/*' element={<MainPage/>}/>
             <Route path='/sushiSets' element={<SushiSetsPage/>}/>
         </Route>
     </Routes>

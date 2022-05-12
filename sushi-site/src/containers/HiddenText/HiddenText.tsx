@@ -1,5 +1,6 @@
 import React from "react";
 import { Box } from "../../components/common-components/Box/Box";
+import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Input } from "../../components/common-components/Input/Input";
 import { Label } from "../../components/common-components/Label/Label";
 import { ListItem } from "../../components/common-components/ListItem/ListItem";
@@ -10,7 +11,12 @@ import { COLOR } from "../../constants/color-constants";
 export const HiddenText = () => {
     return (
         <Box backColor={COLOR.gray95} width={100} padding="60px 16px">
-            <Box margin="0 auto" maxWidth="950">
+            <FlexBox 
+                margin="0 auto" 
+                maxWidth="950"
+                flexDirection="column"
+                alignItems="start"
+            >
                 <Paragraph 
                     color={COLOR.silverGray}
                     fontWeight='700'
@@ -42,9 +48,6 @@ export const HiddenText = () => {
                         <ListItem color={COLOR.silverGray}>Пикантные с копченым лососем, угрем.</ListItem>
                     </UnorderedList>
                     <Paragraph margin="0 0 10px 0" color={COLOR.silverGray}>В меню также представлены гунканы: с начинкой из красной икры и тобико, а также феликсы, где японский майонез сочетается с рыбой, морепродуктами, угрем. Любители острых блюд могут купить суши с соусом спайси. Популярные начинки — копченая курица, снежный краб, креветки, гребешки, тунец, лосось и окунь.</Paragraph>
-                    <Paragraph color={COLOR.silverGray}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, harum corporis soluta reprehenderit beatae culpa sapiente dicta. Nisi delectus repellat tenetur nam sunt! Iure saepe molestias nesciunt inventore soluta in quaerat quasi placeat temporibus cum distinctio facilis, fuga ut repudiandae?
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet iusto consequuntur itaque ipsam ullam, ratione autem mollitia numquam dolorum ipsum saepe placeat excepturi ipsa aliquam corporis at aut, quidem rem. Doloremque magnam iste distinctio excepturi nulla, animi dolor doloribus tempore? Quas, laborum molestias. Iure magni quam id quibusdam iste unde voluptatem consequuntur voluptates assumenda maxime neque ratione, consectetur fugit reprehenderit eius inventore nobis esse. Voluptatem ut in quo odio tenetur consequuntur veniam earum culpa ad? Corporis, alias delectus porro atque molestiae necessitatibus adipisci dicta dolor. Nulla, accusamus? Velit ut error, modi non vitae culpa cumque laborum voluptas doloremque fuga dicta.
-                    </Paragraph>
                     <Box 
                         className="bottom"
                         width={100}    
@@ -55,18 +58,16 @@ export const HiddenText = () => {
                         opacity="1"
                     ></Box>
                 </Box>
-                <Box textAlign="center">
-                    <Label 
-                        hiddenTxt 
-                        htmlFor="readMoreChecker" 
-                        className="read-more-Btn" 
-                        fontSize="24" 
-                        color={COLOR.pinkishOrange}
-                    >
-                        Подробнее
-                    </Label>
-                </Box>
-            </Box>
+                <Label 
+                    hiddenTxt 
+                    htmlFor="readMoreChecker" 
+                    className="read-more-btn" 
+                    fontSize="24" 
+                    color={COLOR.pinkishOrange}
+                >
+                    Подробнее
+                </Label>
+            </FlexBox>
         </Box>
     )
 }

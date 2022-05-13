@@ -18,6 +18,7 @@ interface IParagraphProps {
     right?: string;
     cursor?: string;
     $activeColor?: string;
+    textAlign?: string;
 }
 
 export const Paragraph = styled.p<IParagraphProps>`
@@ -31,6 +32,7 @@ export const Paragraph = styled.p<IParagraphProps>`
   margin: ${p => p.margin};
   padding: ${p => p.padding};
   cursor: ${p => p.cursor};
+  text-align: ${p => p.textAlign};
   
   ${p => p.hover && css`
     cursor: pointer;

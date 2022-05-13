@@ -7,6 +7,7 @@ export const themes = {
         pastelOrange: '#FF9846',
         pinkishOrange: '#F46D40',
         white: '#FFFFFF',
+        black: '#000000',
     },
     media: {
         phone: '(max-width: 600px)',

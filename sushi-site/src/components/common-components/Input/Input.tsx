@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 interface IInputProps {
-    width?: string;
+    width?: string | number;
     maxWidth?: string;
     height?: string;
     maxHeight?: string;
@@ -20,7 +20,8 @@ interface IInputProps {
 }
 
 export const Input = styled.input<IInputProps>`
-    width: ${p => p.width}px;
+    display: inline-block;
+    width: ${p => typeof p.width === "number" ? `${p.width}%`: `${p.width}px`};
     max-width: ${p => p.maxWidth}px;
     height: ${p => p.height}px;
     max-height: ${p => p.maxHeight}px;

@@ -2,7 +2,7 @@ import React from "react";
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Box } from "../../components/common-components/Box/Box";
 import { BiggestFila } from "../../assets";
-import {ThirdLevelHeading} from "../../components/common-components/TirdLevelHeading/ThirdLevelHeading";
+import {ThirdLevelHeading} from "../../components/common-components/ThirdLevelHeading/ThirdLevelHeading";
 import {Span} from "../../components/common-components/Span/Span";
 import { Button } from "../../components/common-components/Button/Button";
 import {PlusButton} from "../../components/product-description-components/PlusButton";

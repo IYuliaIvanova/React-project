@@ -36,11 +36,12 @@ export const OrderingPage = () => {
                 <FlexBox padding="6px 15px 8px 100px" borderBottom={`1px solid ${COLOR.silverGray}`} justifyContent='start' columnGap="363">
                     <CustomNavLink 
                         to={`/`}
+                        display="flex"
                     >
                         <Image margin="0 10px 0 0" src={require("../../assets/icons/left-arrow.svg").default}/>
                         <Paragraph>Продолжить выбор</Paragraph>
                     </CustomNavLink>
-                    <FlexBox flexDirection="column">
+                    <FlexBox flexDirection="column" alignItems="center">
                         <Paragraph>Наш телефон</Paragraph>
                         <CustomLink
                             lineHeight="18"

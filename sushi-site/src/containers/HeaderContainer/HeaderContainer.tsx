@@ -18,7 +18,7 @@ export const HeaderContainer = () =>{
             bgColor={COLOR.gray95}
         >
             <FlexBox >
-                <FlexBox padding="6px 15px 8px 0" borderRight={`1px solid ${COLOR.silverGray}`} flexDirection="column">
+                <FlexBox padding="6px 15px 8px 0" borderRight={`1px solid ${COLOR.silverGray}`} flexDirection="column" alignItems="center">
                     <Paragraph>Наш телефон</Paragraph>
                     <CustomLink
                         lineHeight="18"
@@ -47,7 +47,7 @@ export const HeaderContainer = () =>{
                         работаем с 10:00 до 00:00
                     </Paragraph>
                 </FlexBox>
-                <Box padding="0 0 0 15px">
+                <FlexBox alignItems="start" flexDirection="column" padding="0 0 0 15px">
                     <Paragraph
                         margin="0 0 4px"
                         fontWeight="300"
@@ -58,7 +58,7 @@ export const HeaderContainer = () =>{
                         Город:
                     </Paragraph>
                     <Paragraph fontWeight="400">Минск</Paragraph>
-                </Box>
+                </FlexBox>
             </FlexBox>
             <FlexBox justifyContent="space-between">
                 <FlexBox columnGap="10">

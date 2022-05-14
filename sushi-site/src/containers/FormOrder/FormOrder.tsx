@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box } from "../../components/common-components/Box/Box";
 import { Button } from "../../components/common-components/Button/Button";
+import { CustomNavLink } from "../../components/common-components/CustomNavLink/CustomNavLink";
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Form } from "../../components/common-components/Form/Form";
 import { Image } from "../../components/common-components/Image/Image";
@@ -16,9 +17,27 @@ import { PlusButton } from "../../components/product-description-components/Plus
 import { COLOR } from "../../constants/color-constants";
 import { getDecrement, getIncrement } from "../../utils/counters";
 
-export const FormOrder = () => {
+interface IFormOrderProps {
+    openModal: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+export const FormOrder = ({ openModal }: IFormOrderProps) => {
     const [countStick, setCountStick] = useState(0);
     const [countSouse, setCountSouse] = useState(0);
+
+    const [isActivePaymentMethod, setIsActivePaymentMethod] = useState(false);
+
+    const handleAddActiveClass = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        const allButtons = document.querySelectorAll("button");
+
+        for (var i = 0; i < allButtons.length; i++) {
+            allButtons[i].classList.remove("_active");
+        }
+
+        e.currentTarget.classList.add("_active");
+    }
+
     return (
         <Form width='760'>
             <SecondLevelHeading margin="0 0 30px 0">Ваши данные</SecondLevelHeading>
@@ -34,7 +53,7 @@ export const FormOrder = () => {
                             padding='5px 15px'
                             fontSize="18"
                             lineHeight="22"
-                            isActive
+                            isActive = {isActivePaymentMethod}
                         >
                             <Image src={require('../../assets/icons/cash.svg').default} margin='0 10px 0 0'/>
                             Наличными
@@ -44,6 +63,8 @@ export const FormOrder = () => {
                             padding='5px 25px'
                             fontSize="18"
                             lineHeight="22"
+                            isActive = {isActivePaymentMethod}
+                            onClick={openModal}
                         >
                             <Image src={require('../../assets/icons/card.svg').default} margin='0 10px 0 0'/>
                             Картой
@@ -106,25 +127,28 @@ export const FormOrder = () => {
                 </FlexBox>
                 <FlexBox flexDirection="column" rowGap="20" alignSelf="start">
                     <Box width={100}>
-                        <Button 
+                        <OrderingButton 
                             width={50} 
                             bgColor={COLOR.pastelOrange} 
                             padding='5px 15px'
                             fontSize="18"
                             lineHeight="22"
+                            className="_active"
+                            onClick={handleAddActiveClass}
                         >
                             Курьером
-                        </Button>
-                        <Button 
+                        </OrderingButton>
+                        <OrderingButton 
                             width={50} 
                             bgColor={COLOR.white} 
                             color={COLOR.black}
                             padding='5px 25px'
                             fontSize="18"
                             lineHeight="22"
+                            onClick={handleAddActiveClass}
                         >
                             Самовызов
-                        </Button>
+                        </OrderingButton>
                     </Box>
                     <FlexBox columnGap="20" width={100}>
                         <Input width="260" placeholder="Улица"></Input>
@@ -166,8 +190,17 @@ export const FormOrder = () => {
                 fontWeight="400" 
                 fontSize="14" 
                 lineHeight="17"
+                color={COLOR.black}
             >
-                Нажимая на кнопку Оформить заказ, Вы подтверждаете свое согласие на обработку персональных данных в соответствии с Публичной оффертой
+                Нажимая на кнопку Оформить заказ, Вы подтверждаете свое согласие на обработку персональных данных в соответствии с   
+                <CustomNavLink 
+                    display="inline" 
+                    to={'/'} 
+                    color={COLOR.black} 
+                    txtDecoration='underline'
+                > 
+                    Публичной оффертой
+                </CustomNavLink>
             </Paragraph>
         </Form>
     )

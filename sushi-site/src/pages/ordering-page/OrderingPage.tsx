@@ -8,9 +8,28 @@ import { FormOrder } from "../../containers/FormOrder/FormOrder"
 import { Image } from "../../components/common-components/Image/Image";
 import { RightSidebar } from "../../containers/RightSidebar/RightSidebar"
 import { CustomNavLink } from "../../components/common-components/CustomNavLink/CustomNavLink"
-import { Icon } from "../../components/common-components/Icon/Icon"
+import { Modal } from "../../containers/Modal/Modal"
+import { useState } from "react"
+import { FormModalPay } from "../../containers/FormModalPay/FormModalPay"
 
 export const OrderingPage = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openModal = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        console.log('open!');
+        setIsOpen(true);
+    }
+
+    const handleSubmit = () => {
+        console.log('Submit function!');
+        setIsOpen(false);
+    }
+
+    const handleCancel = () => {
+        console.log('Cancel function!');
+        setIsOpen(false);
+    }
     return (
         <FlexBox alignItems="start" justifyContent="start" height="100vh">
             <Box width="1500" backColor={COLOR.gray95} height="100%">
@@ -52,7 +71,15 @@ export const OrderingPage = () => {
                     </FlexBox>
                 </FlexBox>
                 <FlexBox padding="55px 392px 20px 100px" >
-                    <FormOrder/>
+                    <Modal
+                        title="Данные карты"
+                        isOpen={isOpen}
+                        onCancel={handleCancel}
+                        onSubmit={handleSubmit}
+                    >
+                        <FormModalPay/>
+                    </Modal>
+                    <FormOrder openModal={openModal}/>
                 </FlexBox>
             </Box>
             <RightSidebar/>

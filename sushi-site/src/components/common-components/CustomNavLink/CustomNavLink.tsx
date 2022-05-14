@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { themes } from "../../../constants/themes";
 
 interface ICustomNavLinkProps {
     display?: string;
@@ -19,10 +20,12 @@ interface ICustomNavLinkProps {
     bottom?: string;
     left?: string;
     right?: string;
+    txtDecoration?: string;
+    color?: string;
 }
 
 export const CustomNavLink = styled(NavLink)<ICustomNavLinkProps>`
-  text-decoration: none;
+  text-decoration: ${p => p.txtDecoration || "none"};
   display: ${p => p.display || "block"};
   width: ${p => p.width}px;
   max-width: ${p => p.maxWidth}px;
@@ -34,6 +37,7 @@ export const CustomNavLink = styled(NavLink)<ICustomNavLinkProps>`
   align-items: ${p => p.alignItems || 'center'};
   column-gap: ${p => p.columnGap}px;
   margin: ${p => p.margin};
+  color: ${p => p.color || themes.colors.smokyBlack};
 
   position: ${(p) => ((p.position !== 'relative' || 'static') ? `${p.position};
     top: ${p.top}px;

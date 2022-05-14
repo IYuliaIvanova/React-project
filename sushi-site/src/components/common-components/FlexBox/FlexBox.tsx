@@ -38,7 +38,7 @@ interface IFlexBoxProps {
     height: ${p => p.height};
     max-height: ${p => p.maxHeight}px;
     display: flex;
-    align-items: ${p => p.alignItems || 'center'};
+    align-items: ${p => p.alignItems};
     align-self: ${p => p.alignSelf || 'center'};
     justify-content: ${p => p.justifyContent || 'center'};
     flex-direction: ${p => p.flexDirection || 'row'};

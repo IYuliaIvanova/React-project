@@ -46,7 +46,7 @@ export const SushiSetsPage = () => {
                 justifyContent="flex-start"
                 margin="0 0 174px"
             >
-                {sushiSetsArray.map(({ id, img, title, pieces, price, weight })=> {
+                {sushiSetsArray.map(({ id, img, title, pieces, price, weight, linkTo})=> {
                     return (
                         <ProductCard
                             title={title}
@@ -54,6 +54,7 @@ export const SushiSetsPage = () => {
                             pieces={pieces}
                             price={price}
                             weight={weight}
+                            linkTo={linkTo}
                         />
                     )
                 })}

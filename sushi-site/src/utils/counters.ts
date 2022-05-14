@@ -3,5 +3,5 @@ export const getIncrement = (countValue: number, setCountValue: (value: any) => 
 }
 
 export const getDecrement = (countValue: number, setCountValue: (value: any) => void) => {
-    setCountValue(countValue - 1);
+    countValue > 0 && setCountValue(countValue - 1);
 }

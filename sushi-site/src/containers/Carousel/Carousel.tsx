@@ -8,9 +8,10 @@ interface ICarousel {
     windowWidth: string;
     amountOfCards: number;
     amountOfCardsOnWindow: number;
+    arrowsMargin: string;
 }
 
-export const Carousel = ({ children, amountOfCardsOnWindow, windowWidth, amountOfCards }: ICarousel) => {
+export const Carousel = ({ children, amountOfCardsOnWindow, windowWidth, amountOfCards, arrowsMargin }: ICarousel) => {
     const [offset, setOffset] = useState(0)
 
     const handleLeftArrowClick = () => {
@@ -33,7 +34,7 @@ export const Carousel = ({ children, amountOfCardsOnWindow, windowWidth, amountO
             <Image
                 onClick={handleLeftArrowClick}
                 cursor="pointer"
-                margin="0 51px 0 0"
+                margin={`0 ${arrowsMargin}px 0 0`}
                 src={require("../../assets/icons/sliderArrowLeft.svg").default}
             >
             </Image>
@@ -53,7 +54,7 @@ export const Carousel = ({ children, amountOfCardsOnWindow, windowWidth, amountO
             <Image
                 onClick={handleRightArrowClick}
                 cursor="pointer"
-                margin="0 0 0 51px"
+                margin={`0 0 0 ${arrowsMargin}px`}
                 src={require("../../assets/icons/sliderArrowRight.svg").default}
             >
             </Image>

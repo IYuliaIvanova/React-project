@@ -12,6 +12,7 @@ import { SecondLevelHeading } from "../../components/common-components/SecondLev
 import { Span } from "../../components/common-components/Span/Span";
 import { OrderingButton } from "../../components/form-ordering-components/OrderingButton";
 import { OrderingCheckbox } from "../../components/form-ordering-components/OrderingCheckbox";
+import { OrderingGroupButton } from "../../components/form-ordering-components/OrderingGroupButton";
 import { MinusButton } from "../../components/product-description-components/MinusButton";
 import { PlusButton } from "../../components/product-description-components/PlusButton";
 import { COLOR } from "../../constants/color-constants";
@@ -26,18 +27,23 @@ export const FormOrder = ({ openModal }: IFormOrderProps) => {
     const [countSouse, setCountSouse] = useState(0);
 
     const [isActivePaymentMethod, setIsActivePaymentMethod] = useState(false);
+    const [isActiveDeliveryMethod, setIsActiveDeliveryMethod] = useState(false);
+    const [isActiveTimeMethod, setIsActiveTimeMethod] = useState(false);
 
-    const handleAddActiveClass = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleIsActivePaymentMethod = (e: React.MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
-        const allButtons = document.querySelectorAll("button");
-
-        for (var i = 0; i < allButtons.length; i++) {
-            allButtons[i].classList.remove("_active");
-        }
-
-        e.currentTarget.classList.add("_active");
+        setIsActivePaymentMethod(!isActivePaymentMethod);
     }
 
+    const handleIsActiveDeliveryMethod = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        setIsActiveDeliveryMethod(!isActiveDeliveryMethod);
+    }
+
+    const handleIsActiveTimeMethod = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        setIsActiveTimeMethod(!isActiveTimeMethod);
+    }
     return (
         <Form width='760'>
             <SecondLevelHeading margin="0 0 30px 0">Ваши данные</SecondLevelHeading>
@@ -47,13 +53,13 @@ export const FormOrder = ({ openModal }: IFormOrderProps) => {
                         <Input width={50} placeholder="Телефон"></Input>
                         <Input width={50} placeholder="Имя"></Input>
                     </FlexBox>
-                    <Box width={100}>
+                    <OrderingGroupButton width={100} onClick={handleIsActivePaymentMethod}>
                         <OrderingButton 
                             width={50} 
                             padding='5px 15px'
                             fontSize="18"
                             lineHeight="22"
-                            isActive = {isActivePaymentMethod}
+                            isActive = {!isActivePaymentMethod}
                         >
                             <Image src={require('../../assets/icons/cash.svg').default} margin='0 10px 0 0'/>
                             Наличными
@@ -69,7 +75,7 @@ export const FormOrder = ({ openModal }: IFormOrderProps) => {
                             <Image src={require('../../assets/icons/card.svg').default} margin='0 10px 0 0'/>
                             Картой
                         </OrderingButton>
-                    </Box>
+                    </OrderingGroupButton>
                     <FlexBox width={100} justifyContent="space-between">
                         <OrderingCheckbox 
                             type='checkbox'
@@ -126,30 +132,27 @@ export const FormOrder = ({ openModal }: IFormOrderProps) => {
                     <Input width={100} placeholder="Введите промокод"></Input>
                 </FlexBox>
                 <FlexBox flexDirection="column" rowGap="20" alignSelf="start">
-                    <Box width={100}>
+                    <OrderingGroupButton width={100} onClick={handleIsActiveDeliveryMethod}>
                         <OrderingButton 
                             width={50} 
                             bgColor={COLOR.pastelOrange} 
                             padding='5px 15px'
                             fontSize="18"
                             lineHeight="22"
-                            className="_active"
-                            onClick={handleAddActiveClass}
+                            isActive = {!isActiveDeliveryMethod}
                         >
                             Курьером
                         </OrderingButton>
                         <OrderingButton 
                             width={50} 
-                            bgColor={COLOR.white} 
-                            color={COLOR.black}
                             padding='5px 25px'
                             fontSize="18"
                             lineHeight="22"
-                            onClick={handleAddActiveClass}
+                            isActive = {isActiveDeliveryMethod}
                         >
                             Самовызов
                         </OrderingButton>
-                    </Box>
+                    </OrderingGroupButton>
                     <FlexBox columnGap="20" width={100}>
                         <Input width="260" placeholder="Улица"></Input>
                         <Input width="80" placeholder="Дом"></Input>
@@ -160,27 +163,26 @@ export const FormOrder = ({ openModal }: IFormOrderProps) => {
                         <Input width="80" placeholder="Этаж"></Input>
                         <Input width="80" placeholder="Код"></Input>
                     </FlexBox>
-                    <Box width={100}>
-                        <Button 
+                    <OrderingGroupButton width={100} onClick={handleIsActiveTimeMethod}>
+                        <OrderingButton 
                             width={50} 
-                            bgColor={COLOR.pastelOrange} 
                             padding='5px 15px'
                             fontSize="18"
                             lineHeight="22"
+                            isActive={!isActiveTimeMethod}
                         >
                             Не сейчас
-                        </Button>
-                        <Button 
+                        </OrderingButton>
+                        <OrderingButton 
                             width={50} 
-                            bgColor={COLOR.white} 
-                            color={COLOR.black}
                             padding='5px 25px'
                             fontSize="18"
                             lineHeight="22"
+                            isActive={isActiveTimeMethod}
                         >
                             На время
-                        </Button>
-                    </Box>
+                        </OrderingButton>
+                    </OrderingGroupButton>
                     <Input width={100} placeholder="E-mail(необязательно)"></Input>
                 </FlexBox>
             </FlexBox>

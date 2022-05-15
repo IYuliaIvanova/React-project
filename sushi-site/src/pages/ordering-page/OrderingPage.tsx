@@ -32,7 +32,7 @@ export const OrderingPage = () => {
     }
     return (
         <FlexBox alignItems="start" justifyContent="start" height="100vh">
-            <Box width="1500" backColor={COLOR.gray95} height="100%">
+            <Box width="1500" backColor={COLOR.gray95} height={100}>
                 <FlexBox padding="6px 15px 8px 100px" borderBottom={`1px solid ${COLOR.silverGray}`} justifyContent='start' columnGap="363">
                     <CustomNavLink 
                         to={`/`}

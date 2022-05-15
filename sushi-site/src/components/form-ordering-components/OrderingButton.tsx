@@ -14,9 +14,4 @@ export const OrderingButton = styled(Button)<IOrderingButtonProps>`
         color: ${themes.colors.white};
         background-color: ${themes.colors.pastelOrange};
     `}
-
-    &._active {
-        color: ${themes.colors.white};
-        background-color: ${themes.colors.pastelOrange};
-    }
 `;

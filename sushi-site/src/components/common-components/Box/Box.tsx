@@ -4,7 +4,7 @@ import styled from "styled-components";
 interface IBoxProps {
     width?: string | number;
     maxWidth?: string;
-    height?: string;
+    height?: string | number;
     maxHeight?: string;
     minHeight?: string;
     backColor?: string;
@@ -38,7 +38,7 @@ export const Box = styled.div<IBoxProps>`
   right: ${p => p.right}px;
   width: ${p => typeof p.width === "number" ? `${p.width}%`: `${p.width}px`};
   max-width: ${p => p.maxWidth}px;
-  height: ${p => p.height}px;
+  height: ${p => typeof p.height === "number" ? `${p.height}%`: `${p.height}px`};
   max-height: ${p => p.maxHeight}px;
   min-height: ${p => p.minHeight}px;
   background-color: ${p => p.backColor};

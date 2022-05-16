@@ -7,6 +7,7 @@ import { Button } from "../../components/common-components/Button/Button";
 import { UnorderedList } from "../../components/common-components/UnorderedList/UnorderedList";
 import { ListItem } from "../../components/common-components/ListItem/ListItem";
 import { Paragraph } from "../../components/common-components/Paragraph/Paragraph";
+import { dataReviews } from "../../mock-data/mockData";
 import { COLOR } from "../../constants/color-constants";
 
 
@@ -17,13 +18,13 @@ export const ReviewsPage: React.FC = () => {
       width={100}
       minHeight="945"
       padding="50px 30px"
-      background={COLOR.silverGray}
+      background={COLOR.gray95}
     >
       <FlexBox
         justifyContent="space-between"
         maxWidth="1110"
         width={100}
-        bgColor={COLOR.silverGray}
+        margin="0 0 35px 0"
       >
         <ThirdLevelHeading fontSize="24" lineHeight="30">
           Отзывы
@@ -40,27 +41,12 @@ export const ReviewsPage: React.FC = () => {
         </Button>
       </FlexBox>
       <UnorderedList>
-        {[{
-            name: "Kolya",
-            text: "Являюсь постоянным клиентом этой конторы. Только положительные впечатления",
-            id: 1
-          },
-          {
-            name: "Kolya",
-            text: "Привет",
-            id: 1
-          },
-          {
-            name: "Kolya",
-            text: "Привет",
-            id: 1
-          }
-        ].map(item => (
-          <ListItem margin="0 0 20px 0" key={item.id}>
-            <Span margin="0 0 20px 0" fontSize="24" lineHeight="30">
+        {dataReviews.map(item => (
+          <ListItem margin="0 0 22px 0" padding="10" bgColor={COLOR.white} key={item.id}>
+            <Span fontSize="24" lineHeight="30">
               {item.name} 
             </Span>
-            <Paragraph fontWeight="400">
+            <Paragraph margin="20px 0 0 0" fontWeight="400">
               {item.text} 
             </Paragraph>
           </ListItem>

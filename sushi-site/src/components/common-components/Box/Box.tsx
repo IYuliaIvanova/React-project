@@ -56,6 +56,8 @@ export const Box = styled.div<IBoxProps>`
   border-radius: ${p => p.borderRadius};
   background: ${p => p.background};
   cursor: ${p => p.cursor};
+  background-repeat: no-repeat;
+  background-size: cover;
 
   position: ${(p) => ((p.position !== 'relative' || 'static') ? `${p.position};
     top: ${p.top}px;

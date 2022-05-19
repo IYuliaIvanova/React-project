@@ -14,7 +14,6 @@ interface IState {
     id: string,
     src: string,
     title: string,
-    pieces: string,
     price: string,
     weight: string,
     linkTo: string
@@ -26,7 +25,7 @@ export const ProductDescriptionPage = () => {
 
     const state = location.state as IState
 
-    const { id, src, title, pieces, price, weight } = state
+    const { id, src, title, price, weight } = state
 
     const getPreviousPage = () => {
         navigate(-1)
@@ -58,7 +57,13 @@ export const ProductDescriptionPage = () => {
                         <Image margin="0 0 0 10px" src={require("../../assets/icons/right-arrow.svg").default}/>
                     </CustomNavLink>
                 </FlexBox>
-                <ProductDescription id={id} img={src} title={title} price={price} weight={weight}/>
+                <ProductDescription
+                    id={id}
+                    img={src}
+                    title={title}
+                    price={price}
+                    weight={weight}
+                />
                 <Box backColor={COLOR.gray95} padding="30px 0">
                     <Paragraph
                         fontSize="24"

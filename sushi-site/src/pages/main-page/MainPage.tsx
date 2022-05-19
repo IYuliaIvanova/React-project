@@ -85,6 +85,7 @@ export const MainPage = () => {
                                 key={id}
                                 src={img}
                                 linkTo={`sushiSets/${linkTo}`}
+                                id={id}
                             />
                         )
                     } else if (index === 0) {
@@ -99,6 +100,7 @@ export const MainPage = () => {
                                 src={img}
                                 margin="0 41px 0 0"
                                 linkTo={`sushiSets/${linkTo}`}
+                                id={id}
                             />
                         )
                     } else {
@@ -113,6 +115,7 @@ export const MainPage = () => {
                                 src={img}
                                 margin="0 41px 0 0"
                                 linkTo={`sushiSets/${linkTo}`}
+                                id={id}
                             />
                         )
                     }

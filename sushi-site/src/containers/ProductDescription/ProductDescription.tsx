@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Box } from "../../components/common-components/Box/Box";
 import { BiggestFila } from "../../assets";
@@ -10,6 +11,7 @@ import { Paragraph } from "../../components/common-components/Paragraph/Paragrap
 import { Button } from "../../components/common-components/Button/Button";
 import { COLOR } from "../../constants/color-constants";
 import { getDecrement, getIncrement } from "../../utils/counters";
+import { addProduct } from "../../redux/actions/cartActionCreators/actionCreators";
 
 interface IProductDescriptionProps {
     id: string,
@@ -19,9 +21,11 @@ interface IProductDescriptionProps {
     weight: string,
 }
 
-export const ProductDescription = ({ id, img, title, price, weight }: IProductDescriptionProps) => {
-
+export const ProductDescription = ({ id, title, price, weight, }: IProductDescriptionProps) => {
     const [ productDescriptionCounter, setProductDescriptionCounter ] = useState(1)
+
+    const dispatch = useDispatch();
+    const dispatchedAddProduct = () => dispatch(addProduct({ title, price, id }))
 
     return (
         <FlexBox maxWidth="1170" width={100} justifyContent="space-around">
@@ -89,7 +93,7 @@ export const ProductDescription = ({ id, img, title, price, weight }: IProductDe
                     <Span margin="0 0 10px">Состав</Span>
                     <Paragraph fontWeight="300" >Лосось, сыр "Филадельфия", огурец, авокадо</Paragraph>
                 </FlexBox>
-                <Button width="188">Хочу!</Button>
+                <Button onClick={dispatchedAddProduct} width="188">Хочу!</Button>
             </Box>
         </FlexBox>
     )

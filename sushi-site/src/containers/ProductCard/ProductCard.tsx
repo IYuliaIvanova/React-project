@@ -18,7 +18,7 @@ interface IProductCard {
     price: string;
     weight: string;
     linkTo?: string
-    id?: string
+    id?: string;
 }
 
 export const ProductCard = ({ margin, src, title, pieces, price, weight, linkTo, id }: IProductCard) => {
@@ -27,10 +27,9 @@ export const ProductCard = ({ margin, src, title, pieces, price, weight, linkTo,
     const handlerClickNavigate = () => {
         navigate(`/${linkTo}`, { state: { id, title, price, weight, src } })
     }
-
     return (
         <Box
-            maxWidth="289"
+            maxWidth="288"
             margin={margin}
             padding="0 18px"
             width={100}

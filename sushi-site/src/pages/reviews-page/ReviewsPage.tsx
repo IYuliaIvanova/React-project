@@ -24,8 +24,6 @@ export const ReviewsPage: React.FC = () => {
     dispatchedAddPosts()
   },[])
 
-  console.log(reviews)
-
   return (
     <Box
       maxWidth="1169"

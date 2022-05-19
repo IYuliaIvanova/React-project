@@ -4,7 +4,7 @@ import { Layout } from "./containers/Layout/Layout";
 import { MainPage } from './pages/main-page/MainPage';
 import { OrderingPage } from './pages/ordering-page/OrderingPage';
 import { SushiSetsPage } from "./pages/sushi-sets-page/SushiSetsPage";
-import { FilaAndSalmonSetDescription } from "./pages/filaSalmon-set-description-page/FilaAndSalmonSetDescription";
+import { ProductDescriptionPage } from './pages/product-description-page/ProductDescriptionPage';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
             <Route path="/" element={<Navigate replace to="/mainPage" />} />
             <Route path="/mainPage/*" element={<MainPage/>}/>
             <Route path="/sushiSets" element={<SushiSetsPage/>}/>
-            <Route path="/filaSalmonSetDescription" element={<FilaAndSalmonSetDescription/>}></Route>
+            <Route path="/sushiSets/:linkTo" element={<ProductDescriptionPage/>}/>
         </Route>
         <Route path="/shippingAndPayment" element={<OrderingPage/>}/>
     </Routes>

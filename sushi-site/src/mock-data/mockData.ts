@@ -1,10 +1,10 @@
-interface IdataReviews {
+interface IDataReviews {
   name: string;
   text: string;
   id: number;
 }
 
-export const dataReviews: IdataReviews[] = [
+export const dataReviews: IDataReviews[] = [
   {
     name: "Розалия",
     text: "Ваша доставка и ваши блюда лучшие в Харькове!) всегда очень вкусно, вовремя, всегда вежливые курьеры и девушки на телефоне",

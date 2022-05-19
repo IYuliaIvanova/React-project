@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { COLOR } from "../../constants/color-constants";
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Paragraph } from "../../components/common-components/Paragraph/Paragraph";
@@ -43,7 +43,7 @@ export const MainPage = () => {
             <MainSlider windowWidth="950" amountOfCards={mainSliderConstants}>
                 {mainSliderConstants.map(({ id, path }) => {
                     return (
-                        <Image src={require(`../../assets/img/mainSliderImg/${path}.png`)}></Image>
+                        <Image key={id} src={require(`../../assets/img/mainSliderImg/${path}.png`)}></Image>
                     )
                 })}
             </MainSlider>
@@ -84,7 +84,7 @@ export const MainPage = () => {
                                 weight={weight}
                                 key={id}
                                 src={img}
-                                linkTo={linkTo}
+                                linkTo={`sushiSets/${linkTo}`}
                             />
                         )
                     } else if (index === 0) {
@@ -98,7 +98,7 @@ export const MainPage = () => {
                                 key={id}
                                 src={img}
                                 margin="0 41px 0 0"
-                                linkTo={linkTo}
+                                linkTo={`sushiSets/${linkTo}`}
                             />
                         )
                     } else {
@@ -112,7 +112,7 @@ export const MainPage = () => {
                                 key={id}
                                 src={img}
                                 margin="0 41px 0 0"
-                                linkTo={linkTo}
+                                linkTo={`sushiSets/${linkTo}`}
                             />
                         )
                     }

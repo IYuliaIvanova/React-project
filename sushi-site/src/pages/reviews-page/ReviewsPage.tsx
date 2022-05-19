@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useEffect, useCallback} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { dataReviews } from "../../mock-data/mockData"
 import { Box } from "../../components/common-components/Box/Box";
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { ThirdLevelHeading } from "../../components/common-components/ThirdLevelHeading/ThirdLevelHeading";
@@ -7,11 +9,23 @@ import { Button } from "../../components/common-components/Button/Button";
 import { UnorderedList } from "../../components/common-components/UnorderedList/UnorderedList";
 import { ListItem } from "../../components/common-components/ListItem/ListItem";
 import { Paragraph } from "../../components/common-components/Paragraph/Paragraph";
-import { dataReviews } from "../../mock-data/mockData";
 import { COLOR } from "../../constants/color-constants";
-
+import { addAsyncReviews } from "../../redux/actions/reviewsActionCreators/actionCreators";
+import { RootState } from "../../redux/reducers";
 
 export const ReviewsPage: React.FC = () => {
+
+  const dispatch = useDispatch();
+  const dispatchedAddPosts = () => dispatch(addAsyncReviews())
+  
+  const { reviews } = useSelector((state: RootState) => state.reviews)
+
+  useEffect(() => {
+    dispatchedAddPosts()
+  },[])
+
+  console.log(reviews)
+
   return (
     <Box
       maxWidth="1169"
@@ -41,16 +55,20 @@ export const ReviewsPage: React.FC = () => {
         </Button>
       </FlexBox>
       <UnorderedList>
-        {dataReviews.map(item => (
-          <ListItem margin="0 0 22px 0" padding="10" bgColor={COLOR.white} key={item.id}>
-            <Span fontSize="24" lineHeight="30">
-              {item.name} 
-            </Span>
-            <Paragraph margin="20px 0 0 0" fontWeight="400">
-              {item.text} 
-            </Paragraph>
-          </ListItem>
-        ))}
+        {reviews.map((item, index) => {
+              if (index < 3) {
+                return (
+                    <ListItem margin="0 0 22px 0" padding="10" bgColor={COLOR.white} key={item.id}>
+                      <Span fontSize="24" lineHeight="30">
+                        {item.userName}
+                      </Span>
+                      <Paragraph margin="20px 0 0 0" fontWeight="400">
+                        {item.reviewsText}
+                      </Paragraph>
+                    </ListItem>
+                )
+              }
+        })}
       </UnorderedList>
     </Box>
   );

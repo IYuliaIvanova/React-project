@@ -7,7 +7,7 @@ import { Box } from "../../components/common-components/Box/Box";
 import { Image } from "../../components/common-components/Image/Image";
 import { CustomNavLink } from "../../components/common-components/CustomNavLink/CustomNavLink";
 import { HeaderBox } from "../../components/common-components/HeaderBox/HeaderBox";
-import { ONE_PHONE, TWO_PHONE } from "../../constants/href-constants";
+import { FIRST_PHONE, SECOND_PHONE } from "../../constants/href-constants";
 
 export const HeaderContainer = () =>{
     return (
@@ -24,18 +24,18 @@ export const HeaderContainer = () =>{
                         lineHeight="18"
                         fontWeight="500"
                         color={COLOR.pastelOrange}
-                        href={`tel:${ONE_PHONE}`}
+                        href={`tel:${FIRST_PHONE}`}
                     >
-                        {ONE_PHONE}
+                        {FIRST_PHONE}
                     </CustomLink>
                     <CustomLink
                         lineHeight="18"
                         fontWeight="500"
                         color={COLOR.pastelOrange}
                         margin="0 0 5px 0"
-                        href={`tel:${TWO_PHONE}`}
+                        href={`tel:${SECOND_PHONE}`}
                     >
-                        {TWO_PHONE}
+                        {SECOND_PHONE}
                     </CustomLink>
                     <Paragraph lineHeight="17" fontSize="14" color={COLOR.silverGray}>
                         <Image

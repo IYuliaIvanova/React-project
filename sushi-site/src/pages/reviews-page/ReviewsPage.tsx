@@ -13,7 +13,7 @@ import { COLOR } from "../../constants/color-constants";
 import { addAsyncReviews } from "../../redux/actions/reviewsActionCreators/actionCreators";
 import { RootState } from "../../redux/reducers";
 
-export const ReviewsPage: React.FC = () => {
+export const ReviewsPage = () => {
 
   const dispatch = useDispatch();
   const dispatchedAddPosts = () => dispatch(addAsyncReviews())
@@ -54,19 +54,22 @@ export const ReviewsPage: React.FC = () => {
       </FlexBox>
       <UnorderedList>
         {reviews.map((item, index) => {
-              if (index < 3) {
-                return (
-                    <ListItem margin="0 0 22px 0" padding="10" bgColor={COLOR.white} key={item.id}>
-                      <Span fontSize="24" lineHeight="30">
-                        {item.userName}
-                      </Span>
-                      <Paragraph margin="20px 0 0 0" fontWeight="400">
-                        {item.reviewsText}
-                      </Paragraph>
-                    </ListItem>
-                )
-              }
-        })}
+          if(index < 3) {
+            console.log(index);
+              return (
+                <ListItem margin="0 0 22px 0" padding="10" bgColor={COLOR.white} key={item.id}>
+                  <Span fontSize="24" lineHeight="30">
+                    {item.userName}
+                  </Span>
+                  <Paragraph margin="20px 0 0 0" fontWeight="400">
+                    {item.reviewsText}
+                  </Paragraph>
+                </ListItem>
+              )
+          }
+        }
+        )
+        }
       </UnorderedList>
     </Box>
   );

@@ -13,9 +13,9 @@ import { COLOR } from "../../constants/color-constants";
 import { addAsyncReviews } from "../../redux/actions/reviewsActionCreators/actionCreators";
 import { RootState } from "../../redux/reducers";
 
-export const ReviewsPage = () => {
-
+export const ReviewsPage  = () => {
   const dispatch = useDispatch();
+  
   const dispatchedAddPosts = () => dispatch(addAsyncReviews())
   
   const { reviews } = useSelector((state: RootState) => state.reviews)

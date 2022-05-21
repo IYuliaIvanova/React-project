@@ -7,7 +7,7 @@ import { COLOR } from "../../constants/color-constants"
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Button } from "../../components/common-components/Button/Button";
 import { Span } from "../../components/common-components/Span/Span";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface IProductCard {
     margin?: string;
@@ -18,12 +18,18 @@ interface IProductCard {
     price: string;
     weight: string;
     linkTo?: string
+    id?: string;
 }
 
-export const ProductCard = ({ margin, src, title, pieces, price, weight, linkTo }: IProductCard) => {
+export const ProductCard = ({ margin, src, title, pieces, price, weight, linkTo, id }: IProductCard) => {
+    const navigate = useNavigate()
+
+    const handlerClickNavigate = () => {
+        navigate(`/${linkTo}`, { state: { id, title, price, weight, src } })
+    }
     return (
         <Box
-            maxWidth="289"
+            maxWidth="288"
             margin={margin}
             padding="0 18px"
             width={100}
@@ -59,11 +65,9 @@ export const ProductCard = ({ margin, src, title, pieces, price, weight, linkTo 
                     lineHeight="30"
                     fontWeight="700"
                 >
-                    {price}
+                    {price} COM
                 </Span>
-                <NavLink to={`/${linkTo}`}>
-                    <Button width="143">Хочу!</Button>
-                </NavLink>
+                    <Button onClick={handlerClickNavigate} width="143">Хочу!</Button>
             </FlexBox>
         </Box>
     )

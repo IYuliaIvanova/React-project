@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Box } from "../../components/common-components/Box/Box";
 import { ProductDescription } from "../../containers/ProductDescription/ProductDescription";
 import { RecomendProductCard } from "../../containers/RecomendProductCard/RecomendProductCard";
@@ -8,10 +9,27 @@ import { Paragraph } from "../../components/common-components/Paragraph/Paragrap
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Image} from "../../components/common-components/Image/Image";
 import { CustomNavLink } from "../../components/common-components/CustomNavLink/CustomNavLink";
-// import { useHistory } from "react-router-dom";  как заюзать?
 
-export const FilaAndSalmonSetDescription = () => {
+interface IState {
+    id: string,
+    src: string,
+    title: string,
+    price: string,
+    weight: string,
+    linkTo: string
+}
 
+export const ProductDescriptionPage = () => {
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    const state = location.state as IState
+
+    const { id, src, title, price, weight } = state
+
+    const getPreviousPage = () => {
+        navigate(-1)
+    }
     return (
             <>
                 <FlexBox
@@ -25,6 +43,7 @@ export const FilaAndSalmonSetDescription = () => {
                         to={`/`}
                         display="flex"
                         alignItems="center"
+                        onClick={getPreviousPage}
                     >
                     <Image margin="0 10px 0 0" src={require("../../assets/icons/left-arrow.svg").default}/>
                     <Paragraph>Назад</Paragraph>
@@ -38,7 +57,13 @@ export const FilaAndSalmonSetDescription = () => {
                         <Image margin="0 0 0 10px" src={require("../../assets/icons/right-arrow.svg").default}/>
                     </CustomNavLink>
                 </FlexBox>
-                <ProductDescription></ProductDescription>
+                <ProductDescription
+                    id={id}
+                    img={src}
+                    title={title}
+                    price={price}
+                    weight={weight}
+                />
                 <Box backColor={COLOR.gray95} padding="30px 0">
                     <Paragraph
                         fontSize="24"
@@ -54,10 +79,11 @@ export const FilaAndSalmonSetDescription = () => {
                         amountOfCardsOnWindow={3}
                         amountOfCards={4}
                     >
-                        <RecomendProductCard margin="0 120px 0 0"></RecomendProductCard>
-                        <RecomendProductCard margin="0 120px 0 0"></RecomendProductCard>
-                        <RecomendProductCard margin="0 120px 0 0"></RecomendProductCard>
+                        <RecomendProductCard margin="0 130px 0 0"></RecomendProductCard>
+                        <RecomendProductCard margin="0 130px 0 0"></RecomendProductCard>
                         <RecomendProductCard margin="0"></RecomendProductCard>
+                        <RecomendProductCard margin="0 130px 0 0"></RecomendProductCard>
+                        <RecomendProductCard margin="0 130px 0 0"></RecomendProductCard>
                     </Carousel>
                 </Box>
             </>

@@ -37,7 +37,7 @@ export const MainSlider = ({ windowWidth, amountOfCards, children }: ICarouselPr
                 <Box>
                     {amountOfCards.map((item, index) => {
                         return (
-                            <Button onClick={() => handleDotClick(index)}
+                            <Button key={index} onClick={() => handleDotClick(index)}
                                     width="10"
                                     height="10"
                                     bgColor={COLOR.silverGray}

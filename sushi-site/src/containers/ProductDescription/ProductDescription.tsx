@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Box } from "../../components/common-components/Box/Box";
 import { BiggestFila } from "../../assets";
@@ -10,10 +11,21 @@ import { Paragraph } from "../../components/common-components/Paragraph/Paragrap
 import { Button } from "../../components/common-components/Button/Button";
 import { COLOR } from "../../constants/color-constants";
 import { getDecrement, getIncrement } from "../../utils/counters";
+import { addProduct } from "../../redux/actions/cartActionCreators/actionCreators";
 
-export const ProductDescription = () => {
+interface IProductDescriptionProps {
+    id: string,
+    img: string,
+    title: string,
+    price: string,
+    weight: string,
+}
 
-    const [ productDescriptionCounter, setProductDescriptionCounter ] = useState(0)
+export const ProductDescription = ({ id, title, price, weight, }: IProductDescriptionProps) => {
+    const [ productDescriptionCounter, setProductDescriptionCounter ] = useState(1)
+
+    const dispatch = useDispatch();
+    const dispatchedAddProduct = () => dispatch(addProduct({ title, price, id }))
 
     return (
         <FlexBox maxWidth="1170" width={100} justifyContent="space-around">
@@ -30,14 +42,14 @@ export const ProductDescription = () => {
                     lineHeight="60"
                     margin="0 0 10px"
                 >
-                    Филадельфия и лосось сет
+                    {title}
                 </ThirdLevelHeading>
                 <Paragraph
                     fontWeight="300"
                     margin="0 0 40px"
                     color={COLOR.pastelOrange}
                 >
-                    1260 грамм
+                    {weight}
                 </Paragraph>
                 <FlexBox
                     justifyContent="flex-start"
@@ -50,7 +62,7 @@ export const ProductDescription = () => {
                         lineHeight="30"
                         margin="0 19px 0 0"
                     >
-                        1150 COM
+                        {+price * productDescriptionCounter} COM
                     </Span>
                     <MinusButton
                         onClick={() => getDecrement(productDescriptionCounter, setProductDescriptionCounter)}
@@ -81,7 +93,7 @@ export const ProductDescription = () => {
                     <Span margin="0 0 10px">Состав</Span>
                     <Paragraph fontWeight="300" >Лосось, сыр "Филадельфия", огурец, авокадо</Paragraph>
                 </FlexBox>
-                <Button width="188">Хочу!</Button>
+                <Button onClick={dispatchedAddProduct} width="188">Хочу!</Button>
             </Box>
         </FlexBox>
     )

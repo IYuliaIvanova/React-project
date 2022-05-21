@@ -12,7 +12,6 @@ import { HiddenText } from "../../containers/HiddenText/HiddenText";
 import { productCardsSort } from "../../utils/product-cards-sort";
 
 export const SushiSetsPage = () => {
-
     const [sushiSetsArray, setSushiSetsArray] = useState(NEW_SUSHI_SETS)
 
     return (
@@ -45,16 +44,27 @@ export const SushiSetsPage = () => {
                 rowGap="20"
                 justifyContent="flex-start"
                 margin="0 0 174px"
+                width="949"
+
             >
-                {sushiSetsArray.map(({ id, img, title, pieces, price, weight, linkTo})=> {
+                {sushiSetsArray.map(({
+                                     id,
+                                     img,
+                                     title,
+                                     pieces,
+                                     price,
+                                     weight,
+                                     linkTo
+                })=> {
                     return (
                         <ProductCard
+                            id={id}
                             title={title}
                             src={img}
                             pieces={pieces}
                             price={price}
                             weight={weight}
-                            linkTo={linkTo}
+                            linkTo={`sushiSets/${linkTo}`}
                         />
                     )
                 })}

@@ -3,15 +3,19 @@ import styled from "styled-components";
 import { themes } from "../../../constants/themes";
 
 interface IButtonProps {
-    width?: string | number;
-    height?: string;
-    margin?: string;
-    padding?: string;
-    bgColor?: string;
-    borderRadius?: number;
-    fontSize?: string;
-    lineHeight?: string;
-    color?: string;
+  width?: string | number;
+  height?: string;
+  margin?: string;
+  padding?: string;
+  bgColor?: string;
+  bgColorHover?: string;
+  bgColorActive?: string;
+  borderRadius?: number;
+  fontSize?: string;
+  lineHeight?: string;
+  color?: string;
+  colorHover?: string;
+  colorActive?: string;
 }
 
 export const Button = styled.button<IButtonProps>`
@@ -26,5 +30,16 @@ export const Button = styled.button<IButtonProps>`
   font-size: ${p => p.fontSize || "24"}px;
   line-height: ${p => p.lineHeight || "30"}px;
   font-weight: 500;
+  transition: all 0.5s linear;
   cursor: pointer;
+
+  &:hover{
+    color: ${p => p.colorHover || themes.colors.smokyBlack};
+    background-color: ${p => p.bgColorHover || themes.colors.gray95};
+  }
+
+  &:active{
+    color: ${p => p.colorActive || themes.colors.white};
+    background-color: ${p => p.bgColorHover || themes.colors.silverGray};
+  }
 `

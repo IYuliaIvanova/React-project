@@ -1,8 +1,8 @@
 import React from 'react';
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Layout } from "./containers/Layout/Layout";
-import { MainPage } from './pages/main-page/MainPage';
-// import { ReviewsPage } from "./pages/reviews-page/ReviewsPage"
+import { MainPage } from "./pages/main-page/MainPage";
+// import { commented out the import of the ReviewsPage component } from "./pages/reviews-page/ReviewsPage"
 import { OrderingPage } from './pages/ordering-page/OrderingPage';
 import { SushiSetsPage } from "./pages/sushi-sets-page/SushiSetsPage";
 import { ProductDescriptionPage } from './pages/product-description-page/ProductDescriptionPage';

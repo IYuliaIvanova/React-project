@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback} from "react";
+import React, {useEffect, useCallback, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dataReviews } from "../../mock-data/mockData"
 import { Box } from "../../components/common-components/Box/Box";
@@ -9,13 +9,14 @@ import { Button } from "../../components/common-components/Button/Button";
 import { UnorderedList } from "../../components/common-components/UnorderedList/UnorderedList";
 import { ListItem } from "../../components/common-components/ListItem/ListItem";
 import { Paragraph } from "../../components/common-components/Paragraph/Paragraph";
+import { Modal } from "../../containers/Modal/Modal";
 import { COLOR } from "../../constants/color-constants";
 import { addAsyncReviews } from "../../redux/actions/reviewsActionCreators/actionCreators";
 import { RootState } from "../../redux/reducers";
 
 export const ReviewsPage  = () => {
   const dispatch = useDispatch();
-  
+
   const dispatchedAddPosts = () => dispatch(addAsyncReviews())
   
   const { reviews } = useSelector((state: RootState) => state.reviews)
@@ -23,6 +24,24 @@ export const ReviewsPage  = () => {
   useEffect(() => {
     dispatchedAddPosts()
   },[])
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    console.log('open!');
+    setIsOpen(true);
+  }
+
+  const handleSubmit = () => {
+    console.log('Submit function!');
+    setIsOpen(false);
+  }
+
+  const handleCancel = () => {
+    console.log('Cancel function!');
+    setIsOpen(false);
+  }
 
   return (
     <Box
@@ -52,7 +71,7 @@ export const ReviewsPage  = () => {
           + Добавить отзыв
         </Button>
       </FlexBox>
-      <UnorderedList>
+      <UnorderedList margin="0 0 30px 0">
         {reviews.map((item, index) => {
           if(index < 3) {
             console.log(index);
@@ -71,6 +90,23 @@ export const ReviewsPage  = () => {
         )
         }
       </UnorderedList>
+      <FlexBox
+        maxWidth="600"
+        width={100}
+        margin="0 auto"
+        padding="16px"
+        flexDirection="column"
+        columnGap="20"
+      >
+        <Modal
+          title="Ваш отзыв"
+          isOpen={isOpen}
+          onCancel={handleCancel}
+          onSubmit={handleSubmit}
+        >
+          
+        </Modal>
+      </FlexBox>
     </Box>
   );
 };

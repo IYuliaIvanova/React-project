@@ -16,18 +16,14 @@ import { Input } from "../../components/common-components/Input/Input";
 import { Label } from "../../components/common-components/Label/Label";
 import { INSTAGRAM, WHATSAPP, TELEGRAM } from "../../constants/social-constants";
 import { FOOTER_PHONE_MASK } from "../../constants/masks-constants";
-import { ONE_PHONE, TWO_PHONE } from "../../constants/href-constants";
+import { FIRST_PHONE, SECOND_PHONE } from "../../constants/href-constants";
+import { phoneMask } from "../../utils/validation";
 
 export const FooterContainer = () =>{
-    const [phone, setPhone] = useState('');
+    const [phone, setPhone] = useState('+375 (**) ***-**-**');
 
     const handleInputPhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const result = e.target.value.replaceAll(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,2})(\d{0,2})/);
-        if (result) {
-            const [ numbOne, numbTwo, numbThree, numbFour, numbFive ] = result
-            e.target.value = `+(${numbTwo}) ${numbThree}-${numbFour}-${numbFive}`;
-        }
-        setPhone(e.target.value);
+        phoneMask(e.target.value, setPhone);
     } 
 
     return (
@@ -117,7 +113,7 @@ export const FooterContainer = () =>{
                         lineHeight="18"
                         fontWeight="400"
                         color={COLOR.silverGray}
-                        href={`tel:${ONE_PHONE}`}
+                        href={`tel:${FIRST_PHONE}`}
                     >
                         Тел:
                         <Span
@@ -127,7 +123,7 @@ export const FooterContainer = () =>{
                             fontWeight="400"
                             color={COLOR.silverGray}
                         >
-                            {ONE_PHONE}
+                            {FIRST_PHONE}
                         </Span> 
                     </CustomLink>
                     <CustomLink
@@ -135,7 +131,7 @@ export const FooterContainer = () =>{
                         lineHeight="18"
                         fontWeight="400"
                         color={COLOR.silverGray}
-                        href={`tel:${TWO_PHONE}`}
+                        href={`tel:${SECOND_PHONE}`}
                     >
                         Тел:
                         <Span
@@ -145,7 +141,7 @@ export const FooterContainer = () =>{
                             fontWeight="400"
                             color={COLOR.silverGray}
                         >
-                            {TWO_PHONE}
+                            {SECOND_PHONE}
                         </Span>
                     </CustomLink>
                     <CustomLink

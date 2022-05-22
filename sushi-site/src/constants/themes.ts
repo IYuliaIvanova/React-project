@@ -8,6 +8,7 @@ export const themes = {
         pinkishOrange: '#F46D40',
         white: '#FFFFFF',
         black: '#000000',
+        red: '#FF0000',
         modalOverlay: 'rgba(0, 0, 0, 0.5)',
     },
     media: {

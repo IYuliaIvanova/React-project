@@ -1,6 +1,5 @@
-import React, {useEffect, useCallback, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { dataReviews } from "../../mock-data/mockData"
 import { Box } from "../../components/common-components/Box/Box";
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { ThirdLevelHeading } from "../../components/common-components/ThirdLevelHeading/ThirdLevelHeading";
@@ -10,12 +9,32 @@ import { UnorderedList } from "../../components/common-components/UnorderedList/
 import { ListItem } from "../../components/common-components/ListItem/ListItem";
 import { Paragraph } from "../../components/common-components/Paragraph/Paragraph";
 import { Modal } from "../../containers/Modal/Modal";
+import { Label } from "../../components/common-components/Label/Label"
+import { Input } from "../../components/common-components/Input/Input";
+import { Textarea } from "../../components/common-components/TextArea/TextArea";
 import { COLOR } from "../../constants/color-constants";
-import { addAsyncReviews } from "../../redux/actions/reviewsActionCreators/actionCreators";
+import { addAsyncReviews, addReviews } from "../../redux/actions/reviewsActionCreators/actionCreators";
 import { RootState } from "../../redux/reducers";
 
-export const ReviewsPage  = () => {
+export const ReviewsPage = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const [sizePage, setSizePage] = useState(3);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const [name, setName] = useState("");
+
+  const [review, setReview] = useState("");
+
   const dispatch = useDispatch();
+
+  const dispatchedAddReview = () => dispatch(addReviews({
+    id: review.length+1,
+    userName: name,
+    reviewsText: review
+  })
+  );
 
   const dispatchedAddPosts = () => dispatch(addAsyncReviews())
   
@@ -25,24 +44,33 @@ export const ReviewsPage  = () => {
     dispatchedAddPosts()
   },[])
 
-  const [isOpen, setIsOpen] = useState(false);
-
   const openModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log('open!');
     setIsOpen(true);
   }
 
   const handleSubmit = () => {
-    console.log('Submit function!');
+    dispatchedAddReview();
     setIsOpen(false);
+    setName(name => name="");
+    setReview(review => review="");
   }
 
   const handleCancel = () => {
-    console.log('Cancel function!');
     setIsOpen(false);
   }
 
+  const inputHandleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = target as HTMLInputElement;
+    setName(value);
+  }
+
+  const textareaHandleChange = (
+    { target }: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = target as HTMLTextAreaElement;
+    setReview(value);
+  }
+  
   return (
     <Box
       maxWidth="1169"
@@ -67,36 +95,37 @@ export const ReviewsPage  = () => {
           lineHeight="22"
           color={COLOR.white}
           bgColor={COLOR.smokyBlack}
+          onClick={openModal}
         >
           + Добавить отзыв
         </Button>
       </FlexBox>
       <UnorderedList margin="0 0 30px 0">
-        {reviews.map((item, index) => {
-          if(index < 3) {
-            console.log(index);
-              return (
-                <ListItem margin="0 0 22px 0" padding="10" bgColor={COLOR.white} key={item.id}>
-                  <Span fontSize="24" lineHeight="30">
-                    {item.userName}
-                  </Span>
-                  <Paragraph margin="20px 0 0 0" fontWeight="400">
-                    {item.reviewsText}
-                  </Paragraph>
-                </ListItem>
-              )
-          }
-        }
-        )
+        {
+        reviews.slice(
+          -(sizePage * currentPage), 
+          (reviews.length - sizePage * currentPage) + sizePage
+        ).map((item, index) => {
+          console.log(index);
+            return (
+              <ListItem margin="0 0 22px 0" padding="10" bgColor={COLOR.white} key={item.id}>
+                <Span fontSize="24" lineHeight="30">
+                  {item.userName}
+                </Span>
+                <Paragraph margin="20px 0 0 0" fontWeight="400">
+                  {item.reviewsText}
+                </Paragraph>
+              </ListItem>
+            )
+        })
         }
       </UnorderedList>
       <FlexBox
-        maxWidth="600"
+        maxWidth="700"
         width={100}
         margin="0 auto"
         padding="16px"
         flexDirection="column"
-        columnGap="20"
       >
         <Modal
           title="Ваш отзыв"
@@ -104,7 +133,34 @@ export const ReviewsPage  = () => {
           onCancel={handleCancel}
           onSubmit={handleSubmit}
         >
-          
+          <FlexBox
+            maxWidth="680"
+            width={100}
+            margin="0 auto"
+            padding="16px"
+            flexDirection="column"
+          >
+            <Label margin="0  0 10px 0" fontWeight="600">
+              ИМЯ
+            </Label>
+            <Input
+              margin="0 0 20px 0"
+              type="text" 
+              placeholder="Имя"                 
+              onChange={(e) => inputHandleChange(e)}
+              value={name}
+            />
+            <Label margin="0 0 10px 0" fontWeight="600">
+              КOММЕНТАРИЙ
+            </Label>
+            <Textarea
+              maxWidth=""
+              height="150"
+              placeholder="Комментарий"
+              onChange={(e) => textareaHandleChange(e)}
+              value={review}
+            />
+          </FlexBox>
         </Modal>
       </FlexBox>
     </Box>

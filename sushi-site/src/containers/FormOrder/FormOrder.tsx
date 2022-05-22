@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
+import { sendOrdering } from "../../api/fetchRequest/fetchOrder";
 import { Box } from "../../components/common-components/Box/Box";
 import { Button } from "../../components/common-components/Button/Button";
 import { CustomNavLink } from "../../components/common-components/CustomNavLink/CustomNavLink";
@@ -29,6 +30,7 @@ interface IOrderProps {
 export const FormOrder = () => {
     const [countStick, setCountStick] = useState(0);
     const [countSouse, setCountSouse] = useState(0);
+    const [sum, setSum] = useState(0);
 
     const [isActivePaymentMethod, setIsActivePaymentMethod] = useState(false);
     const [isActiveDeliveryMethod, setIsActiveDeliveryMethod] = useState(false);
@@ -41,13 +43,24 @@ export const FormOrder = () => {
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
     const [nameOwner, setNameOwner] = useState('');
-    const [cvv, setCvv] = useState('')
+    const [cvv, setCvv] = useState('');
+    const [comment, setComment] = useState('');
+    const [promo, setPromo] = useState('');
+    const [street, setStreet] = useState('');
+    const [house, setHouse] = useState(0);
+    const [apartment, setApartment] = useState(0);
+    const [floor, setFloor] = useState(0);
+    const [code, setCode] = useState(0);
 
     const [emailError, setEmailError] = useState<(string | boolean)>(false)
     const [error, setError] = useState<(string | boolean)[]>([]);
 
     const [inputIsDirty, setInputIsDirty] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
+
+    const isDisabled = useMemo(() => {
+        return !!error.length
+    }, [error])
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>): void => {
         setInputIsDirty(true)
@@ -75,7 +88,7 @@ export const FormOrder = () => {
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
         switch (e.target.id) {
             case 'phone':
-                setName(e.target.value)
+                setPhone(e.target.value)
                 phoneMask(e.target.value, setPhone);
                 break;
             case 'inputName':
@@ -89,24 +102,47 @@ export const FormOrder = () => {
             case 'cardNumb':
                 cardNumberMask(e.target.value, setCardNumber);
                 break;
-            case 'month':
-                setMonth(e.target.value);
-                break;
-            case 'year':
-                setYear(e.target.value);
-                break;
-            case 'cvv':
-                setCvv(e.target.value);
-                break;
-            case 'nameOwner':
-                setNameOwner(e.target.value);
+            case 'sum':
+                setSum(Number(e.target.value));
+                break;  
+            case 'comments':
+                setComment(e.target.value);
                 break; 
+            case 'promo':
+                setPromo(e.target.value);
+                break;     
             default:
                 break;
         }
     }
+
+    const sendOrder = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const data = {
+            phone: phone,
+            name: name,
+            cash: !isActivePaymentMethod,
+            card: isActivePaymentMethod,
+            sum: sum,
+            comments: comment,
+            sticks: countStick,
+            souse: countSouse,
+            promo: promo,
+            courier: !isActiveDeliveryMethod,
+            pickup: isActiveDeliveryMethod,
+            street: street,
+            house: house,
+            apartment: apartment,
+            floor: floor,
+            code: code,
+            email: email,
+        }
+        const orderList = JSON.stringify(data)
+        console.log(orderList)
+        sendOrdering(data);
+    }
     return (
-        <Form>
+        <Form onSubmit={sendOrder}>
             <SecondLevelHeading margin="0 0 30px 0">Ваши данные</SecondLevelHeading>
             <FlexBox margin="0 0 40px 0" columnGap="40">
                 <FlexBox flexDirection="column" rowGap="20" width='360'>
@@ -172,7 +208,7 @@ export const FormOrder = () => {
                                     placeholder="Month" 
                                     type='number' 
                                     min={0} 
-                                    max={31}
+                                    max={12}
                                     value={month}
                                     onChange={handleInput}
                                 />
@@ -182,7 +218,6 @@ export const FormOrder = () => {
                                     placeholder="Year" 
                                     type='number' 
                                     min={0} 
-                                    max={12}
                                     value={year}
                                     onChange={handleInput}
                                 />
@@ -215,14 +250,23 @@ export const FormOrder = () => {
                             />
                             <Label htmlFor="frmCheckbox" margin="0 10px 0 0"><Span/> Подготовить сдачу с</Label>
                             <Input 
+                                id='sum'
                                 width="152" 
                                 placeholder="Сумма" 
                                 type='number' 
+                                value={sum}
+                                onChange={handleInput}
                                 min={0}
                             />
                         </FlexBox>
                     }
-                    <Input width={100} placeholder="Комменатрий к заказу"></Input>
+                    <Input 
+                        id='comments'
+                        value={comment}
+                        onChange={handleInput}
+                        width={100}     
+                        placeholder="Комменатрий к заказу"
+                    />
                     <FlexBox justifyContent="space-between" width={100}>
                         <Paragraph margin="0 57px 0 0">Палочки</Paragraph>
                         <FlexBox>
@@ -352,7 +396,7 @@ export const FormOrder = () => {
                     </Box> 
                 </FlexBox>
             </FlexBox>
-            <Button type='submit' width={100} margin='0 0 12px 0'>Оформить заказ</Button>
+            <Button type='submit' width={100} margin='0 0 12px 0'disabled={isDisabled}>Оформить заказ</Button>
             <Paragraph 
                 textAlign="center" 
                 fontWeight="400" 

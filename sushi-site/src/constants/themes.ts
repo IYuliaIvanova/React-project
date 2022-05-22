@@ -10,6 +10,7 @@ export const themes = {
         black: '#000000',
         red: '#FF0000',
         modalOverlay: 'rgba(0, 0, 0, 0.5)',
+        borderLoader: 'rgba(126, 125, 124, 0.386)',
     },
     media: {
         phone: '(max-width: 600px)',

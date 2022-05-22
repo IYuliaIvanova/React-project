@@ -15,6 +15,7 @@ import { Textarea } from "../../components/common-components/TextArea/TextArea";
 import { COLOR } from "../../constants/color-constants";
 import { addAsyncReviews, addReviews } from "../../redux/actions/reviewsActionCreators/actionCreators";
 import { RootState } from "../../redux/reducers";
+import { inputValidationError } from "../../utils/validation"
 
 export const ReviewsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,6 +27,8 @@ export const ReviewsPage = () => {
   const [name, setName] = useState("");
 
   const [review, setReview] = useState("");
+
+  const [errors, setErrors] = useState({name: "", review: ""});
 
   const dispatch = useDispatch();
 
@@ -54,10 +57,26 @@ export const ReviewsPage = () => {
     setReview("")
   };
 
+  
   const handleSubmit = () => {
+    inputValidationError(name, (messages) => {
+      const errorMessage = messages[0] as string;
+      setErrors((prevState) => ({...prevState, name: errorMessage}) );
+    })
+
+    inputValidationError(review, (messages) => {
+      const errorMessage = messages[0] as string
+      setErrors((prevState) => ({...prevState, review: errorMessage}) );
+    })
+
+    if((errors.name && errors.review) || (!name && !review)) {
+      return;
+    }
+
     dispatchedAddReview();
     setIsOpen(false);
     onResetAllFields();
+    
   }
 
   const handleCancel = () => {
@@ -110,8 +129,7 @@ export const ReviewsPage = () => {
           -(sizePage * currentPage), 
           (reviews.length - sizePage * currentPage) + sizePage
         ).map((item, index) => {
-          console.log(index);
-            return (
+          return (
               <ListItem margin="0 0 22px 0" padding="10" bgColor={COLOR.white} key={item.id}>
                 <Span fontSize="24" lineHeight="30">
                   {item.userName}
@@ -148,13 +166,13 @@ export const ReviewsPage = () => {
               ИМЯ
             </Label>
             <Input
-              margin="0 0 20px 0"
               type="text" 
               placeholder="Имя"                 
               onChange={(e) => inputHandleChange(e)}
               value={name}
             />
-            <Label margin="0 0 10px 0" fontWeight="600">
+            <Span color={COLOR.red}>{errors.name}</Span>
+            <Label margin="20px 0 10px 0" fontWeight="600">
               КOММЕНТАРИЙ
             </Label>
             <Textarea
@@ -164,6 +182,7 @@ export const ReviewsPage = () => {
               onChange={(e) => textareaHandleChange(e)}
               value={review}
             />
+            <Span color={COLOR.red}>{errors.review}</Span>
           </FlexBox>
         </Modal>
       </FlexBox>

@@ -49,11 +49,15 @@ export const ReviewsPage = () => {
     setIsOpen(true);
   }
 
+  const onResetAllFields = () => {
+    setName("");
+    setReview("")
+  };
+
   const handleSubmit = () => {
     dispatchedAddReview();
     setIsOpen(false);
-    setName(name => name="");
-    setReview(review => review="");
+    onResetAllFields();
   }
 
   const handleCancel = () => {

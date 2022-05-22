@@ -34,8 +34,8 @@ export const Button = styled.button<IButtonProps>`
   cursor: pointer;
 
   &:hover{
-    color: ${p => p.colorHover || themes.colors.smokyBlack};
-    background-color: ${p => p.bgColorHover || themes.colors.gray95};
+    color: ${p => p.colorHover || themes.colors.gray95};
+    background-color: ${p => p.bgColorHover || themes.colors.pinkishOrange};
   }
 
   &:active{

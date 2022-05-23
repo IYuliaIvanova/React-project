@@ -92,6 +92,14 @@ export const ReviewsPage = () => {
 
   const handleCancel = () => {
     setIsOpen(false);
+
+    setErrors((prevState) => (
+      { ...prevState, name: ""}
+      ));
+    
+    setErrors((prevState) => (
+        { ...prevState, review: "" }
+      ));
   }
 
   const inputHandleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {

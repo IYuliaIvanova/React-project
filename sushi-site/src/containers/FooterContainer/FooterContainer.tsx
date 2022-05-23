@@ -23,7 +23,8 @@ export const FooterContainer = () =>{
     const [phone, setPhone] = useState('+375 (**) ***-**-**');
 
     const handleInputPhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        phoneMask(e.target.value, setPhone);
+        const mask = phoneMask(e.target.value);
+        setPhone(mask)
     } 
 
     return (

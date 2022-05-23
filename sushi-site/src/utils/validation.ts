@@ -1,4 +1,5 @@
 import React from "react";
+import { CARD_NUMB_REG, EMAIL_REG, PHONE_REG } from "../constants/regex";
 
 export interface IValidator {
     validFunc(inputValue: string, validCount: number): boolean,
@@ -23,17 +24,17 @@ export const inputValidationError = (inputValue: string, setErrors:(error: (stri
     setErrors(errors)
 };
 
-export const phoneMask = (inputValue: string, setPhone: (arg: string) => void) => {
-    const result = inputValue.replaceAll(/\D/g, '').match(/(\d{0,3})(\d{0,2})(\d{0,3})(\d{0,2})(\d{0,2})/);
+export const phoneMask = (inputValue: string) => {
+    const result = inputValue.replaceAll(/\D/g, '').match(PHONE_REG);
     if (result) {
         const [ numbOne, numbTwo, numbThree, numbFour, numbFive, numbSix ] = result;
         inputValue = `+${numbTwo} (${numbThree})-${numbFour}-${numbFive}-${numbSix}`;
     }
-    setPhone(inputValue);
+    return inputValue;
 }
 
 export const validEmailError = (inputValue: string, setError:(error: (string | boolean)) => void) => {
-    const reg = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    const reg = EMAIL_REG;
     if(!reg.test(inputValue.toLowerCase()) && inputValue !==''){
         setError('Ошибка, введите правильно почту __@__.__')
     } else {
@@ -42,7 +43,7 @@ export const validEmailError = (inputValue: string, setError:(error: (string | b
 };
 
 export const cardNumberMask = (inputValue: string, setCardNumber: (arg: string) => void) => {
-    const result = inputValue.replaceAll(/\D/g, '').match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
+    const result = inputValue.replaceAll(/\D/g, '').match(CARD_NUMB_REG);
     if (result) {
         const [ numbOne, numbTwo, numbThree, numbFour, numbFive ] = result;
         inputValue = `${numbTwo} ${numbThree} ${numbFour} ${numbFive}`;

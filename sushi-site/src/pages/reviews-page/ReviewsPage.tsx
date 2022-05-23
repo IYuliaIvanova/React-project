@@ -16,6 +16,11 @@ import { COLOR } from "../../constants/color-constants";
 import { addAsyncReviews, addReviews } from "../../redux/actions/reviewsActionCreators/actionCreators";
 import { RootState } from "../../redux/reducers";
 import { inputValidationError } from "../../utils/validation"
+import { Loader } from "../../components/common-components/Loader/Loader";
+interface IError {
+  name: string | boolean,
+  review: string | boolean,
+}
 
 export const ReviewsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,7 +33,7 @@ export const ReviewsPage = () => {
 
   const [review, setReview] = useState("");
 
-  const [errors, setErrors] = useState({ name: "", review: "" });
+  const [errors, setErrors] = useState<IError>({ name: "", review: "" });
 
   const dispatch = useDispatch();
 
@@ -42,7 +47,7 @@ export const ReviewsPage = () => {
 
   const dispatchedAddPosts = () => dispatch(addAsyncReviews())
   
-  const { reviews } = useSelector((state: RootState) => state.reviews)
+  const { reviews, isLoading } = useSelector((state: RootState) => state.reviews)
 
   useEffect(() => {
     dispatchedAddPosts()
@@ -61,14 +66,15 @@ export const ReviewsPage = () => {
   
   const handleSubmit = () => {
     inputValidationError(name, (messages) => {
-      const errorMessage = messages[0] as string;
+      const [ errorMessage, ...otherMes ] = messages;
       setErrors((prevState) => (
-        { ...prevState, name: errorMessage }
+        { ...prevState, name: errorMessage}
       ));
     })
 
+
     inputValidationError(review, (messages) => {
-      const errorMessage = messages[0] as string
+      const [ errorMessage, ...otherMes ] = messages
       setErrors((prevState) => (
         { ...prevState, review: errorMessage }
       ));
@@ -129,22 +135,22 @@ export const ReviewsPage = () => {
         </Button>
       </FlexBox>
       <UnorderedList margin="0 0 30px 0">
-        {
-        reviews.slice(
-          -(sizePage * currentPage), 
-          (reviews.length - sizePage * currentPage) + sizePage
-        ).map((item, index) => {
-          return (
-              <ListItem margin="0 0 22px 0" padding="10" bgColor={COLOR.white} key={item.id}>
-                <Span fontSize="24" lineHeight="30">
-                  {item.userName}
-                </Span>
-                <Paragraph margin="20px 0 0 0" fontWeight="400">
-                  {item.reviewsText}
-                </Paragraph>
-              </ListItem>
-            )
-        })
+        { isLoading ? <Loader/> :
+          reviews.slice(
+            -(sizePage * currentPage), 
+            (reviews.length - sizePage * currentPage) + sizePage
+          ).map((item, index) => {
+            return (
+                <ListItem margin="0 0 22px 0" padding="10" bgColor={COLOR.white} key={item.id}>
+                  <Span fontSize="24" lineHeight="30">
+                    {item.userName}
+                  </Span>
+                  <Paragraph margin="20px 0 0 0" fontWeight="400">
+                    {item.reviewsText}
+                  </Paragraph>
+                </ListItem>
+              )
+          })
         }
       </UnorderedList>
       <FlexBox

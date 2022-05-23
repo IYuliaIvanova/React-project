@@ -36,6 +36,8 @@ export const FormOrder = () => {
     const [isActiveDeliveryMethod, setIsActiveDeliveryMethod] = useState(false);
     const [isActiveTimeMethod, setIsActiveTimeMethod] = useState(false);
 
+    const [formData, setFormData] = useState({phone: "", name: ""})
+
     const [phone, setPhone] = useState('+375 (**) ***-**-**');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -89,12 +91,20 @@ export const FormOrder = () => {
         e.preventDefault();
         switch (e.target.id) {
             case 'phone':
-                setPhone(e.target.value)
-                phoneMask(e.target.value, setPhone);
+                const phone = phoneMask(e.target.value);
+                setPhone(phone);
+
+                formData.phone = phone;
+                setFormData(formData);
+
                 break;
             case 'inputName':
                 setName(e.target.value)
                 inputValidationError(e.target.value, setError);
+
+                formData.name = e.target.value;
+                setFormData(formData)
+
                 break;
             case 'inputEmail':
                 setEmail(e.target.value)
@@ -119,8 +129,9 @@ export const FormOrder = () => {
 
     const sendOrder = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        
         const data = {
-            phone: phone,
+            phone: formData.phone,
             name: name,
             cash: !isActivePaymentMethod,
             card: isActivePaymentMethod,
@@ -389,7 +400,8 @@ export const FormOrder = () => {
                             onBlur={handleBlur} 
                             onChange={handleInput}
                         />
-                        {(inputIsDirty && emailError) && <ErrorText>{emailError}</ErrorText>}
+                        {/* {(inputIsDirty && emailError) && <ErrorText>{emailError}</ErrorText>} */}
+                        {(inputIsDirty && error) && <ErrorText>{error}</ErrorText>}
                     </Box> 
                 </FlexBox>
             </FlexBox>

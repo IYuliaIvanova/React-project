@@ -18,13 +18,13 @@ export const Categories = () => {
             rowGap={isMobile ? "10" : "30"}
             flexWrap="wrap"
         >
-            {isMobile ? CATEGORIES_DATA_MOBILE.map(({ id, img, p }) => {
+            {isMobile ? CATEGORIES_DATA_MOBILE.map(({ id, img, children }) => {
                 return (
-                        <CategoriesItem key={id} id={id} img={img} children={p}/>
+                        <CategoriesItem key={id} id={id} img={img} children={children}/>
                 )
-            }) : CATEGORIES_DATA_DESKTOP.map(({ id, img, p }) => {
+            }) : CATEGORIES_DATA_DESKTOP.map(({ id, img, children }) => {
                 return (
-                        <CategoriesItem key={id} id={id} img={img} children={p}/>
+                        <CategoriesItem key={id} id={id} img={img} children={children}/>
                 )
             })}
         </FlexBox>

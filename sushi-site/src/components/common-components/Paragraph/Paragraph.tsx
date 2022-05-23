@@ -49,5 +49,3 @@ export const Paragraph = styled.p<IParagraphProps>`
     right: ${p.right}px;` : 'relative'
   )};
 `
-
-// color: ${p => p.$activeColor ? p.$activeColor : p.theme.colors.smokyBlack || p.color}; знаю что нельзя оставлять но нужнооо)))

@@ -7,6 +7,7 @@ import { ListItem } from "../../components/common-components/ListItem/ListItem";
 import { Paragraph } from "../../components/common-components/Paragraph/Paragraph";
 import { UnorderedList } from "../../components/common-components/UnorderedList/UnorderedList";
 import { COLOR } from "../../constants/color-constants";
+import { HIDDEN_TEXT_LIST_ITEM_DATA } from "../../constants/hidden-text-constants";
 
 export const HiddenText = () => {
     return (
@@ -42,10 +43,13 @@ export const HiddenText = () => {
                     margin="0 0 42px 0"
                 >
                     <Paragraph margin="0 0 10px 0" color={COLOR.silverGray}>Ресторан “Суши и Лапша” предлагаем своим клиентам самые вкусные суши с доставкой на дом, приготовленные по классическим и адаптированным к европейской аудитории рецептам, а также собственным наработкам наших поваров. Мы ценим время наших клиентов, поэтому вы можете заказать суши в Харькове с доставкой на дом или в офис.</Paragraph>
-                    <UnorderedList color={COLOR.silverGray}>В нашем меню более 20 видов суши:
-                        <ListItem color={COLOR.silverGray}>Классические с сырым лососем, тунцом, окунем.</ListItem>
-                        <ListItem color={COLOR.silverGray}>Экзотические с тигровой креветкой, морским гребешком.</ListItem>
-                        <ListItem color={COLOR.silverGray}>Пикантные с копченым лососем, угрем.</ListItem>
+                    <UnorderedList color={COLOR.silverGray}>
+                        В нашем меню более 20 видов суши:
+                        {HIDDEN_TEXT_LIST_ITEM_DATA.map(({ id, children}) => {
+                            return (
+                                <ListItem key={id} color={COLOR.silverGray}>{children}</ListItem>
+                            )
+                        })}
                     </UnorderedList>
                     <Paragraph margin="0 0 10px 0" color={COLOR.silverGray}>В меню также представлены гунканы: с начинкой из красной икры и тобико, а также феликсы, где японский майонез сочетается с рыбой, морепродуктами, угрем. Любители острых блюд могут купить суши с соусом спайси. Популярные начинки — копченая курица, снежный краб, креветки, гребешки, тунец, лосось и окунь.</Paragraph>
                     <Box 

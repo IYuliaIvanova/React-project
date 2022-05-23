@@ -1,5 +1,5 @@
 import { INewSushiSets } from "../constants/new-sushi-sets";
-import { CHEAP, EXPENSIVE, PIECE, TITLE, WEIGHT } from "../constants/sort-items-constants";
+import { CHEAP, EXPENSIVE, PIECES_COUNT, TITLE, WEIGHT } from "../constants/sort-items-constants";
 
 export const productCardsSort = (sortValue: string, setArray: (value: any) => void, array: INewSushiSets[]) => { // типизация ???
     const copySushiSets = [...array]
@@ -16,7 +16,7 @@ export const productCardsSort = (sortValue: string, setArray: (value: any) => vo
             return setArray(
                 copySushiSets.sort((a, b) => a.price < b.price ? 1 : -1)
             );
-        case PIECE:
+        case PIECES_COUNT:
             return setArray(
                 copySushiSets.sort((a, b) => a.pieces > b.pieces ? 1 : -1)
             );

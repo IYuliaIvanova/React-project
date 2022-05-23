@@ -6,7 +6,7 @@ export const DEFAULT = "По умолчанию";
 export const TITLE = "Название";
 export const CHEAP = "Сначала дешевле";
 export const EXPENSIVE = "Сначала дороже";
-export const PIECE = "Количество кусочков";
+export const PIECES_COUNT = "Количество кусочков";
 export const WEIGHT = "Вес";
 
 export const SortItemsConstants: ISortItemsConstantsProps[] = [

@@ -29,6 +29,7 @@ interface IFlexBoxProps {
   rowGap?: string;
   borderRadius?: string;
   boxShadow?: string;
+  offset?: number;
 }
 
  export const FlexBox = styled.div<IFlexBoxProps>`
@@ -64,4 +65,5 @@ interface IFlexBoxProps {
     overflow: ${p => p.overflow};
     transition: all 0.5s linear;
     row-gap: ${p => p.rowGap}px;
+    transform: ${p => `translateX(${p.offset}px)`};
  `

@@ -27,7 +27,7 @@ export const MainSlider = ({ windowWidth, amountOfCards, children }: ICarouselPr
                 >
                     <FlexBox
                         width={100}
-                        style={{transform: `translateX(${offset}px)`}}
+                        offset={offset}
                         justifyContent="flex-start"
                     >
                         {children}

@@ -1,7 +1,7 @@
 import React from "react";
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Box } from "../../components/common-components/Box/Box";
-import { BiggestFila } from "../../assets";
+// import { BiggestFila } from "../../assets";
 import { Paragraph } from "../../components/common-components/Paragraph/Paragraph";
 import { MinusButton } from "../../components/product-description-components/MinusButton";
 import { Span } from "../../components/common-components/Span/Span";
@@ -19,7 +19,7 @@ export const ProductCardInCart = ({ title, price }: IProductCardInCartProps) => 
                 <Box
                     width="70"
                     height="47"
-                    backgroundImage={BiggestFila}
+                    backgroundImage={require('../../assets/img/sushiSetsImg/biggestFila.png')}
                     margin="0 7px 0 0"
                 />
                 <Box>

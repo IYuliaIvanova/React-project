@@ -1,27 +1,21 @@
-import React, { Component } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import ReactDOM from 'react-dom';
 
 interface IPortalProps {
     children: React.ReactNode;
 }
 
-interface IPortalState {}
+export const Portal = ({ children }: IPortalProps) => {
 
-class Portal extends Component<IPortalProps, IPortalState> {
+    const el: HTMLDivElement = useMemo(() => 
+        document.createElement ( 'div' )
+    , []);
 
-    private el: HTMLDivElement = document.createElement('div');
-
-    public componentDidMount(): void {
-        document.body.appendChild(this.el);
-    }
-
-    public componentWillUnmount(): void {
-        document.body.removeChild(this.el);
-    }
-
-    public render(): React.ReactElement<IPortalProps> {
-        return ReactDOM.createPortal(this.props.children, this.el);
-    }
+    useEffect(() => {
+        document.body.appendChild(el);
+        return () => {
+            document.body.removeChild(el);
+          };
+    }, [el])
+        return ReactDOM.createPortal(children, el);
 }
-
-export default Portal;

@@ -3,7 +3,7 @@ import { Box } from "../../components/common-components/Box/Box";
 import { Button } from "../../components/common-components/Button/Button";
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { SecondLevelHeading } from "../../components/common-components/SecondLevelHeading/SecondLevelHeading";
-import  Portal  from "../../components/form-ordering-components/Portal";
+import { Portal } from "../../components/form-ordering-components/Portal";
 import { ModalOverlay } from "../../components/modal-components/ModalOverlay";
 import { ModalWindow } from "../../components/modal-components/ModalWindow";
 
@@ -14,7 +14,6 @@ interface IModalProps {
     onSubmit: (e: React.MouseEvent<HTMLButtonElement>) => void;
     children: React.ReactNode;
 }
-
 
 export const Modal = ({ title, isOpen, onCancel, onSubmit, children }: IModalProps) => {
     return (
@@ -43,13 +42,3 @@ export const Modal = ({ title, isOpen, onCancel, onSubmit, children }: IModalPro
         </>
     )
 }
-
-Modal.defaultProps = {
-    title: 'Modal window',
-    isOpen: false,
-    onCancel: () => {},
-    onSubmit: () => {},
-    children: 'No Content in Modal Window now'
-};
-
-Modal.displayName = 'Modal';

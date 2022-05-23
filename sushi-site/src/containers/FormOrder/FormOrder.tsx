@@ -86,6 +86,7 @@ export const FormOrder = () => {
     }
 
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        e.preventDefault();
         switch (e.target.id) {
             case 'phone':
                 setPhone(e.target.value)
@@ -137,8 +138,6 @@ export const FormOrder = () => {
             code: code,
             email: email,
         }
-        const orderList = JSON.stringify(data)
-        console.log(orderList)
         sendOrdering(data);
     }
     return (
@@ -243,8 +242,6 @@ export const FormOrder = () => {
                         <FlexBox width={100} justifyContent="space-between">
                             <OrderingCheckbox 
                                 type='checkbox'
-                                opacity="0" 
-                                position="absolute"
                                 id="frmCheckbox"
                                 onClick={handleCheckbox}
                             />

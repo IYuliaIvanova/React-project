@@ -4,12 +4,12 @@ import { Span } from "../../components/common-components/Span/Span";
 import { COLOR } from "../../constants/color-constants";
 import { Paragraph } from "../../components/common-components/Paragraph/Paragraph";
 import { ISortItemsConstantsProps } from "../../constants/sort-items-constants";
-import {INewSushiSets, NEW_SUSHI_SETS } from "../../constants/new-sushi-sets";
+import { INewSushiSets, NEW_SUSHI_SETS } from "../../constants/new-sushi-sets";
 
 interface ISortSelectProps {
     dataSelect: ISortItemsConstantsProps[];
-    productCardsSort: (value: string, setArray: (value: any) => void, array: INewSushiSets[]) => void; // как протипизировать
-    setArray: (value: any) => void; // как протипизировать
+    productCardsSort: (value: string, setArray: (value: any) => void, array: INewSushiSets[]) => void;
+    setArray: (value: any) => void;
 }
 
 export const SortSelect = ({ dataSelect, productCardsSort, setArray }: ISortSelectProps) => {

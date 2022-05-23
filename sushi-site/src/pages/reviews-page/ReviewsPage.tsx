@@ -28,15 +28,16 @@ export const ReviewsPage = () => {
 
   const [review, setReview] = useState("");
 
-  const [errors, setErrors] = useState({name: "", review: ""});
+  const [errors, setErrors] = useState({ name: "", review: "" });
 
   const dispatch = useDispatch();
 
-  const dispatchedAddReview = () => dispatch(addReviews({
-    id: review.length+1,
-    userName: name,
-    reviewsText: review
-  })
+  const dispatchedAddReview = () => dispatch(
+    addReviews({
+      id: review.length + 1,
+      userName: name,
+      reviewsText: review,
+    })
   );
 
   const dispatchedAddPosts = () => dispatch(addAsyncReviews())
@@ -61,12 +62,16 @@ export const ReviewsPage = () => {
   const handleSubmit = () => {
     inputValidationError(name, (messages) => {
       const errorMessage = messages[0] as string;
-      setErrors((prevState) => ({...prevState, name: errorMessage}) );
+      setErrors((prevState) => (
+        { ...prevState, name: errorMessage }
+      ));
     })
 
     inputValidationError(review, (messages) => {
       const errorMessage = messages[0] as string
-      setErrors((prevState) => ({...prevState, review: errorMessage}) );
+      setErrors((prevState) => (
+        { ...prevState, review: errorMessage }
+      ));
     })
 
     if((errors.name && errors.review) || (!name && !review)) {

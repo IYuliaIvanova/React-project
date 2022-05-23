@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Box } from "../../components/common-components/Box/Box";
-import { BiggestFila } from "../../assets";
+// import { BiggestFila } from "../../assets";
 import { ThirdLevelHeading } from "../../components/common-components/ThirdLevelHeading/ThirdLevelHeading";
 import { Span } from "../../components/common-components/Span/Span";
 import { PlusButton } from "../../components/product-description-components/PlusButton";
@@ -33,7 +33,7 @@ export const ProductDescription = ({ id, title, price, weight, }: IProductDescri
                 maxWidth="620"
                 width={100}
                 height="435"
-                backgroundImage={BiggestFila}
+                backgroundImage={require('../../assets/img/sushiSetsImg/biggestFila.png')}
                 margin="0 30px 0 0"
             />
             <Box padding="0 16px 0 0 ">

@@ -33,13 +33,18 @@ export const Button = styled.button<IButtonProps>`
   transition: all 0.5s linear;
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     color: ${p => p.colorHover || themes.colors.gray95};
     background-color: ${p => p.bgColorHover || themes.colors.pinkishOrange};
   }
 
-  &:active{
+  &:active {
     color: ${p => p.colorActive || themes.colors.white};
-    background-color: ${p => p.bgColorHover || themes.colors.silverGray};
+    background-color: ${p => p.bgColorActive || themes.colors.silverGray};
+  }
+
+  &:disabled {
+    color: ${themes.colors.gray95};
+    background-color: ${themes.colors.silverGray};
   }
 `

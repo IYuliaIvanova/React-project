@@ -8,6 +8,7 @@ import { Form } from "../../components/common-components/Form/Form";
 import { Image } from "../../components/common-components/Image/Image";
 import { Input } from "../../components/common-components/Input/Input";
 import { Label } from "../../components/common-components/Label/Label";
+import { Loader } from "../../components/common-components/Loader/Loader";
 import { Paragraph } from "../../components/common-components/Paragraph/Paragraph";
 import { SecondLevelHeading } from "../../components/common-components/SecondLevelHeading/SecondLevelHeading";
 import { Span } from "../../components/common-components/Span/Span";
@@ -20,12 +21,6 @@ import { PlusButton } from "../../components/product-description-components/Plus
 import { COLOR } from "../../constants/color-constants";
 import { getDecrement, getIncrement } from "../../utils/counters";
 import { cardNumberMask, inputValidationError, phoneMask, validEmailError } from "../../utils/validation";
-interface IOrderProps {
-    phone: number;
-    name: string;
-    numbers: number;
-    email: string;
-}
 
 export const FormOrder = () => {
     const [countStick, setCountStick] = useState(0);
@@ -35,8 +30,6 @@ export const FormOrder = () => {
     const [isActivePaymentMethod, setIsActivePaymentMethod] = useState(false);
     const [isActiveDeliveryMethod, setIsActiveDeliveryMethod] = useState(false);
     const [isActiveTimeMethod, setIsActiveTimeMethod] = useState(false);
-
-    const [formData, setFormData] = useState({phone: "", name: ""})
 
     const [phone, setPhone] = useState('+375 (**) ***-**-**');
     const [name, setName] = useState('');
@@ -61,8 +54,8 @@ export const FormOrder = () => {
     const [isChecked, setIsChecked] = useState(false);
 
     const isDisabled = useMemo(() => {
-        return !!error.length
-    }, [error])
+        return !!error.length || !!emailError
+    }, [error, emailError, phone])
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>): void => {
         setInputIsDirty(true)
@@ -93,18 +86,10 @@ export const FormOrder = () => {
             case 'phone':
                 const phone = phoneMask(e.target.value);
                 setPhone(phone);
-
-                formData.phone = phone;
-                setFormData(formData);
-
                 break;
             case 'inputName':
                 setName(e.target.value)
                 inputValidationError(e.target.value, setError);
-
-                formData.name = e.target.value;
-                setFormData(formData)
-
                 break;
             case 'inputEmail':
                 setEmail(e.target.value)
@@ -129,9 +114,8 @@ export const FormOrder = () => {
 
     const sendOrder = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        
         const data = {
-            phone: formData.phone,
+            phone: phone,
             name: name,
             cash: !isActivePaymentMethod,
             card: isActivePaymentMethod,
@@ -400,12 +384,20 @@ export const FormOrder = () => {
                             onBlur={handleBlur} 
                             onChange={handleInput}
                         />
-                        {/* {(inputIsDirty && emailError) && <ErrorText>{emailError}</ErrorText>} */}
-                        {(inputIsDirty && error) && <ErrorText>{error}</ErrorText>}
+                        {(inputIsDirty && emailError) && <ErrorText>{emailError}</ErrorText>}
                     </Box> 
                 </FlexBox>
             </FlexBox>
-            <Button type='submit' width={100} margin='0 0 12px 0'disabled={isDisabled}>Оформить заказ</Button>
+            <Button 
+                type='submit' 
+                width={100} 
+                margin='0 0 12px 0'
+                disabled={isDisabled}
+                bgColorHover={COLOR.pastelOrange}
+                bgColorActive={COLOR.red}
+            >
+                Оформить заказ
+            </Button>
             <Paragraph 
                 textAlign="center" 
                 fontWeight="400" 

@@ -8,13 +8,15 @@ import { UnorderedList } from "../../components/common-components/UnorderedList/
 import { ListItem } from "../../components/common-components/ListItem/ListItem";
 import { COLOR } from "../../constants/color-constants";
 import { MAIN_NAVIGATION } from "../../constants/main-navigation-constants";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { themes } from "../../constants/themes";
 
 export const MainNavigation = () => {
+    const isMobile = useMediaQuery(themes.media.phone);
     return (
         <Box
             padding="26px 40px 0 100px"
             maxWidth="320"
-            width={100}
             textAlign="center"
         >
             <CustomNavLink
@@ -27,7 +29,7 @@ export const MainNavigation = () => {
             </CustomNavLink>
             <Navigation
                 display="inline-block"
-                width="180"
+                maxWidth="180"
                 padding="31px 0 0 20px"
                 borderTop={`.5px solid ${COLOR.silverGray}`}
             >

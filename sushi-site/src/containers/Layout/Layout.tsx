@@ -12,14 +12,14 @@ export const Layout = () => {
     const isMobile = useMediaQuery(themes.media.phone);
     
     return (
-        <FlexBox alignItems="start">
-            <MainNavigation/>
-            <FlexBox alignSelf="auto" width={isMobile ? "365" : "1170"} flexDirection="column">
+        <FlexBox alignItems="start" justifyContent="center">
+            {!isMobile && <MainNavigation/>}
+            <FlexBox alignSelf="auto" width={100} maxWidth={isMobile ? '365' : '1170'} flexDirection="column">
                 <HeaderContainer/>
                 <Outlet/>
                 <FooterContainer/>
             </FlexBox>
-            <RightSidebar/>
+            {!isMobile && <RightSidebar/>}
         </FlexBox>
     )
 }

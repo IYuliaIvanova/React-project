@@ -1,0 +1,1 @@
+export const FOOTER_PHONE_MASK = '+996 (__) ___ __ __';

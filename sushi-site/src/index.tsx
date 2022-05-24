@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import { themes } from './constants/themes';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./redux/store/store";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -19,6 +22,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <ThemeProvider theme={themes}>
     <GlobalStyle />
-    <App />
+      <BrowserRouter>
+          <Provider store={store}>
+              <App />
+          </Provider>
+      </BrowserRouter>
   </ThemeProvider>
 );

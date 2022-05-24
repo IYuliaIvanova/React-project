@@ -16,13 +16,8 @@ export const cartReducer = (state = initialState, { payload, type }: TCartAction
             const cond = state.some(item => {
                 return item.id === payload.id;
             });
-            let x
-            if (!cond) {
-                x = [...state, payload]
-            } else {
-                x = state
-            }
-            return x;
+
+            return  cond ? state : [...state, payload];
         default:
             return state;
     }

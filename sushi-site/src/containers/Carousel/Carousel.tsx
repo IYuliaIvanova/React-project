@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import { Box } from "../../components/common-components/Box/Box"
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Image } from "../../components/common-components/Image/Image";
+import { themes } from "../../constants/themes";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 interface ICarousel {
     children: React.ReactNode;
@@ -13,6 +15,8 @@ interface ICarousel {
 
 export const Carousel = ({ children, amountOfCardsOnWindow, windowWidth, amountOfCards, arrowsMargin }: ICarousel) => {
     const [offset, setOffset] = useState(0)
+    const isTabletLandscape = useMediaQuery(themes.media.tabletLandscape);
+    const isDesktop = useMediaQuery(themes.media.desktop);
 
     const handleLeftArrowClick = () => {
         setOffset((currentOffset) => {
@@ -23,14 +27,14 @@ export const Carousel = ({ children, amountOfCardsOnWindow, windowWidth, amountO
 
     const handleRightArrowClick = () => {
         setOffset((currentOffset) => {
-            const newOffset = currentOffset - +windowWidth
+            const newOffset = currentOffset - Number(windowWidth)
             const minOffset = (-Number(windowWidth) * (Math.ceil(amountOfCards / amountOfCardsOnWindow) - 1))
             return Math.max(minOffset, newOffset)
         })
     }
 
     return (
-        <FlexBox position="relative">
+        <FlexBox position="relative" width={isTabletLandscape ? 100 : isDesktop ? '800' :'1170'}>
             <Image
                 onClick={handleLeftArrowClick}
                 cursor="pointer"

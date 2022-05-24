@@ -16,7 +16,7 @@ export const themes = {
         phone: '(max-width: 600px)',
         tabletPortrait: '(max-width: 900px)',
         tabletLandscape: '(max-width: 1200px)',
-        desktop: '(max-width: 1800)',
+        desktop: '(max-width: 1800px)',
         bigDesktop: '(max-width: 2400px)'
     }
 }

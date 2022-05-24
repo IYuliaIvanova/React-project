@@ -4,6 +4,8 @@ import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Button } from "../../components/common-components/Button/Button";
 import { COLOR } from "../../constants/color-constants";
 import { IMainSliderConstantsProps } from "../../constants/main-slider-constants";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { themes } from "../../constants/themes";
 
 interface ICarouselProps {
     windowWidth: string;
@@ -19,7 +21,12 @@ export const MainSlider = ({ windowWidth, amountOfCards, children }: ICarouselPr
     }
 
     return (
-        <FlexBox margin="0 0 30px 0" flexDirection="column" alignItems="center">
+        <FlexBox 
+            margin="0 0 30px 0" 
+            flexDirection="column" 
+            alignItems="center"
+            width={100}
+        >
             <FlexBox margin="0 0 11px 0" width={100} >
                 <Box
                     overflow="hidden"

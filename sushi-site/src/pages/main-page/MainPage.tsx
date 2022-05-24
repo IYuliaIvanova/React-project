@@ -17,7 +17,8 @@ import { mainSliderConstants } from "../../constants/main-slider-constants"
 
 export const MainPage = () => {
     const [typeOfData, setTypeOfData] = useState(NEW_SUSHI_SETS);
-    const isMobile = useMediaQuery(themes.media.phone);
+    const isTabletLandscape = useMediaQuery(themes.media.tabletLandscape);
+    const isDesktop = useMediaQuery(themes.media.desktop);
 
     const changeTypeOfData = (e: React.MouseEvent<HTMLParagraphElement>) => {
         const { target } = e
@@ -36,91 +37,97 @@ export const MainPage = () => {
         <FlexBox
             justifyContent="flex-start"
             flexDirection="column"
-            padding={isMobile ? "20px 15px" : "30px 110px 60px 110px"}
+            padding={isTabletLandscape ? "20px 24px" : "30px 110px 60px 110px"}
             bgColor={COLOR.gray95}
             width={100}
         >
-            <MainSlider windowWidth="950" amountOfCards={mainSliderConstants}>
-                {mainSliderConstants.map(({ id, path }) => {
-                    return (
-                        <Image key={id} src={require(`../../assets/img/mainSliderImg/${path}.png`)}></Image>
-                    )
-                })}
-            </MainSlider>
+            {!isTabletLandscape &&
+                <MainSlider windowWidth={isDesktop ? "580" : "950"} amountOfCards={mainSliderConstants}>
+                    {mainSliderConstants.map(({ id, path }) => {
+                        return (
+                            <Image width={100} key={id} src={require(`../../assets/img/mainSliderImg/${path}.png`)}></Image>
+                        )
+                    })}
+                </MainSlider>
+            }
             <Categories/>
-            <FlexBox margin="0 0 30px 17px" alignSelf="flex-start">
-                <Paragraph
-                    fontSize="24"
-                    lineHeight="30"
-                    margin="0 30px 0 0"
-                    hover
-                    onClick={changeTypeOfData}
-                >
-                    Новинки
-                </Paragraph>
-                <Paragraph
-                    fontSize="24"
-                    lineHeight="30"
-                    hover
-                    onClick={changeTypeOfData}
-                >
-                    Популярное
-                </Paragraph>
-            </FlexBox>
-            <Carousel
-                windowWidth="949"
-                amountOfCardsOnWindow={3}
-                amountOfCards={typeOfData.length}
-                arrowsMargin="51"
-            >
-                {typeOfData.map(({ id, img, title, pieces, price, weight , linkTo }, index) => {
-                    if ((index + 1) % 3 === 0) {
-                        return (
-                            <ProductCard
-                                height="253"
-                                title={title}
-                                pieces={pieces}
-                                price={price}
-                                weight={weight}
-                                key={id}
-                                src={img}
-                                linkTo={`sushiSets/${linkTo}`}
-                                id={id}
-                            />
-                        )
-                    } else if (index === 0) {
-                        return (
-                            <ProductCard
-                                height="253"
-                                title={title}
-                                pieces={pieces}
-                                price={price}
-                                weight={weight}
-                                key={id}
-                                src={img}
-                                margin="0 41px 0 0"
-                                linkTo={`sushiSets/${linkTo}`}
-                                id={id}
-                            />
-                        )
-                    } else {
-                        return (
-                            <ProductCard
-                                height="253"
-                                title={title}
-                                pieces={pieces}
-                                price={price}
-                                weight={weight}
-                                key={id}
-                                src={img}
-                                margin="0 41px 0 0"
-                                linkTo={`sushiSets/${linkTo}`}
-                                id={id}
-                            />
-                        )
-                    }
-                })}
-            </Carousel>
+            {!isTabletLandscape && 
+                <>
+                    <FlexBox margin="0 0 30px 17px" alignSelf="flex-start">
+                        <Paragraph
+                            fontSize="24"
+                            lineHeight="30"
+                            margin="0 30px 0 0"
+                            hover
+                            onClick={changeTypeOfData}
+                        >
+                            Новинки
+                        </Paragraph>
+                        <Paragraph
+                            fontSize="24"
+                            lineHeight="30"
+                            hover
+                            onClick={changeTypeOfData}
+                        >
+                            Популярное
+                        </Paragraph>
+                    </FlexBox>
+                    <Carousel
+                        windowWidth="949"
+                        amountOfCardsOnWindow={isDesktop ? 2 : 3}
+                        amountOfCards={typeOfData.length}
+                        arrowsMargin={isDesktop ? "30" : "51"}
+                    >
+                        {typeOfData.map(({ id, img, title, pieces, price, weight , linkTo }, index) => {
+                            if ((index + 1) % 3 === 0) {
+                                return (
+                                    <ProductCard
+                                        height="253"
+                                        title={title}
+                                        pieces={pieces}
+                                        price={price}
+                                        weight={weight}
+                                        key={id}
+                                        src={img}
+                                        linkTo={`sushiSets/${linkTo}`}
+                                        id={id}
+                                    />
+                                )
+                            } else if (index === 0) {
+                                return (
+                                    <ProductCard
+                                        height="253"
+                                        title={title}
+                                        pieces={pieces}
+                                        price={price}
+                                        weight={weight}
+                                        key={id}
+                                        src={img}
+                                        margin="0 41px 0 0"
+                                        linkTo={`sushiSets/${linkTo}`}
+                                        id={id}
+                                    />
+                                )
+                            } else {
+                                return (
+                                    <ProductCard
+                                        height="253"
+                                        title={title}
+                                        pieces={pieces}
+                                        price={price}
+                                        weight={weight}
+                                        key={id}
+                                        src={img}
+                                        margin="0 41px 0 0"
+                                        linkTo={`sushiSets/${linkTo}`}
+                                        id={id}
+                                    />
+                                )
+                            }
+                        })}
+                    </Carousel>
+                </>
+            }
             <HiddenText/>
         </FlexBox>
     )

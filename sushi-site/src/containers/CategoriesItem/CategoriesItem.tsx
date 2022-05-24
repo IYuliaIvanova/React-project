@@ -13,13 +13,13 @@ interface ICategoriesItemProp {
 }
 
 export const CategoriesItem = ({ id, img, children }: ICategoriesItemProp) => {
-    const isMobile = useMediaQuery(themes.media.phone);
+    const isTabletLandscape = useMediaQuery(themes.media.tabletLandscape);
     
     return (
         <CustomNavLink 
             position="relative"     
-            maxWidth={isMobile ? "330" :"470"}
-            maxHeight={isMobile ? "157" : "200"} 
+            maxWidth={isTabletLandscape ? "330" :"470"}
+            maxHeight={isTabletLandscape ? "157" : "200"} 
             to={'/'}
         >
             <Image width={100} height={100} src={require(`../../assets/img/categoriesImg/${img}.png`)}></Image>

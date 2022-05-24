@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Box } from "../../components/common-components/Box/Box";
-// import { BiggestFila } from "../../assets";
 import { ThirdLevelHeading } from "../../components/common-components/ThirdLevelHeading/ThirdLevelHeading";
 import { Span } from "../../components/common-components/Span/Span";
 import { PlusButton } from "../../components/product-description-components/PlusButton";
@@ -12,6 +11,8 @@ import { Button } from "../../components/common-components/Button/Button";
 import { COLOR } from "../../constants/color-constants";
 import { getDecrement, getIncrement } from "../../utils/counters";
 import { addProduct } from "../../redux/actions/cartActionCreators/actionCreators";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { themes } from "../../constants/themes";
 
 interface IProductDescriptionProps {
     id: string,
@@ -23,12 +24,19 @@ interface IProductDescriptionProps {
 
 export const ProductDescription = ({ id, title, price, weight, }: IProductDescriptionProps) => {
     const [ productDescriptionCounter, setProductDescriptionCounter ] = useState(1)
+    const isTabletLandscape = useMediaQuery(themes.media.tabletLandscape);
+    const isDesktop = useMediaQuery(themes.media.desktop);
 
     const dispatch = useDispatch();
     const dispatchedAddProduct = () => dispatch(addProduct({ title, price, id }))
 
     return (
-        <FlexBox maxWidth="1170" width={100} justifyContent="space-around">
+        <FlexBox 
+            width={100} 
+            justifyContent="space-around" 
+            flexDirection={isTabletLandscape ? "column" : "row"}
+            alignItems={isTabletLandscape ? "center" : ""}
+        >
             <Box
                 maxWidth="620"
                 width={100}

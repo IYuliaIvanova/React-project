@@ -9,17 +9,22 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { themes } from "../../constants/themes";
 
 export const Layout = () => {
-    const isMobile = useMediaQuery(themes.media.phone);
-    
+    const isTabletLandscape = useMediaQuery(themes.media.tabletLandscape);
+    const isDesktop = useMediaQuery(themes.media.desktop);
+    console.log(isTabletLandscape)
     return (
-        <FlexBox alignItems="start" justifyContent="center">
-            {!isMobile && <MainNavigation/>}
-            <FlexBox alignSelf="auto" width={100} maxWidth={isMobile ? '365' : '1170'} flexDirection="column">
+        <FlexBox 
+            alignItems="start" 
+            justifyContent="center" 
+            margin={isTabletLandscape ? "0 auto" : ''}
+        >
+            {!isTabletLandscape && <MainNavigation/>}
+            <FlexBox alignSelf="auto" width={100} maxWidth={isDesktop ? '800' : '1170'} flexDirection="column">
                 <HeaderContainer/>
                 <Outlet/>
                 <FooterContainer/>
             </FlexBox>
-            {!isMobile && <RightSidebar/>}
+            {!isTabletLandscape && <RightSidebar/>}
         </FlexBox>
     )
 }

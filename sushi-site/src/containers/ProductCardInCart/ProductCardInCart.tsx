@@ -1,7 +1,6 @@
 import React from "react";
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Box } from "../../components/common-components/Box/Box";
-// import { BiggestFila } from "../../assets";
 import { Paragraph } from "../../components/common-components/Paragraph/Paragraph";
 import { MinusButton } from "../../components/product-description-components/MinusButton";
 import { Span } from "../../components/common-components/Span/Span";

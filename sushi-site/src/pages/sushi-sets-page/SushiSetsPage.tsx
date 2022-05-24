@@ -10,9 +10,13 @@ import { NEW_SUSHI_SETS } from "../../constants/new-sushi-sets";
 import { ProductCard } from "../../containers/ProductCard/ProductCard";
 import { HiddenText } from "../../containers/HiddenText/HiddenText";
 import { productCardsSort } from "../../utils/product-cards-sort";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { themes } from "../../constants/themes";
 
 export const SushiSetsPage = () => {
     const [sushiSetsArray, setSushiSetsArray] = useState(NEW_SUSHI_SETS)
+    const isTabletLandscape = useMediaQuery(themes.media.tabletLandscape);
+    const isDesktop = useMediaQuery(themes.media.desktop);
 
     return (
         <Box width={100} padding="32px 110px 60px 110px" backColor={COLOR.gray95}>
@@ -40,11 +44,11 @@ export const SushiSetsPage = () => {
             </FlexBox>
             <FlexBox
                 flexWrap="wrap"
-                columnGap="41"
+                columnGap={isTabletLandscape ? "20" : "41"}
                 rowGap="20"
-                justifyContent="flex-start"
+                justifyContent={isDesktop ? "space-around" : "start"}
                 margin="0 0 174px"
-                width="949"
+                width={100}
 
             >
                 {sushiSetsArray.map(({

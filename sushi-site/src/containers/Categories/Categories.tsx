@@ -6,19 +6,19 @@ import { themes } from "../../constants/themes";
 import { CategoriesItem } from "../CategoriesItem/CategoriesItem";
 
 export const Categories = () => {
-    const isMobile = useMediaQuery(themes.media.phone);
+    const isTabletLandscape = useMediaQuery(themes.media.tabletLandscape);
 
     return (
         <FlexBox 
             width={100}
             margin='0 0 52px 0'
-            justifyContent="space-between"
+            justifyContent={isTabletLandscape ? "space-between" : "center"}
             flexDirection="row" 
-            columnGap={isMobile ? "10" : "26"}
-            rowGap={isMobile ? "10" : "30"}
+            columnGap={isTabletLandscape ? "10" : "26"}
+            rowGap={isTabletLandscape ? "10" : "30"}
             flexWrap="wrap"
         >
-            {isMobile ? CATEGORIES_DATA_MOBILE.map(({ id, img, children }) => {
+            {isTabletLandscape ? CATEGORIES_DATA_MOBILE.map(({ id, img, children }) => {
                 return (
                         <CategoriesItem key={id} id={id} img={img} children={children}/>
                 )

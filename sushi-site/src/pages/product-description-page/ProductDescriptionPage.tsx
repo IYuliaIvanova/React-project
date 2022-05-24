@@ -9,6 +9,8 @@ import { Paragraph } from "../../components/common-components/Paragraph/Paragrap
 import { FlexBox } from "../../components/common-components/FlexBox/FlexBox";
 import { Image} from "../../components/common-components/Image/Image";
 import { CustomNavLink } from "../../components/common-components/CustomNavLink/CustomNavLink";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { themes } from "../../constants/themes";
 
 interface IState {
     id: string,
@@ -22,6 +24,7 @@ interface IState {
 export const ProductDescriptionPage = () => {
     const location = useLocation()
     const navigate = useNavigate()
+    const isTabletLandscape = useMediaQuery(themes.media.tabletLandscape);
 
     const state = location.state as IState
 
@@ -75,15 +78,15 @@ export const ProductDescriptionPage = () => {
                     </Paragraph>
                     <Carousel
                         arrowsMargin="95"
-                        windowWidth="860"
-                        amountOfCardsOnWindow={3}
-                        amountOfCards={4}
+                        windowWidth={isTabletLandscape ? "260" : "860"}
+                        amountOfCardsOnWindow={isTabletLandscape ? 1 : 3}
+                        amountOfCards={isTabletLandscape ? 5 : 4}
                     >
-                        <RecomendProductCard margin="0 130px 0 0"></RecomendProductCard>
-                        <RecomendProductCard margin="0 130px 0 0"></RecomendProductCard>
-                        <RecomendProductCard margin="0"></RecomendProductCard>
-                        <RecomendProductCard margin="0 130px 0 0"></RecomendProductCard>
-                        <RecomendProductCard margin="0 130px 0 0"></RecomendProductCard>
+                        <RecomendProductCard margin={isTabletLandscape ? "0 60px 0 0" : "0 90px 0 0"}/>
+                        <RecomendProductCard margin={isTabletLandscape ? "0 60px 0 0" : "0 90px 0 0"}/>
+                        <RecomendProductCard margin={isTabletLandscape ? "0 60px 0 0" : "0 90px 0 0"}/>
+                        <RecomendProductCard margin={isTabletLandscape ? "0 60px 0 0" : "0 90px 0 0"}/>
+                        <RecomendProductCard margin={isTabletLandscape ? "0 60px 0 0" : "0 90px 0 0"}/>
                     </Carousel>
                 </Box>
             </>

@@ -18,9 +18,12 @@ import { INSTAGRAM, WHATSAPP, TELEGRAM } from "../../constants/social-constants"
 import { FOOTER_PHONE_MASK } from "../../constants/masks-constants";
 import { FIRST_PHONE, SECOND_PHONE } from "../../constants/href-constants";
 import { phoneMask } from "../../utils/validation";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { themes } from "../../constants/themes";
 
 export const FooterContainer = () =>{
     const [phone, setPhone] = useState('+375 (**) ***-**-**');
+    const isTabletLandscape = useMediaQuery(themes.media.tabletLandscape);
 
     const handleInputPhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const mask = phoneMask(e.target.value);
@@ -35,36 +38,47 @@ export const FooterContainer = () =>{
                 borderTop={`1px solid ${COLOR.silverGray}`}
                 padding="22px 0 0 0"
                 justifyContent="start"
-                alignItems="start"
+                alignItems={isTabletLandscape ? 'center' : "start"}
+                flexDirection={isTabletLandscape ? "column" : ''}
             >
-                <Box borderRight={`.5px solid ${COLOR.silverGray}`} padding="10px 133px 84px 0">
-                    <Navigation display="inline-block">
-                        <UnorderedList>
-                            {FOOTER_NAVIGATION.map(({ path, children, id}) => {
-                                return (
-                                    <ListItem id={id} margin="0 0 20px 0" key={id}>
-                                        <CustomNavLink  to={`/${path}`}>
-                                            <Paragraph hover>{children}</Paragraph>
-                                        </CustomNavLink>
-                                    </ListItem>
-                                )
-                            })}
-                        </UnorderedList>
-                    </Navigation>
-                </Box>
-                <Box borderRight={`.5px solid ${COLOR.silverGray}`} padding="10px 77px 73px 40px">
+                {!isTabletLandscape && 
+                    <Box borderRight={`.5px solid ${COLOR.silverGray}`} padding="10px 133px 84px 0">
+                        <Navigation display="inline-block">
+                            <UnorderedList>
+                                {FOOTER_NAVIGATION.map(({ path, children, id}) => {
+                                    return (
+                                        <ListItem id={id} margin="0 0 20px 0" key={id}>
+                                            <CustomNavLink  to={`/${path}`}>
+                                                <Paragraph hover>{children}</Paragraph>
+                                            </CustomNavLink>
+                                        </ListItem>
+                                    )
+                                })}
+                            </UnorderedList>
+                        </Navigation>
+                    </Box>
+                }
+                <Box 
+                    borderRight={!isTabletLandscape ? `.5px solid ${COLOR.silverGray}` : ''} 
+                    padding={isTabletLandscape ? "10px" : "10px 77px 73px 40px"}
+                    textAlign={isTabletLandscape ? "center" : ""}
+                >
                     <FlexBox flexDirection="column" maxWidth="233" alignItems="start">
-                        <Label margin="0 0 10px 0" htmlFor="phone">Введите номер</Label>
-                        <Input 
-                            value={phone}
-                            onChange={handleInputPhoneChange}
-                            type="tel"
-                            id="phone"
-                            margin="0 0 20px 0"
-                            bgColor={COLOR.gray95}
-                            color={COLOR.silverGray}
-                            placeholder={FOOTER_PHONE_MASK}
-                        />
+                        {!isTabletLandscape &&
+                            <>
+                                <Label margin="0 0 10px 0" htmlFor="phone">Введите номер</Label>
+                                <Input 
+                                    value={phone}
+                                    onChange={handleInputPhoneChange}
+                                    type="tel"
+                                    id="phone"
+                                    margin="0 0 20px 0"
+                                    bgColor={COLOR.gray95}
+                                    color={COLOR.silverGray}
+                                    placeholder={FOOTER_PHONE_MASK}
+                                />
+                            </>
+                        }
                         <Paragraph margin="0 0 10px 0" color={COLOR.silverGray}>Выберите удобный мессенджер для общения</Paragraph>
                         <FlexBox columnGap="30">
                             <CustomLink
@@ -106,8 +120,8 @@ export const FooterContainer = () =>{
                     flexDirection="column"
                     alignItems="start"
                     justifyContent="start"
-                    padding="10px 5px 5px 41px"
-                    alignSelf="start"
+                    padding={isTabletLandscape ? "10px" : "10px 5px 5px 41px"}
+                    alignSelf={isTabletLandscape ? 'center' : "start"}
                 >
                     <CustomLink
                         margin="0 0 5px 0"

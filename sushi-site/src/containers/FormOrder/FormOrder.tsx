@@ -19,10 +19,15 @@ import { OrderingGroupButton } from "../../components/form-ordering-components/O
 import { MinusButton } from "../../components/product-description-components/MinusButton";
 import { PlusButton } from "../../components/product-description-components/PlusButton";
 import { COLOR } from "../../constants/color-constants";
+import { themes } from "../../constants/themes";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { getDecrement, getIncrement } from "../../utils/counters";
 import { cardNumberMask, inputValidationError, phoneMask, validEmailError } from "../../utils/validation";
 
 export const FormOrder = () => {
+    const isTabletLandscape = useMediaQuery(themes.media.tabletLandscape);
+    const isDesktop = useMediaQuery(themes.media.desktop);
+    
     const [countStick, setCountStick] = useState(0);
     const [countSouse, setCountSouse] = useState(0);
     const [sum, setSum] = useState(0);
@@ -136,9 +141,9 @@ export const FormOrder = () => {
         sendOrdering(data);
     }
     return (
-        <Form onSubmit={sendOrder}>
+        <Form width={100} onSubmit={sendOrder} display="flex" flexDirection="column">
             <SecondLevelHeading margin="0 0 30px 0">Ваши данные</SecondLevelHeading>
-            <FlexBox margin="0 0 40px 0" columnGap="40">
+            <FlexBox margin="0 0 40px 0" columnGap="40" flexWrap="wrap" rowGap="20">
                 <FlexBox flexDirection="column" rowGap="20" width='360'>
                     <FlexBox columnGap="20" width={100}>
                         <Input

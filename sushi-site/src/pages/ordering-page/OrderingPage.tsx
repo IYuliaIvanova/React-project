@@ -8,12 +8,26 @@ import { FormOrder } from "../../containers/FormOrder/FormOrder"
 import { Image } from "../../components/common-components/Image/Image";
 import { RightSidebar } from "../../containers/RightSidebar/RightSidebar"
 import { CustomNavLink } from "../../components/common-components/CustomNavLink/CustomNavLink"
+import { useMediaQuery } from "../../hooks/useMediaQuery"
+import { themes } from "../../constants/themes"
 
 export const OrderingPage = () => {
+    const isTabletLandscape = useMediaQuery(themes.media.tabletLandscape);
+    const isDesktop = useMediaQuery(themes.media.desktop);
     return (
-        <FlexBox alignItems="start" justifyContent="start" height="100vh">
-            <Box width="1500" backColor={COLOR.gray95} height={100}>
-                <FlexBox padding="6px 15px 8px 100px" borderBottom={`1px solid ${COLOR.silverGray}`} justifyContent='start' columnGap="363">
+        <FlexBox alignItems="start" justifyContent="start" >
+            <Box 
+                maxWidth={isTabletLandscape ? '' : '1400'} 
+                width={100} 
+                backColor={COLOR.gray95} 
+                height={100}
+            >
+                <FlexBox 
+                    padding="6px 15px 8px 100px" 
+                    borderBottom={`1px solid ${COLOR.silverGray}`} 
+                    justifyContent={isTabletLandscape ? "space-between" :'start'} 
+                    columnGap={isTabletLandscape ? "100" : "363"}
+                >
                     <CustomNavLink 
                         to={`/`}
                         display="flex"
@@ -51,11 +65,11 @@ export const OrderingPage = () => {
                         </Paragraph>
                     </FlexBox>
                 </FlexBox>
-                <FlexBox padding="55px 392px 20px 100px" >
+                <FlexBox padding={isDesktop ? "50px" : "55px 392px 20px 100px"}>
                     <FormOrder/>
                 </FlexBox>
             </Box>
-            <RightSidebar/>
+            {!isTabletLandscape && <RightSidebar/>}
         </FlexBox>
     )
 }
